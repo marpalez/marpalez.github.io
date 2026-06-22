@@ -185,10 +185,7 @@ nav {
   text-decoration: none;
   color: var(--texto_normal);
   font-size: clamp(0.8rem, 1vw, 1rem);
-  opacity: 0.7;
-  transition: opacity 0.2s ease, gap 0.2s ease;
 }
-.nav_back:hover { opacity: 1; gap: 12px; }
 
 
 .nav_back_arrow { 
@@ -618,7 +615,7 @@ article{
 
 
 /*PROYECTOS-------------------------*/
-.tarj_grid{
+.project_grid{
 	color: var(--texto_tarjeta);
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -636,7 +633,6 @@ article{
 }
 
 .tarjeta_proyectos{
-	height: 100%;
 	width: 100%;
 	background: var(--fondo_tarjeta);
 	border-radius: 20px;
@@ -650,6 +646,7 @@ article{
 	transition: transform 0.2s ease;
 	opacity: 0.98;
 	box-sizing: border-box;
+
 }
 
 .tarjeta_proyectos:hover {
@@ -705,6 +702,7 @@ article{
 	width: auto;
 	vertical-align: middle;
 	margin-right: 10px;
+	margin-left: 10px;
 }
 
 
@@ -773,6 +771,17 @@ article{
 
 
 /*NORMAS Y TECNOLOGÍAS-------------------------*/
+.standard_grid{
+	color: var(--texto_tarjeta);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 25px;
+	margin-top: 30px;
+	align-items: stretch;
+}
+
+
+
 .tarjeta_normtec{
 	height: 90%;
 	width: 50%;
@@ -890,7 +899,9 @@ footer{
 	font-family: "Bungee Shade", sans-serif;
 }
 
-
+.derechosReservados {
+	font-family: sans-serif;
+}
 
 
 
@@ -907,6 +918,26 @@ footer{
    RESPONSIVE
    ============================================================ */
  
+@media (max-width: 1600px) {
+
+	.project_grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+
+	.tarjeta_proyectos {
+		width: 100%;
+		margin: 0;
+	}
+
+}
+
+
+
+
+
+
+
 @media (max-width: 1024px) {
  
 	.body80 {
@@ -993,13 +1024,8 @@ footer{
 
 
 	/* PROYECTOS */
-	.tarj_grid {
+	.project_grid {
 		grid-template-columns: 1fr;
-		gap: 30px;
-	}
-
-	.tarjeta_proyectos {
-		width: 100%;
 	}
  
 
