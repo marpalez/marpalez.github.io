@@ -115,8 +115,9 @@ section {
 }
 
 /* Fondos alternos*/
-#experience        { background: var(--brand2); }
-#projects 					{ background: var(--brand2); }
+#experience	{ background: var(--brand2); }
+#projects 	{ background: var(--brand2); }
+#stack	{background: var(--paper);}
 
 
 /* Las secciones con fondo oscuro necesitan padding interno coherente */
@@ -1194,7 +1195,7 @@ nav {
 }
 
 .tarjeta_normtec {
-	background: var(--paper);
+	background: var(--mist);
 	border: 1px solid var(--brand);
 	color: var(--brand);
 	border-radius: 20px;
@@ -1225,10 +1226,9 @@ nav {
 
 .tarjeta_normtec > ul > li {
 	justify-content: center;
-	background: var(--mist);
+	background: var(--paper);
 	font-family: var(--font-mono);
 	font-size: 0.78rem;
-	font-weight: bold;
 	letter-spacing: 0.03em;
 	color: var(--brand2);
 	border-radius: 10px;
