@@ -29,7 +29,7 @@
 	--brand2: rgb(11, 7, 46);
 
 	/* Derivados */
-	--brand-10: rgba(37, 100, 235, 0.5);
+	--brand-10: rgba(37, 100, 235, 0.2);
 	--ink-05:  rgba(10, 10, 10, 0.05);
 	--ink-10:  rgba(10, 10, 10, 0.10);
 	--ink-60:  rgba(10, 10, 10, 0.60);
@@ -103,12 +103,11 @@ section {
 
 /* Contenedor interno centrado (lo aplicamos via wrappers internos) */
 .hero,
-#seccion_experiencia,
+#experience,
 .seccion_experiencia,
 #projects > div,
-#seccion_normasytecnologias > div,
-#seccion_formacion,
-#seccion_contacto,
+#stack > div,
+#education,
 .seccion_sobremi {
 	max-width: 80rem;
 	margin: 0 auto;
@@ -116,22 +115,22 @@ section {
 }
 
 /* Fondos alternos*/
-#seccion_experiencia        { background: var(--brand2); }
-#projects 					{ background-color: var(--brand2); }
+#experience        { background: var(--brand2); }
+#projects 					{ background: var(--brand2); }
 
 
 /* Las secciones con fondo oscuro necesitan padding interno coherente */
-#seccion_experiencia,
+#experience,
 .seccion_sobremi,
-#seccion_normasytecnologias {
+#stack {
 	max-width: none;
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
 }
 
-#seccion_experiencia .seccion_experiencia,
+#experience .seccion_experiencia,
 .seccion_sobremi > *,
-#seccion_normasytecnologias > div {
+#stack > div {
 	max-width: 80rem;
 	margin: 0 auto;
 }
@@ -189,10 +188,10 @@ section { scroll-margin-top: 80px; }
 
 
 /* ---- EXPERIENCIA (fondo oscuro) ---- */
-#seccion_experiencia h2 {
+#experience h2 {
 	color: var(--mist);
 }
-#seccion_experiencia .linea_horizontal {
+#experience .linea_horizontal {
 	background: var(--mist);
 }
 
@@ -213,28 +212,22 @@ section { scroll-margin-top: 80px; }
 }
 
 /* ---- NORMAS Y TECNOLOGÍAS (fondo oscuro) ---- */
-#seccion_normasytecnologias h2 {
+#stack h2 {
 	color: var(--brand2);
 }
-#seccion_normasytecnologias .linea_horizontal {
+#stack .linea_horizontal {
 	background: var(--brand);
 }
 
 /* ---- FORMACIÓN (fondo claro) ---- */
-#seccion_formacion h2 {
+#education h2 {
 	color: var(--brand2);
 }
-#seccion_formacion .linea_horizontal {
+#education .linea_horizontal {
 	background: var(--brand);
 }
 
-/* ---- CONTACTO (fondo claro) ---- */
-#seccion_contacto h2 {
-	color: var(--brand2);
-}
-#seccion_contacto .linea_horizontal {
-	background: var(--brand);
-}
+
 
 
 
@@ -280,7 +273,7 @@ nav {
 	background: var(--paper-60);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-	border-bottom: 1px solid var(--ink-10);
+	border-bottom: 1px solid var(--brand-10);
 }
 
 .nav_inner { display: flex; align-items: center; margin: 0; }
@@ -503,9 +496,10 @@ nav {
 	gap: 1rem;
 	width: 100%;
 	background: var(--paper);
-	border: 2px solid var(--ink);
+	border: 1px solid var(--brand);
 	border-radius: 16px;
 	padding: 14px 16px;
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
 }
 
 
@@ -521,6 +515,7 @@ nav {
 	display: flex; align-items: center; justify-content: center;
 	transition: transform 0.2s ease, opacity 0.2s ease;
 	opacity: 0.9;
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
 }
 
 .reproductor_btn:hover { 
@@ -613,27 +608,28 @@ nav {
 .boton_descargar, .boton_proyectos {
 	font-family: var(--font-sans);
 	font-size: 0.82rem;
-	font-weight: 700;
 	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	padding: 1rem 1.75rem;
-	border-radius: 999px;
+	padding: 1rem 1rem;
+	border-radius:  10px;
 	display: inline-flex;
 	align-items: center;
 	gap: 10px;
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
 	transition: all 0.2s var(--ease);
 }
 
 
 .boton_descargar {
-	border: 2px solid var(--brand);
+	border: 1px solid var(--brand);
 	color: var(--brand);
+	background-color: var(--paper);
 	max-height: 40px;
 	opacity: 0.9; 
 }
 
 
 .boton_proyectos {
+	border: 1px solid var(--brand);
 	background: var(--brand);
 	color: var(--paper);
 	max-height: 40px;
@@ -697,7 +693,7 @@ nav {
 }
 
 /* ---- Cada entrada (article) ---- */
-#seccion_experiencia article {
+#experience article {
 	position: relative;
 	display: block;
 	width: 50%;
@@ -707,24 +703,24 @@ nav {
 	border-radius: 0;
 }
 
-#seccion_experiencia article:last-child { padding-bottom: 0; }
+#experience article:last-child { padding-bottom: 0; }
 
 /* Impares → lado IZQUIERDO */
-#seccion_experiencia article:nth-child(odd) {
+#experience article:nth-child(odd) {
 	left: 0;
 	padding-right: 3.5rem;
 	text-align: left;
 }
 
 /* Pares → lado DERECHO */
-#seccion_experiencia article:nth-child(even) {
+#experience article:nth-child(even) {
 	left: 50%;
 	padding-left: 3.5rem;
 	text-align: left;
 }
 
 /* ---- Icono/punto sobre la línea ---- */
-#seccion_experiencia article::after {
+#experience article::after {
 	content: '';
 	position: absolute;
 	top: 50px;
@@ -737,23 +733,23 @@ nav {
 }
 
 /* Punto a la derecha del bloque izquierdo */
-#seccion_experiencia article:nth-child(odd)::after { right: -12px; }
+#experience article:nth-child(odd)::after { right: -12px; }
 /* Punto a la izquierda del bloque derecho */
-#seccion_experiencia article:nth-child(even)::after { left: -12px; }
+#experience article:nth-child(even)::after { left: -12px; }
 
 /* ---- Tarjeta: el contenido vive en un recuadro ----
    El HTML tiene .izquierdo (año) y .central (resto) como hijos
    directos del article. Envolvemos ambos en un único recuadro
    aplicando el fondo a una "caja" sobre el área de padding del
    #seccion_experiencia article mediante un pseudo-elemento de fondo. */
-#seccion_experiencia article > .izquierdo, 
-#seccion_experiencia article > .central {
+#experience article > .izquierdo, 
+#experience article > .central {
 	position: relative;
 	z-index: 1;
 }
 
 /* Caja de fondo de la tarjeta (un solo recuadro continuo) */
-#seccion_experiencia article::before {
+#experience article::before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -764,21 +760,21 @@ nav {
 	z-index: 0;
 }
 
-#seccion_experiencia article:last-child::before { bottom: 0; }
+#experience article:last-child::before { bottom: 0; }
 
 /* La caja ocupa el lado correspondiente, dejando hueco al centro */
-#seccion_experiencia article:nth-child(odd)::before { left: 0; right: 3.5rem; }
-#seccion_experiencia article:nth-child(even)::before { left: 3.5rem; right: 0; }
+#experience article:nth-child(odd)::before { left: 0; right: 3.5rem; }
+#experience article:nth-child(even)::before { left: 3.5rem; right: 0; }
 
 /* Padding interno del contenido (sobre la caja) */
-#seccion_experiencia article > .izquierdo { padding: 1.3rem 1rem 0; }
-#seccion_experiencia article > .central { padding: 1rem 1.5rem 0.5rem; }
+#experience article > .izquierdo { padding: 1.3rem 1rem 0; }
+#experience article > .central { padding: 1rem 1.5rem 0.5rem; }
 
 
 
 
 /* ---- Pico/flecha que apunta a la línea (sobre article::before) ---- */
-#seccion_experiencia article > .central::after {
+#experience article > .central::after {
 	content: '';
 	position: absolute;
 	top: 7px;
@@ -789,14 +785,14 @@ nav {
 }
 
 /* Pico del bloque izquierdo → apunta a la derecha */
-#seccion_experiencia article:nth-child(odd) > .central::after {
+#experience article:nth-child(odd) > .central::after {
 	right: 1.5rem;
 	margin-right: -44px;
 	border-left-color: var(--mist);
 }
 
 /* Pico del bloque derecho → apunta a la izquierda */
-#seccion_experiencia article:nth-child(even) > .central::after {
+#experience article:nth-child(even) > .central::after {
 	left: 1.5rem;
 	margin-left: -44px;
 	border-right-color: var(--mist);
@@ -874,7 +870,7 @@ nav {
 	padding: 4px 11px;
 	white-space: nowrap;
 	background-color: var(--paper);
-	box-shadow: 1px 1px 1px 1px var(--ink-10);
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
 }
 
 /* ============================================================
@@ -888,9 +884,9 @@ nav {
 		margin-left: 1rem;
 	}
 
-	#seccion_experiencia article, 
-	#seccion_experiencia article:nth-child(odd), 
-	#seccion_experiencia article:nth-child(even) {
+	#experience article, 
+	#experience article:nth-child(odd), 
+	#experience article:nth-child(even) {
 		margin-left: 1rem;
 		width: 90%;
 		left: 0;
@@ -899,7 +895,7 @@ nav {
 	}
 
 	/* Pico del bloque izquierdo → apunta a la derecha */
-	#seccion_experiencia article:nth-child(odd) > .central::after {
+	#experience article:nth-child(odd) > .central::after {
 		left: 1.5rem;
 		margin-left: -44px;
 		transform: rotate(180deg);
@@ -907,16 +903,16 @@ nav {
 
 
 
-	#seccion_experiencia article:nth-child(odd)::after, 
-	#seccion_experiencia article:nth-child(even)::after {
+	#experience article:nth-child(odd)::after, 
+	#experience article:nth-child(even)::after {
 		left: -1px;
 		right: auto;
 	}
 
 
 	/* La caja de fondo ocupa todo el ancho en móvil */
-	#seccion_experiencia article:nth-child(odd)::before, 
-	#seccion_experiencia article:nth-child(even)::before {
+	#experience article:nth-child(odd)::before, 
+	#experience article:nth-child(even)::before {
 		left: 2.5rem;
 		right: 0;
 	}
@@ -1019,6 +1015,14 @@ nav {
 
 
 
+
+
+
+
+
+
+
+
 /* ============================================================
    PROYECTOS
    ============================================================ */
@@ -1035,7 +1039,7 @@ nav {
  
 .tarjeta_proyectos{
 	background: var(--mist);
-	border-radius: 20px;
+	border-radius: 25px;
 	padding: 20px;
 	box-shadow: var(--ink-60) 0px 0px 5px;
 	cursor: pointer;
@@ -1106,8 +1110,8 @@ nav {
 	justify-content: center;
 	gap: 1rem;
 	margin-top: 1rem;
-	margin-bottom: 1rem;
 	min-height: 28px;
+	transition: all 0.5s ease;
 }
  
 .tarj_tecnologias{
@@ -1129,6 +1133,7 @@ nav {
 	color: var(--brand);
 	font-weight: bold;
 	font-size: 1.5rem;
+	margin-top: 0.7rem;
 	transition: all 0.5s ease;
 }
  
@@ -1141,20 +1146,22 @@ nav {
 
 
 .tarjeta_proyectos:hover {
-	transform: scale(1.02);
+	transform: scale(1.01);
+	padding-top: 15px;
 
 	.tarj_imagen{
-		transform: scale(1.03);
+		transform: scale(1.05);
+
 	}
 
 	.proyecto_titulo {
 		color: var(--brand2);
 		font-size: 2.3rem;
+		margin-top: 0rem;
 	}
 
 	.proyecto_descripcion {
 		color: var(--brand2);
-		font-size: 0.9rem;
 	}
 }
 
@@ -1187,13 +1194,14 @@ nav {
 }
 
 .tarjeta_normtec {
-	background: transparent;
+	background: var(--paper);
 	border: 1px solid var(--brand);
 	color: var(--brand);
 	border-radius: 20px;
 	padding: 2rem;
 	width: 100%;
 	height: 100%;
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
 }
 
 .tarjeta_normtec > p {
@@ -1205,7 +1213,6 @@ nav {
 	text-align: left;
 	color: var(--brand);
 	margin-bottom: 1.5rem;
-	padding-bottom: 0.75rem;
 	border-bottom: 3px solid var(--brand);
 	display: inline-block;
 }
@@ -1218,15 +1225,15 @@ nav {
 
 .tarjeta_normtec > ul > li {
 	justify-content: center;
+	background: var(--mist);
 	font-family: var(--font-mono);
 	font-size: 0.78rem;
 	font-weight: bold;
 	letter-spacing: 0.03em;
 	color: var(--brand2);
-	border: 1px solid var(--brand);
 	border-radius: 10px;
 	padding: 6px 13px;
-	transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
 }
 
 
@@ -1256,113 +1263,69 @@ nav {
 /* ============================================================
    FORMACIÓN
    ============================================================ */
-#seccion_formacion { display: flex; flex-direction: column; }
+#education { 
+	display: flex; 
+	flex-direction: column; 
+}
 
 .tarj_formacion {
+	grid-template-columns: 200px 1fr auto;
+	align-items: baseline;
 	display: grid;
 	gap: 0.4rem 3rem;
 	width: 100%;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid var(--ink-10);
+	border-bottom: 1px solid var(--brand);
 	border-radius: 0;
 	padding: 2rem 0;
 	margin: 0;
 }
 
-.tarj_formacion:last-child { border-bottom: none; }
-
-@media (min-width: 768px) {
-	.tarj_formacion {
-		grid-template-columns: 200px 1fr auto;
-		align-items: baseline;
-	}
+.tarj_formacion:last-child { 
+	border-bottom: none; 
 }
 
-.tarj_formacion > p { margin: 0; }
+.tarj_formacion > p { 
+	margin: 0; 
+}
 
 .formacion_fecha {
 	font-family: var(--font-mono);
 	color: var(--brand);
 	font-size: 0.95rem;
 	letter-spacing: 0.04em;
+	font-weight: bold;
 }
 
 .formacion_nombre {
 	font-size: 1.3rem;
 	font-weight: 700;
 	letter-spacing: -0.01em;
-	color: var(--ink);
+	color: var(--brand2);
 }
 
-.formacion_grado, .formacion_institucion { color: var(--haze); font-size: 0.95rem; }
-.formacion_separador { display: none; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ============================================================
-   CONTACTO 
-   ============================================================ */
-#seccion_contacto { display: flex; flex-direction: column; }
-
-/* [movido a bloque títulos] #seccion_contacto .titulo_seccion h2 { color: var(--ink); } */
-
-.contacto_linkedin_div,
-.contacto_correo_div,
-.contacto_whatsapp_div { border-bottom: 1px solid var(--ink-10); }
-
-.contacto_container {
-	display: flex;
-	align-items: center;
-	gap: 14px;
-	padding: 1.25rem 0;
-	transition: padding 0.2s var(--ease), color 0.2s var(--ease);
+.formacion_grado, .formacion_institucion { 
+	color: var(--haze); 
+	font-size: 0.95rem; 
 }
 
-.contacto_container:hover { padding-left: 1rem; }
-.contacto_container > span {
-	font-size: 1.15rem;
-	font-weight: 600;
-	color: var(--ink);
-	font-style: normal;
-}
-.contacto_container:hover > span { color: var(--brand); }
-.contacto_imagen { height: 24px; width: auto; }
-address { font-style: normal; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1404,26 +1367,99 @@ address { font-style: normal; }
 /* ============================================================
    FOOTER
    ============================================================ */
-footer {
-	background: var(--ink);
-	color: var(--paper);
-	margin-top: 0;
+footer { 
+	padding-top: 2rem;
+  	background: var(--brand2);
+  	color: var(--paper); 
+}
+
+.footer-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr; 
+	gap: 2.5rem;
+	justify-items: center;
+	text-align: center;
+}
+
+.footer-heading { 
+	font-weight: bold; 
+	color: var(--paper); 
+	margin-bottom: 0.75rem; 
+}
+
+.social { 
+	display: flex; 
+	gap: 0.75rem; 
+}
+
+.social-a {
+	display: grid; 
+	place-items: center; 
+  	height: 2rem; width: 2rem;
+	background: var(--mist);
+	border-radius: 10px;
+	opacity: 0.9;
+	transition: all 0.2s ease;
+}
+
+.social-img {
+	width: 25px;
+	height: auto;
+}
+
+.social-a:hover {
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+.footer-tagline-container {
 	display: flex;
 	justify-content: center;
-	padding: 3rem 1.5rem;
+	align-items: center;
 }
 
-.footer .nav_back, footer .nav_back { color: var(--paper); }
-
-.dmp_texto {
-	font-family: var(--font-mono);
-	font-size: 0.8rem;
-	letter-spacing: 0.1em;
-	color: var(--paper-60);
+.footer-tagline { 
+	font-family: var(--font-display);
+	font-size: 6rem; 
+	color: var(--brand);
+	opacity: 0.1;
 }
 
-footer .dmp_texto { color: var(--paper-60); }
-.derechosReservados { font-family: var(--font-mono); }
+
+
+.footer-links { 
+	display: flex; 
+	flex-direction: column; 
+	gap: 0.5rem; font-size: 
+	0.875rem; 
+}
+
+.footer-links a:hover { 
+	color: var(--brand); 
+}
+
+
+
+
+
+.footer-bottom {
+	display: flex;
+	margin-top: 1.5rem;
+	height: 40px;
+	border-top: 1px solid var(--haze);
+	font-size: 0.75rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer-copyright {
+	font-family: var(--font-display);
+	color: var(--haze);
+}
+
+
+
+
 
 
 
@@ -1486,7 +1522,10 @@ footer .dmp_texto { color: var(--paper-60); }
    ============================================================ */
 @media (max-width: 1024px) {
 	.project_grid { grid-template-columns: repeat(2, 1fr); }
+
 }
+
+
 
 @media (max-width: 767px) {
 	section { padding: 4rem 1.25rem; }
@@ -1498,16 +1537,19 @@ footer .dmp_texto { color: var(--paper-60); }
 	.titulo_seccion { margin-bottom: 2.5rem; }
 
 	/* Experiencia: una columna */
-	#seccion_experiencia article { grid-template-columns: 1fr; gap: 1rem; }
+	#experience article { grid-template-columns: 1fr; gap: 1rem; }
 
 	.boton_descargar_container { 
 		flex-direction: column; 
 		align-items: stretch; 
 		justify-self: center;
-		width: 250px;
+		width: 210px;
 	}
 
-	.boton_descargar, .boton_proyectos { justify-content: center; }
+	.boton_descargar, .boton_proyectos { 
+		justify-content: center;
+		margin-bottom: 1rem; 
+	}
 
 	.project_grid { grid-template-columns: 1fr; }
 	.standard_grid { grid-template-columns: 1fr; }
@@ -1517,4 +1559,16 @@ footer .dmp_texto { color: var(--paper-60); }
 	.imagen_sobremi { width: 42px; height: 42px; }
 
 	.tarj_formacion { grid-template-columns: 1fr; }
+
+	.footer-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 550px) {
+
+	.footer-grid {
+		grid-template-columns: 1fr;
+	}
+
 }
