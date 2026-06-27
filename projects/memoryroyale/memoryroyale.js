@@ -39,12 +39,7 @@ botonArriba.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// SCROLL ANIMATIONS
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+// AÑO DINÁMICO EN EL FOOTER
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = '\u00A0' + new Date().getFullYear() + '\u00A0';

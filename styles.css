@@ -1031,7 +1031,7 @@ nav {
 .project_grid{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 25px;
+	gap: 1rem;
 	margin-top: 30px;
 	align-items: stretch;
 }
@@ -1106,13 +1106,16 @@ nav {
  
 .tarj_grid_tecnologias{
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
 	margin-top: 1rem;
-	min-height: 28px;
 	transition: all 0.5s ease;
+}
+
+.tarj_grid_tecnologias a {
+	display: flex;
+	align-items: center;
 }
  
 .tarj_tecnologias{
@@ -1122,10 +1125,8 @@ nav {
 }
  
 .tecnologia_imagen {
-	height: 26px;
 	width: auto;
-	max-width: 70px;
-	object-fit: contain;
+	height: 22px;
 }
 
  
@@ -1563,6 +1564,11 @@ footer {
 	.footer-grid {
 		grid-template-columns: 1fr 1fr;
 	}
+
+	.footer-tagline-container {
+		display: none;
+	}
+
 }
 
 @media (max-width: 550px) {

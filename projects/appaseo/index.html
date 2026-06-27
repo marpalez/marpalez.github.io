@@ -6,7 +6,7 @@
   <title>Appaseo | David Martínez</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="appaseo.css">
 </head>
@@ -16,7 +16,7 @@
   <nav>
     <div class="nav_inner">
       <a href="../../" class="nav_back">
-        <img src="../../src/Arrow_symbol_white_down.png" class="nav_back_arrow">
+        <span class="dmp_texto">D M P</span>
       </a>
     </div>
 
@@ -31,7 +31,7 @@
 
 <!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
 <button id="boton_arriba" aria-label="Volver arriba">
-	<img src="../../src/Arrow_symbol_white.png">
+	<img src="../../assets/Arrow_symbol_white.png">
 </button>
 
 
@@ -40,7 +40,7 @@
 
     <!-- HERO -->
     <section class="hero_section slide-in">
-      <img class="project_screenshot" src="../../src/appaseo_logo2.png">
+      <img class="project_screenshot" src="../../assets/appaseo_logo2.png">
       <div class="hero">
         <h1 class="hero_titulo">Appaseo</h1>
         <span data-es="2026" data-en="2026">2026</span>
@@ -108,7 +108,7 @@
                data-es="Login automático al reabrir la app mediante toggle de recordar sesión."
                data-en="Automatic login on relaunch via a remember-session toggle.">
           </div>
-          <img class="imagen_caracteristicas_alargada" src="../../src/APPASEO5.jpg">
+          <img class="imagen_caracteristicas_alargada" src="../../assets/APPASEO5.jpg">
         </div>
 
 
@@ -124,7 +124,7 @@
                data-es="El segundo, opcional, registra al usuario como cuidador con información adicional como teléfono, política de fotos y animales con cuidados especiales."
                data-en="The second, optional step registers the user as a carer with additional information such as phone number, photo policy and special-needs animals.">
           </div>
-          <img class="imagen_caracteristicas" src="../../src/APPASEO1.jpg">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO1.jpg">
         </div>
 
 
@@ -136,7 +136,7 @@
                data-es="La pantalla de inicio muestra hasta 6 cuidadores de la misma población que el usuario y los 4 mejor valorados globalmente, cargados dinámicamente desde MySQL."
                data-en="The home screen shows up to 6 carers from the user's location and the 4 top-rated globally, dynamically loaded from MySQL.">
           </div>
-          <img class="imagen_caracteristicas" src="../../src/APPASEO6.jpg">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO6.jpg">
         </div>
 
 
@@ -152,7 +152,7 @@
                data-es="Los dueños las buscan con filtros de fecha, tipo de animal y ordenación."
                data-en="Owners search them with filters by date, animal type and sort order.">
           </div>
-          <img class="imagen_caracteristicas" src="../../src/APPASEO2.jpg">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO2.jpg">
         </div>
 
 
@@ -168,7 +168,7 @@
                data-es="También puede gestionar sus peticiones publicadas y darse de alta como cuidador."
                data-en="They can also manage their published requests and register as a carer.">
           </div>
-          <img class="imagen_caracteristicas" src="../../src/APPASEO4.jpg">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO4.jpg">
         </div>
 
 
@@ -184,7 +184,7 @@
                data-es="&nbsp;&nbsp;&nbsp;›&nbsp;&nbsp;&nbsp;el usuario debe aceptar haber contratado los servicios antes de publicar una opinión."
                data-en="&nbsp;&nbsp;&nbsp;›&nbsp;&nbsp;&nbsp;the user must confirm they have hired the carer's services before submitting a review.">
           </div>
-          <img class="imagen_caracteristicas_alargada" src="../../src/APPASEO3.jpg">
+          <img class="imagen_caracteristicas_alargada" src="../../assets/APPASEO3.jpg">
         </div>
 
       </div>
@@ -224,8 +224,8 @@
     <section>
       <aside>
         <div class="volver_pag_principal">
-          <a class="boton_volver_pag_princial" href="../../">
-            <img class="nav_back_arrow" src="../../src/Arrow_symbol_white_down.png">
+          <a class="boton_volver_pag_princial" href="../../#projects">
+            <img class="volver_pag_principal_imagen" src="../../assets/Arrow_symbol_white_down.png">
             <span class="volver_pag_principal_texto" data-es="Volver" data-en="Back">Volver</span>
           </a>
         </div>
@@ -233,11 +233,10 @@
         <div class="siguiente_proyecto_container">
           <a class="boton_siguiente_proyecto" href="../memoryroyale/">
             <div class="siguiente_proyecto_texto">
-              <span class="siguiente_label" data-es="Siguiente proyecto" data-en="Next project">Siguiente proyecto</span>
+              <span class="siguiente_label" data-es="Siguiente" data-en="Next">Siguiente</span>
               <span class="siguiente_nombre">Memory Royale</span>
-              <!--<img class="siguiente_screenshot" src="../../src/memoryRoyale_logo.png">-->
             </div>
-            <img class="siguiente_arrow" src="../../src/Arrow_symbol_white_down.png">
+            <img class="siguiente_arrow" src="../../assets/Arrow_symbol_white.png">
           </a>
         </div>
       </aside>
@@ -245,11 +244,65 @@
 
   </div>
 
-	<footer>
-		<a href="../../" class="nav_back">
-        	<span class="dmp_texto">D M P</span>
-      	</a>
-	</footer>
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-social">
+        <p class="footer-heading" data-es="Contacto" data-en="Contact">Contacto</p>
+        <div class="social">
+
+          	<a class="social-a" href="https://github.com/marpalez" target="_blank" rel="noopener" aria-label="GitHub">
+            	<img class="social-img" src="../../assets/github.png">
+          	</a>
+
+			<a class="social-a" href="https://www.linkedin.com/in/davidmartinezpalomares/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            	<img class="social-img" src="../../assets/linkedin.png">
+          	</a>
+
+		    <a class="social-a" href="mailto:david@davidmarpalez.com" aria-label="Gmail">
+            	<img class="social-img" src="../../assets/gmail.png">
+          	</a>
+
+			<a class="social-a" href="https://wa.me/34681875058" target="_blank" rel="noopener" aria-label="WhatsApp">
+            	<img class="social-img" src="../../assets/whatsapp.png">
+          	</a>
+
+			<a class="social-a" href="https://t.me/davidmarpalez" target="_blank" rel="noopener" aria-label="Telegram">
+            	<img class="social-img" src="../../assets/telegram.png">
+          	</a>
+
+        </div>
+      </div>
+
+
+      <div class="footer-quicklinks">
+        <p class="footer-heading" data-es="Enlaces rápidos" data-en="Quick links">Enlaces rápidos</p>
+        <ul class="footer-links">
+          <li><a href="../../#home" data-es="Inicio" data-en="Home">Inicio</a></li>
+          <li><a href="../../#experience" data-es="Experiencia laboral" data-en="Experience">Experiencia laboral</a></li>
+          <li><a href="../../#about" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+          <li><a href="../../#projects" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+          <li><a href="../../#stack" data-es="Normas y tecnologías" data-en="Standards and technologies">Normas y tecnologías</a></li>
+          <li><a href="../../#education" data-es="Formación" data-en="Education">Formación</a></li>
+		    </ul>
+      </div>
+
+
+      <div class="footer-tagline-container">
+        <a class="footer-tagline" href="https://davidmarpalez.com"> D M P</a>
+      </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+		<a class="footer-copyright" href="https://davidmarpalez.com" target="_blank" rel="noopener">
+        	<span>&#169;&nbsp;</span><span id="year"></span><span>&nbsp;D M P</span>
+	  	</a>
+    </div>
+
+  </footer>
 
 
 
@@ -258,12 +311,8 @@
     <script>
       var canvas = document.querySelector("#unity-canvas");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
+
+      
       function unityShowBanner(msg, type) {
         var warningBanner = document.querySelector("#unity-warning");
         function updateBannerVisibility() {
