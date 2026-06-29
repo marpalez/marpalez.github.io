@@ -41,21 +41,7 @@ botonArriba.addEventListener('click', () => {
 });
 
 
-// SCROLL ANIMATIONS — entrada desde la derecha
 
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.imqiberica, .sgstecnos, .imqtecnocrea, .aidimme, .tarjeta_normtec, .tarj_formacion, .sobremi_parrafo_contenedor, .nombre, .apellido').forEach(el => {
-    el.classList.add('slide-in');
-    observer.observe(el);
-});
 
 
 
@@ -175,8 +161,8 @@ document.querySelectorAll('.imqiberica, .sgstecnos, .imqtecnocrea, .aidimme, .ta
 
 // REPRODUCTOR
 const pistas = {
-  es: './src/david_laboratorio_es.mp3',
-  en: './src/david_laboratorio_en.mp3'
+  es: './assets/david_laboratorio_es.mp3',
+  en: './assets/david_laboratorio_en.mp3'
 };
 
 const audio = document.getElementById('reproductor_audio');
