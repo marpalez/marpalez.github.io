@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /projects/*/Build/
+Disallow: /projects/*/TemplateData/
+
+Sitemap: https://davidmarpalez.com/sitemap.xml
