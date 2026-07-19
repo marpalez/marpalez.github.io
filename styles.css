@@ -26,7 +26,7 @@
 	--paper:   #ffffff;
 	--haze:    #64748b;
 	--mist:    #f1f4f5;
-	--brand2: rgb(11, 7, 46);
+	--brand2:  #0b072e;
 
 	/* Derivados */
 	--brand-10: rgba(37, 100, 235, 0.2);
@@ -1435,7 +1435,7 @@ footer {
 
 .footer-tagline-container:hover {
 	.footer-hide {
-		color: var(--haze);
+		color: var(--mist);
 	}
 }
 
