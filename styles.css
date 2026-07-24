@@ -841,7 +841,6 @@ nav {
 .derecho > ul > li {
 	display: flex;
 	align-items: flex-start;
-	font-size: 0.7rem;
 	line-height: 1.5;
 	color: var(--ink);
 }
@@ -863,7 +862,7 @@ nav {
 
 .etiqueta {
 	font-family: var(--font-mono);
-	font-size: 0.5rem;
+	font-size: 0.7rem;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	color: var(--ink-60);
