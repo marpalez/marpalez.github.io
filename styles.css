@@ -1633,15 +1633,12 @@ footer {
 	#experience article { grid-template-columns: 1fr; gap: 1rem; }
 
 	.boton_descargar_container { 
-		flex-direction: column; 
-		align-items: stretch; 
 		justify-self: center;
-		width: 210px;
+		gap: 2rem;
 	}
 
 	.boton_descargar, .boton_proyectos { 
 		justify-content: center;
-		margin-bottom: 1rem; 
 	}
 
 	.project_grid { grid-template-columns: 1fr; }
@@ -1660,12 +1657,6 @@ footer {
 	.footer-tagline-container {
 		display: none;
 	}
-
-}
-
-
-
-@media (max-width: 767px) {
 
 	.lista_experiencia::before {
 		left: 9px;
@@ -1690,14 +1681,11 @@ footer {
 		transform: rotate(180deg);
 	}
 
-
-
 	#experience article:nth-child(odd)::after, 
 	#experience article:nth-child(even)::after {
 		left: -1px;
 		right: auto;
 	}
-
 
 	/* La caja de fondo ocupa todo el ancho en móvil */
 	#experience article:nth-child(odd)::before, 
