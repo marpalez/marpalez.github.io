@@ -1708,6 +1708,14 @@ footer {
 
 @media (max-width: 550px) {
 
+	.rol_container {
+		margin-top: 3rem;
+	}
+
+	.boton_descargar_container {
+		margin-top: 3rem;
+	}
+
 	.footer-grid {
 		grid-template-columns: 1fr;
 	}
