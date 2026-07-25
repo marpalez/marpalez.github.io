@@ -1,5 +1,5 @@
-// BOTON IDIOMA — ES / EN
-let currentLang = localStorage.getItem('lang') || 'es';
+// BOTON IDIOMA — EN / ES (el sitio se lanza en inglés por defecto)
+let currentLang = localStorage.getItem('lang') || 'en';
 
 const langToggle = document.getElementById('boton_idioma');
 const langText = document.getElementById('lang-text');
@@ -20,9 +20,23 @@ langToggle.addEventListener('click', () => {
 function applyLanguage(lang) {
     const elements = document.querySelectorAll('[data-es][data-en]');
     elements.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+        el.innerHTML = el.getAttribute(`data-${lang}`);
     });
+    document.documentElement.lang = lang;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Boton scroll arriba
@@ -45,7 +59,15 @@ botonArriba.addEventListener('click', () => {
 
 
 
-// Animación nombre DMP
+
+
+
+
+
+
+
+
+// Animación nombre DMP — colapso y reescritura LETRA POR LETRA
 (function () {
  
   /* ── DATOS ─────────────────────────────────────────────────── */
@@ -57,11 +79,12 @@ botonArriba.addEventListener('click', () => {
  
   /* ── TIMINGS (ms) ───────────────────────────────────────────── */
   const T = {
-    pauseName:   250,  // tiempo que el nombre completo está visible
-    pauseWord:   250,  // tiempo que Developer/Multiplatform/Projects está visible
-    collapseAll:  1000,  // duración del colapso (debe coincidir con el CSS)
-    expandDelay:  600,  // escalonado entre líneas al expandirse
-    expandCSS:    1000,  // duración de la expansión (debe coincidir con el CSS)
+    pauseName:      250,  // tiempo que el nombre completo está visible
+    pauseWord:      250,  // tiempo que Developer/Multiplatform/Projects está visible
+    expandDelay:    600,  // escalonado entre líneas (D, M, P) al empezar a escribirse
+    letterStep:      45,  // ms entre el inicio de cada letra al APARECER
+    letterDuration: 220,  // duración de la transición de cada letra (debe coincidir con el CSS)
+    collapseStep:    30,  // ms entre el inicio de cada letra al DESAPARECER (más rápido que al escribir)
   };
  
   /* ── HELPERS ────────────────────────────────────────────────── */
@@ -79,16 +102,18 @@ botonArriba.addEventListener('click', () => {
         display: inline-block;
         overflow: hidden;
         white-space: nowrap;
-        max-width: 0;
-        opacity: 0;
-        transition: max-width ${T.expandCSS}ms cubic-bezier(0.77, 0, 0.18, 1),
-                    opacity 0.3s ease;
       }
  
-      .dmp-suffix.dmp-name-visible,
-      .dmp-suffix.dmp-word-visible {
-        max-width: 10em;
+      .dmp-letter {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(0px);
+        transition: opacity ${T.letterDuration}ms ease, transform ${T.letterDuration}ms ease;
+      }
+ 
+      .dmp-letter.dmp-letter-visible {
         opacity: 1;
+        transform: translateY(0);
       }
     `;
     const style = document.createElement('style');
@@ -101,33 +126,69 @@ botonArriba.addEventListener('click', () => {
     LINES.forEach(line => {
       line.elInit   = document.querySelector(line.selector + ' .dmp-initial');
       line.elSuffix = document.querySelector(line.selector + ' .dmp-suffix');
+      line.elSuffix.textContent = ''; // arranca vacío: JS toma el control desde aquí
     });
+  }
+ 
+  /* ── ESCRIBIR / BORRAR letra a letra ─────────────────────────── */
+ 
+  // Sustituye el contenido por un <span> por letra (todos ocultos al principio)
+  function buildLetters(el, text) {
+    el.innerHTML = '';
+    return [...text].map(ch => {
+      const span = document.createElement('span');
+      span.className = 'dmp-letter';
+      span.textContent = ch === ' ' ? '\u00A0' : ch;
+      el.appendChild(span);
+      return span;
+    });
+  }
+ 
+  // Aparecen en cascada, de izquierda a derecha
+  async function typeIn(el, text) {
+    const letters = buildLetters(el, text);
+    letters.forEach((span, i) => {
+      setTimeout(() => span.classList.add('dmp-letter-visible'), i * T.letterStep);
+    });
+    const total = (letters.length - 1) * T.letterStep + T.letterDuration;
+    await wait(total);
+  }
+ 
+  // Desaparecen en cascada, de derecha a izquierda (efecto "borrado")
+  async function typeOut(el) {
+    const letters = Array.from(el.querySelectorAll('.dmp-letter')).reverse();
+    letters.forEach((span, i) => {
+      setTimeout(() => span.classList.remove('dmp-letter-visible'), i * T.collapseStep);
+    });
+    const total = letters.length
+      ? (letters.length - 1) * T.collapseStep + T.letterDuration
+      : 0;
+    await wait(total);
+    el.innerHTML = ''; // limpio para la próxima palabra
   }
  
   /* ── FASES ──────────────────────────────────────────────────── */
   async function collapseAll() {
-    LINES.forEach(line => {
-      line.elSuffix.classList.remove('dmp-name-visible', 'dmp-word-visible');
-    });
-    await wait(T.collapseAll + 80);
+    await Promise.all(LINES.map(line => typeOut(line.elSuffix)));
+    await wait(80);
   }
  
   async function expandWords() {
     for (const line of LINES) {
-      line.elSuffix.textContent = line.word;
-      line.elSuffix.classList.add('dmp-word-visible');
+      typeIn(line.elSuffix, line.word);
       await wait(T.expandDelay);
     }
-    await wait(T.expandCSS);
+    const lastLetters = LINES[LINES.length - 1].word.length;
+    await wait((lastLetters - 1) * T.letterStep + T.letterDuration);
   }
  
   async function expandName() {
     for (const line of LINES) {
-      line.elSuffix.textContent = line.name;
-      line.elSuffix.classList.add('dmp-name-visible');
+      typeIn(line.elSuffix, line.name);
       await wait(T.expandDelay);
     }
-    await wait(T.expandCSS);
+    const lastLetters = LINES[LINES.length - 1].name.length;
+    await wait((lastLetters - 1) * T.letterStep + T.letterDuration);
   }
  
   /* ── CICLO PRINCIPAL ────────────────────────────────────────── */
@@ -135,14 +196,12 @@ botonArriba.addEventListener('click', () => {
     while (true) {
       await wait(T.pauseName);  // nombre visible
       await collapseAll();      // colapsa → D M P
-      await expandWords();      // expande → Developer / Multiplatform / Projects
+      await expandWords();      // escribe → Developer / Multiplatform / Projects
       await wait(T.pauseWord);  // acrónimo visible
       await collapseAll();      // colapsa → D M P
-      await expandName();       // expande → David / Martínez / Palomares
+      await expandName();       // escribe → David / Martínez / Palomares
     }
   }
-
-
  
   /* ── INIT ───────────────────────────────────────────────────── */
   function init() {
@@ -158,6 +217,19 @@ botonArriba.addEventListener('click', () => {
   }
  
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // REPRODUCTOR
 const pistas = {
@@ -221,8 +293,5 @@ function seekAudio(e) {
   audio.currentTime = pct * audio.duration;
 }
 
-// Cargar pista según idioma actual
-cargarPista(currentLang);
 
-// Actualizar pista al cambiar idioma — añade esto dentro del langToggle click listener
-// cargarPista(currentLang);
+cargarPista(currentLang);

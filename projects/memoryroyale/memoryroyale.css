@@ -15,6 +15,7 @@
 	--haze:    #64748b;
 	--mist:    #f1f4f5;
 	--brand2:  rgb(11, 7, 46);
+	--background: #9ac2dd;
 
 	/* Derivados */
 	--brand-10: rgba(37, 100, 235, 0.2);
@@ -43,7 +44,7 @@ html { scroll-behavior: smooth; }
 body {
 	font-family: var(--font-sans);
 	color: var(--ink);
-	background: var(--mist);
+	background: var(--background);
 	line-height: 1.5;
 	min-height: 100vh;
 	-webkit-font-smoothing: antialiased;
@@ -647,7 +648,7 @@ footer {
 }
 
 .footer-links a:hover { 
-	color: var(--brand); 
+	color: var(--background); 
 }
 
 

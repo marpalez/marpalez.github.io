@@ -1,21 +1,6 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ============================================================
    TOKENS
    ============================================================ */
@@ -27,6 +12,7 @@
 	--haze:    #64748b;
 	--mist:    #f1f4f5;
 	--brand2:  #0b072e;
+	--background: #9ac2dd;
 
 	/* Derivados */
 	--brand-10: rgba(37, 100, 235, 0.2);
@@ -83,6 +69,24 @@ body {
 ul { list-style: none; }
 a  { color: inherit; text-decoration: none; }
 
+/* ============================================================
+   FOCO POR TECLADO — accesibilidad
+   Solo se muestra al navegar con Tab, no al hacer clic con ratón
+   ============================================================ */
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--brand);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* Si el enlace interior de una tarjeta recibe foco, resaltamos toda la tarjeta */
+.tarjeta_proyectos:focus-within {
+	outline: 2px solid var(--brand);
+	outline-offset: 4px;
+	border-radius: 25px;
+}
+
 .body80 {
 	display: flex;
 	flex-direction: column;
@@ -117,7 +121,7 @@ section {
 /* Fondos alternos*/
 #experience	{ background: var(--brand2); }
 #projects 	{ background: var(--brand2); }
-#stack	{background: var(--paper);}
+#stack	{background: var(--background);}
 
 
 /* Las secciones con fondo oscuro necesitan padding interno coherente */
@@ -437,7 +441,7 @@ nav {
 
 
 .rol_container {
-	margin-top: 2.5rem;
+	margin-top: 5rem;
 	display: block;
 	max-width: 70rem;
 	border: none;
@@ -448,11 +452,11 @@ nav {
 	font-weight: 700;
 	line-height: 1.15;
 	letter-spacing: -0.02em;
-	color: var(--brand2);
+	color: var(--brand);
 	margin: 0;
 }
 
-.rol + .rol { color: var(--brand); margin-top: 0.3rem; }
+.rol + .rol { color: var(--brand2); margin-top: 0.3rem; }
 
 
 
@@ -589,12 +593,6 @@ nav {
 
 
 
-
-
-
-
-
-
 /* ============================================================
    BOTONES CV / PROYECTOS
    ============================================================ */
@@ -602,8 +600,8 @@ nav {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 1rem;
-	margin-top: 3rem;
+	gap: 5rem;
+	margin-top: 5rem;
 }
 
 .boton_descargar, .boton_proyectos {
@@ -799,6 +797,28 @@ nav {
 	border-right-color: var(--mist);
 }
 
+
+#experience article > .izquierdo,
+#experience article > .central,
+#experience article::before {
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#experience article:hover > .izquierdo,
+#experience article:hover > .central,
+#experience article:hover::before {
+	transform: translateY(-4px);
+}
+
+#experience article:hover::before {
+	box-shadow: 0 14px 32px rgba(37, 100, 235, 0.35);
+}
+
+
+
+
+
+
 /* ---- Año (.izquierdo) ---- */
 .izquierdo span {
 	font-family: var(--font-mono);
@@ -857,7 +877,6 @@ nav {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-	margin-top: 1rem;
 }
 
 .etiqueta {
@@ -873,50 +892,65 @@ nav {
 	box-shadow: 1px 1px 1px 1px var(--brand-10);
 }
 
-/* ============================================================
-   RESPONSIVE — timeline a una columna en móvil
-   ============================================================ */
-@media (max-width: 767px) {
-
-	.lista_experiencia::before {
-		left: 9px;
-		transform: none;
-		margin-left: 1rem;
-	}
-
-	#experience article, 
-	#experience article:nth-child(odd), 
-	#experience article:nth-child(even) {
-		margin-left: 1rem;
-		width: 90%;
-		left: 0;
-		padding: 0 0 2.5rem 2.5rem;
-		text-align: left;
-	}
-
-	/* Pico del bloque izquierdo → apunta a la derecha */
-	#experience article:nth-child(odd) > .central::after {
-		left: 1.5rem;
-		margin-left: -44px;
-		transform: rotate(180deg);
-	}
 
 
 
-	#experience article:nth-child(odd)::after, 
-	#experience article:nth-child(even)::after {
-		left: -1px;
-		right: auto;
-	}
 
 
-	/* La caja de fondo ocupa todo el ancho en móvil */
-	#experience article:nth-child(odd)::before, 
-	#experience article:nth-child(even)::before {
-		left: 2.5rem;
-		right: 0;
-	}
+.exp_detalle {
+	display: grid;
+	grid-template-rows: 1fr;
 }
+
+.exp_detalle_inner {
+	overflow: hidden;
+}
+
+
+
+.exp_ver_mas {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	margin-top: 0.5rem;
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--brand);
+	opacity: 0.85;
+	transition: opacity 0.25s ease;
+}
+
+.exp_detalle {
+	grid-template-rows: 0fr; /* escritorio: colapsado por defecto */
+	transition: grid-template-rows 0.4s ease;
+}
+
+#experience article:hover .exp_detalle,
+#experience article:focus-within .exp_detalle {
+	grid-template-rows: 1fr;
+}
+
+#experience article:hover .exp_ver_mas,
+#experience article:focus-within .exp_ver_mas {
+	opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -998,6 +1032,11 @@ nav {
 	color: var(--ink-80);
 }
 
+.texto_sobremi strong {
+	color: var(--brand);
+	font-weight: 700;
+}
+
 
 
 
@@ -1042,7 +1081,6 @@ nav {
 	border-radius: 25px;
 	padding: 20px;
 	box-shadow: var(--ink-60) 0px 0px 5px;
-	cursor: pointer;
 	text-decoration: none;
 	display: flex;
 	flex-direction: column;
@@ -1064,6 +1102,11 @@ nav {
 	border-radius: 20px;
 	box-shadow: var(--ink-60) 0px 0px 5px;
 	transition: transform 0.5s ease;
+}
+
+
+.tarj_caption_overlay { 
+	display: none; 
 }
  
 @keyframes llamarAtencion {
@@ -1091,8 +1134,8 @@ nav {
 	right: 10px;
 	box-shadow: black 0px 0px 30px;
 	font-family: "Oswald", sans-serif;
-	padding: 1px 5%;
-	border-radius: 1000px;
+	padding: 10px 15px;
+	border-radius: 9999px;
 	animation: llamarAtencion 2s ease-in-out 1s infinite;
 }
  
@@ -1135,7 +1178,8 @@ nav {
 	font-weight: bold;
 	font-size: 1.5rem;
 	margin-top: 0.7rem;
-	transition: all 0.5s ease;
+	transform-origin: left center;
+	transition: color 0.3s ease, transform 0.3s ease, margin-top 0.3s ease;
 }
  
 .proyecto_descripcion {
@@ -1145,23 +1189,59 @@ nav {
 	transition: all 0.5s ease;
 }
 
+/* ============================================================
+   HOVER DE TARJETAS
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
 
-.tarjeta_proyectos:hover {
-	transform: scale(1.01);
-	padding-top: 15px;
-
-	.tarj_imagen{
-		transform: scale(1.05);
-
+	.tarj_imagen_container {
+		overflow: hidden;
+		border-radius: 20px; /* mismo radio que .tarj_imagen, para que el overlay recorte igual */
 	}
 
-	.proyecto_titulo {
-		color: var(--brand2);
-		font-size: 2.3rem;
+	.tarj_caption_overlay {
+		display: flex;
+		align-items: flex-end;
+		position: absolute;
+		inset: 0;
+		padding: 1.25rem;
+		background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.35) 55%, transparent 100%);
+		opacity: 0;
+		transform: translateY(12px);
+		transition: opacity 0.35s ease, transform 0.35s ease;
+		pointer-events: none; /* no interfiere con el clic al enlace del proyecto */
+	}
+
+	.tarj_caption_text {
+		color: var(--paper);
+		font-size: 0.92rem;
+		line-height: 1.45;
+		font-weight: 500;
+		margin: 0;
+	}
+
+	.tarjeta_proyectos:hover .tarj_imagen,
+	.tarjeta_proyectos:focus-within .tarj_imagen {
+		transform: scale(1.08);
+	}
+
+	.tarjeta_proyectos:hover .tarj_caption_overlay,
+	.tarjeta_proyectos:focus-within .tarj_caption_overlay {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.tarjeta_proyectos:hover {
+		transform: scale(1.05);
+		padding-top: 15px;
+	}
+
+	.tarjeta_proyectos:hover .proyecto_titulo {
+		transform: scale(1.18);
 		margin-top: 0rem;
 	}
 
-	.proyecto_descripcion {
+	.tarjeta_proyectos:hover .proyecto_descripcion {
 		color: var(--brand2);
 	}
 }
@@ -1448,7 +1528,7 @@ footer {
 }
 
 .footer-links a:hover { 
-	color: var(--brand); 
+	color: var(--background); 
 }
 
 
@@ -1582,6 +1662,55 @@ footer {
 	}
 
 }
+
+
+
+@media (max-width: 767px) {
+
+	.lista_experiencia::before {
+		left: 9px;
+		transform: none;
+		margin-left: 1rem;
+	}
+
+	#experience article, 
+	#experience article:nth-child(odd), 
+	#experience article:nth-child(even) {
+		margin-left: 1rem;
+		width: 90%;
+		left: 0;
+		padding: 0 0 2.5rem 2.5rem;
+		text-align: left;
+	}
+
+	/* Pico del bloque izquierdo → apunta a la derecha */
+	#experience article:nth-child(odd) > .central::after {
+		left: 1.5rem;
+		margin-left: -44px;
+		transform: rotate(180deg);
+	}
+
+
+
+	#experience article:nth-child(odd)::after, 
+	#experience article:nth-child(even)::after {
+		left: -1px;
+		right: auto;
+	}
+
+
+	/* La caja de fondo ocupa todo el ancho en móvil */
+	#experience article:nth-child(odd)::before, 
+	#experience article:nth-child(even)::before {
+		left: 2.5rem;
+		right: 0;
+	}
+}
+
+
+
+
+
 
 @media (max-width: 550px) {
 
