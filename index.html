@@ -19,8 +19,8 @@
 	<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
 	<meta name="theme-color" content="#f1f4f5">
 
-	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="styles.css">
 	<script src="modernizr-custom.js" defer></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,13 +93,13 @@
   <nav>
     
     <div class="nav_inner">
-      <a href="../../" class="nav_back">
+      <a href="#home" class="nav_back">
         <span class="dmp_texto">D M P</span>
       </a>
     </div>
 
 		<div class="boton_idioma_container">
-			<button id="boton_idioma">
+			<button id="boton_idioma" aria-label="Switch language / Cambiar idioma">
 				<span class="lang-text" id="lang-text">EN</span>
 			</button>
 		</div>
@@ -142,18 +142,20 @@
 		<div class="seccion_grid">
 			<div class="columna_izquierda">
 				<span class="bienvenida" data-es="Bienvenido, soy" data-en="Welcome, I'm">Welcome, I'm</span>
-				<span class="nombre">
-					<span class="dmp-initial">D</span>
-					<span class="dmp-suffix dmp-name-visible">avid</span>
-				</span>
-				<span class="apellido apellido1">
-					<span class="dmp-initial">M</span>
-					<span class="dmp-suffix dmp-name-visible">artínez</span>
-				</span>
-				<span class="apellido apellido2">
-					<span class="dmp-initial">P</span>
-					<span class="dmp-suffix dmp-name-visible">alomares</span>
-				</span>
+				<h1 class="nombre_completo">
+					<span class="nombre">
+						<span class="dmp-initial">D</span>
+						<span class="dmp-suffix dmp-name-visible">avid</span>
+					</span>
+					<span class="apellido apellido1">
+						<span class="dmp-initial">M</span>
+						<span class="dmp-suffix dmp-name-visible">artínez</span>
+					</span>
+					<span class="apellido apellido2">
+						<span class="dmp-initial">P</span>
+						<span class="dmp-suffix dmp-name-visible">alomares</span>
+					</span>
+				</h1>
 
 				<div class="rol_container">
 					<p class="rol" data-es="Estudiante de desarrollo de software" data-en="Software development student">
@@ -237,7 +239,7 @@
 
 			<div class="lista_experiencia">
 
-				<article class="imqiberica">
+				<article class="imqiberica" tabindex="0">
 					<div class="izquierdo">
 						<span data-es="2024 – 2026" data-en="2024 – 2026">2024 – 2026</span>
 					</div>
@@ -274,7 +276,7 @@
 
 				</article>
 
-				<article class="sgstecnos">
+				<article class="sgstecnos" tabindex="0">
 					<div class="izquierdo">
 						<span>2023 – 2024</span>
 					</div>
@@ -308,7 +310,7 @@
 
 				</article>
 
-				<article class="imqtecnocrea">
+				<article class="imqtecnocrea" tabindex="0">
 					<div class="izquierdo">
 						<span>2020 – 2023</span>
 					</div>
@@ -344,7 +346,7 @@
 
 				</article>
 
-				<article class="aidimme">
+				<article class="aidimme" tabindex="0">
 					<div class="izquierdo">
 						<span>2015 – 2020</span>
 					</div>
@@ -421,7 +423,7 @@
 
 	<div class="sobremi_parrafo_contenedor">
 		<div class="sobremi_izquierda">
-			<img src="assets/scientist.png" class="imagen_sobremi" alt="">
+			<img src="assets/scientist.png" class="imagen_sobremi" alt="" loading="lazy">
 		</div>
 		<div class="sobremi_derecha">
 			<p class="texto_sobremi"
@@ -440,7 +442,7 @@
 
 	<div class="sobremi_parrafo_contenedor">
 		<div class="sobremi_izquierda">
-			<img src="assets/lab.png" class="imagen_sobremi" alt="">
+			<img src="assets/lab.png" class="imagen_sobremi" alt="" loading="lazy">
 		</div>
 		<div class="sobremi_derecha">
 			<p class="texto_sobremi"
@@ -459,7 +461,7 @@
 
 	<div class="sobremi_parrafo_contenedor">
 		<div class="sobremi_izquierda">
-			<img src="assets/house.png" class="imagen_sobremi" alt="">
+			<img src="assets/house.png" class="imagen_sobremi" alt="" loading="lazy">
 		</div>
 		<div class="sobremi_derecha">
 			<p class="texto_sobremi"
@@ -472,7 +474,7 @@
 
 	<div class="sobremi_parrafo_contenedor">
 		<div class="sobremi_izquierda">
-			<img src="assets/world.png" class="imagen_sobremi" alt="">
+			<img src="assets/world.png" class="imagen_sobremi" alt="" loading="lazy">
 		</div>
 		<div class="sobremi_derecha">
 			<p class="texto_sobremi"
@@ -524,7 +526,7 @@
 
 				<article class="tarjeta_proyectos">
 					<a href="projects/appaseo" class="tarj_imagen_container">
-						<img class="tarj_imagen" src="assets/APPASEO_template.png" alt="APPASEO app screenshot">
+						<img class="tarj_imagen" src="assets/APPASEO_template.webp" alt="APPASEO app screenshot" loading="lazy">
 						<div class="tarj_ver_proyecto">
 							<img src="assets/pointer.png" alt="">
 						</div>
@@ -533,10 +535,10 @@
 						</div>
 					</a>
 					<div class="tarj_grid_tecnologias">
-						<div class="tarj_tecnologias"><a href="https://unity.com/" target="_blank"><img class="tecnologia_imagen" src="assets/Unity_logo.png" alt="Unity"></a></div>
-						<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/CSharp_logo.png" alt="C#"></div>
-						<div class="tarj_tecnologias"><a href="https://nodejs.org/" target="_blank"><img class="tecnologia_imagen" src="assets/Nodejs_logo.png" alt="Node.js"></a></div>
-						<div class="tarj_tecnologias"><a href="https://www.mysql.com" target="_blank"><img class="tecnologia_imagen" src="assets/includes-mysql-125x64.png" alt="MySQL"></a></div>
+						<div class="tarj_tecnologias"><a href="https://unity.com/" target="_blank" rel="noopener"><img class="tecnologia_imagen" src="assets/Unity_logo.png" alt="Unity" loading="lazy"></a></div>
+						<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/CSharp_logo.png" alt="C#" loading="lazy"></div>
+						<div class="tarj_tecnologias"><a href="https://nodejs.org/" target="_blank" rel="noopener"><img class="tecnologia_imagen" src="assets/Nodejs_logo.png" alt="Node.js" loading="lazy"></a></div>
+						<div class="tarj_tecnologias"><a href="https://www.mysql.com" target="_blank" rel="noopener"><img class="tecnologia_imagen" src="assets/includes-mysql-125x64.png" alt="MySQL" loading="lazy"></a></div>
 					</div>
 					<p class="proyecto_titulo">APPASEO</p>
 					<p class="proyecto_descripcion" data-es="App que conecta dueños de mascotas con cuidadores." data-en="App connecting pet owners with carers.">App connecting pet owners with carers.</p>
@@ -545,7 +547,7 @@
 
 				<article class="tarjeta_proyectos">
 					<a href="projects/memoryroyale" class="tarj_imagen_container">
-						<img class="tarj_imagen" src="assets/MemoryRoyale.jpg" alt="Memory Royale game screenshot">
+						<img class="tarj_imagen" src="assets/MemoryRoyale.webp" alt="Memory Royale game screenshot" loading="lazy">
 						<div class="tarj_ver_proyecto">
 							<img src="assets/pointer.png" alt="">
 						</div>
@@ -554,8 +556,8 @@
 						</div>
 					</a>
 						<div class="tarj_grid_tecnologias">
-							<div class="tarj_tecnologias"><a href="https://unity.com/" target="_blank"><img class="tecnologia_imagen" src="assets/Unity_logo.png" alt="Unity"></a></div>
-							<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/CSharp_logo.png" alt="C#"></div>
+							<div class="tarj_tecnologias"><a href="https://unity.com/" target="_blank" rel="noopener"><img class="tecnologia_imagen" src="assets/Unity_logo.png" alt="Unity" loading="lazy"></a></div>
+							<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/CSharp_logo.png" alt="C#" loading="lazy"></div>
 						</div>
 						<p class="proyecto_titulo">MEMORY ROYALE</p>
 						<p class="proyecto_descripcion" data-es="Juego de memoria competitivo de 2 a 4 jugadores." data-en="Competitive memory game for 2 to 4 players.">Competitive memory game for 2 to 4 players.</p>
@@ -565,7 +567,7 @@
 
 				<article class="tarjeta_proyectos">
 					<a href="https://adminclinicahuella.github.io/ClinicaHuella/" class="tarj_imagen_container">
-						<img class="tarj_imagen" src="assets/HuellaTemplate.png" alt="Huella veterinary clinic website screenshot">
+						<img class="tarj_imagen" src="assets/HuellaTemplate.webp" alt="Huella veterinary clinic website screenshot" loading="lazy">
 						<div class="tarj_ver_proyecto">
 							<img src="assets/pointer.png" alt="">
 						</div>
@@ -574,9 +576,9 @@
 						</div>
 					</a>
 					<div class="tarj_grid_tecnologias">
-						<div class="tarj_tecnologias"><a href="http://www.w3.org/html"><img class="tecnologia_imagen" src="assets/HTML5_logo.png" alt="HTML5"></a></div>
-						<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/CSS3_logo.png" alt="CSS3"></div>
-						<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/JavaScript_logo.png" alt="JavaScript"></div>
+						<div class="tarj_tecnologias"><a href="https://developer.mozilla.org/docs/Web/HTML" target="_blank" rel="noopener"><img class="tecnologia_imagen" src="assets/HTML5_logo.png" alt="HTML5" loading="lazy"></a></div>
+						<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/CSS3_logo.png" alt="CSS3" loading="lazy"></div>
+						<div class="tarj_tecnologias"><img class="tecnologia_imagen" src="assets/JavaScript_logo.png" alt="JavaScript" loading="lazy"></div>
 					</div>
 					
 					<p class="proyecto_titulo" data-es="HUELLA Clínica veterinaria" data-en="HUELLA Veterinary clinic">HUELLA Veterinary clinic</p>
@@ -740,19 +742,19 @@
         <p class="footer-heading" data-es="Contacto" data-en="Contact">Contact</p>
         <div class="social">
 
-          	<a class="social-a" href="https://github.com/marpalez" Target="_blank" aria-label="GitHub">
+          	<a class="social-a" href="https://github.com/marpalez" target="_blank" rel="noopener" aria-label="GitHub">
             	<img class="social-img" src="assets/gh.png" alt="">
           	</a>
 
-			<a class="social-a" href="https://www.linkedin.com/in/davidmartinezpalomares/" Target="_blank" aria-label="LinkedIn">
+			<a class="social-a" href="https://www.linkedin.com/in/davidmartinezpalomares/" target="_blank" rel="noopener" aria-label="LinkedIn">
             	<img class="social-img" src="assets/linkedin.png" alt="">
           	</a>
 
-		    <a class="social-a" href="mailto:david@davidmarpalez.com" Target="_blank" aria-label="Gmail">
+		    <a class="social-a" href="mailto:david@davidmarpalez.com" aria-label="Email">
             	<img class="social-img" src="assets/gmail.png" alt="">
           	</a>
 
-			<a class="social-a" href="https://t.me/davidmarpalez" Target="_blank" aria-label="Telegram">
+			<a class="social-a" href="https://t.me/davidmarpalez" target="_blank" rel="noopener" aria-label="Telegram">
             	<img class="social-img" src="assets/telegram.png" alt="">
           	</a>
 
@@ -766,7 +768,7 @@
           <li><a href="#home" data-es="Inicio" data-en="Home">Home</a></li>
           <li><a href="#experience" data-es="Experiencia laboral" data-en="Experience">Experience</a></li>
           <li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
-          <li><a href="#projects" data-es="Projectos" data-en="Projects">Projects</a></li>
+          <li><a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
           <li><a href="#stack" data-es="Normas y tecnologías" data-en="Standards and technologies">Standards and technologies</a></li>
           <li><a href="#education" data-es="Formación" data-en="Education">Education</a></li>
 		</ul>
@@ -774,15 +776,15 @@
 
 
       <div class="footer-tagline-container">
-        <a class="footer-tagline" href="https://davidmarpalez.com"> D M P</a>
-		<a class="footer-hide" data-es="Desarrollemos algo interesante" data-en="Let's develop something interesting">Let's develop something interesting</a>
+        <a class="footer-tagline" href="#home"> D M P</a>
+		<span class="footer-hide" data-es="Desarrollemos algo interesante" data-en="Let's develop something interesting">Let's develop something interesting</span>
       </div>
 
 
     </div>
 
     <div class="footer-bottom">
-		<a class="footer-copyright" href="https://davidmarpalez.com" target="_blank" rel="noopener">
+		<a class="footer-copyright" href="#home">
         	<span>&#169;&nbsp;</span><span id="year">&nbsp;2026&nbsp;</span><span>&nbsp;D M P</span>
 	  	</a>
     </div>

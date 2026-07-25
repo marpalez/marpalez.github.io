@@ -345,7 +345,7 @@ nav {
 	border: none;
 	cursor: pointer;
 	opacity: 0; visibility: hidden;
-	transition: opacity 0.3s ease, visibility 0.3s, transform 0.2s ease, opacity 0.2s ease;
+	transition: opacity 0.3s ease, visibility 0.3s, transform 0.2s ease;
 	z-index: 40;
 	display: flex; align-items: center; justify-content: center;
 }
@@ -415,6 +415,15 @@ nav {
 	margin-bottom: 2rem;
 }
 
+
+/* El h1 envuelve las tres líneas del nombre: neutralizamos su estilo
+   por defecto para que no altere el diseño existente */
+.nombre_completo {
+	margin: 0;
+	font-size: 1em;
+	font-weight: 400;
+	line-height: inherit;
+}
 
 .nombre, .apellido {
 	font-family: var(--font-display);
@@ -1133,7 +1142,6 @@ nav {
 	bottom: 10px;
 	right: 10px;
 	box-shadow: black 0px 0px 30px;
-	font-family: "Oswald", sans-serif;
 	padding: 10px 15px;
 	border-radius: 9999px;
 	animation: llamarAtencion 2s ease-in-out 1s infinite;
@@ -1512,10 +1520,8 @@ footer {
 	transition: all 1s ease;
 }
 
-.footer-tagline-container:hover {
-	.footer-hide {
-		color: var(--mist);
-	}
+.footer-tagline-container:hover .footer-hide {
+	color: var(--mist);
 }
 
 
