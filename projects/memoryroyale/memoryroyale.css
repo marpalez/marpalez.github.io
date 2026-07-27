@@ -262,6 +262,13 @@ h2 {
 
 .info_card p:last-of-type { margin-bottom: 0; }
 
+/* Resaltado de información importante (igual que "Sobre mí" en la principal) */
+.info_card p strong,
+.ef_desc strong {
+	color: var(--brand);
+	font-weight: 700;
+}
+
 /* ============================================================
    ETIQUETAS TECH
    ============================================================ */

@@ -3,7 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Memory Royale — Local multiplayer memory card game (2–4 players) built in Unity with C# by David Martínez, playable via WebGL.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://davidmarpalez.com/projects/memoryroyale/">
   <title>Memory Royale | David Martínez</title>
+
+  <link rel="icon" href="../../assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#f1f4f5">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Memory Royale | David Martínez">
+  <meta property="og:description" content="Local multiplayer memory card game (2–4 players) built in Unity, playable via WebGL.">
+  <meta property="og:image" content="https://davidmarpalez.com/assets/og_image.png">
+  <meta property="og:url" content="https://davidmarpalez.com/projects/memoryroyale/">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -46,7 +61,7 @@
     </div>
 
 		<div class="boton_idioma_container">
-			<button id="boton_idioma">
+			<button id="boton_idioma" aria-label="Switch language / Cambiar idioma">
 				<span class="lang-text" id="lang-text">EN</span>
 			</button>
 		</div>
@@ -56,7 +71,7 @@
 
 <!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
 <button id="boton_arriba" aria-label="Volver arriba">
-	<img src="../../assets/Arrow_symbol_white.png">
+	<img src="../../assets/Arrow_symbol_white.png" alt="">
 </button>
 
 
@@ -66,7 +81,7 @@
 
     <!-- HERO -->
     <section class="hero_section slide-in">
-      <img class="project_screenshot" src="../../assets/memoryRoyale_logo2.png">
+      <img class="project_screenshot" src="../../assets/memoryRoyale_logo2.webp" alt="Memory Royale logo">
       <div class="hero">
         <h1 class="hero_titulo">Memory Royale</h1>
         <span data-es="2026" data-en="2026">2026</span>
@@ -107,23 +122,23 @@
 
         <div class="info_card">
 
-          <p data-es="Memory Royale es un juego de memoria multijugador local (2 – 4 jugadores, hotseat) desarrollado en Unity con C#."
-             data-en="Memory Royale is a local multiplayer memory game (2 – 4 players, hotseat) developed in Unity with C#.">
+          <p data-es="Memory Royale es un <strong>juego de memoria multijugador local (2 – 4 jugadores, hotseat)</strong> desarrollado en <strong>Unity con C#</strong>."
+             data-en="Memory Royale is a <strong>local multiplayer memory game (2 – 4 players, hotseat)</strong> developed in <strong>Unity with C#</strong>.">
           </p>
-          <p data-es="Cada jugador tiene puntos de salud y se trata de debilitar a los rivales con los efectos de las cartas cuando se encuentran pares iguales."
-             data-en="Each player has health points and the aim is to beat rivals with the effects of the cards when matching pairs are found.">
+          <p data-es="Cada jugador tiene <strong>puntos de salud</strong> y se trata de <strong>debilitar a los rivales con los efectos de las cartas</strong> cuando se encuentran pares iguales."
+             data-en="Each player has <strong>health points</strong> and the aim is to <strong>beat rivals with the effects of the cards</strong> when matching pairs are found.">
           </p>
-          <p data-es="La arquitectura central se basa en una máquina de estados con cuatro fases por turno (inicio, intento, selección y fin), gestionada por la clase GameLogic."
-          data-en="The core architecture is based on a state machine with four phases per turn (start, attempt, selection and end), managed by the GameLogic class.">
+          <p data-es="La arquitectura central se basa en una <strong>máquina de estados con cuatro fases por turno</strong> (inicio, intento, selección y fin), gestionada por la clase GameLogic."
+          data-en="The core architecture is based on a <strong>state machine with four phases per turn</strong> (start, attempt, selection and end), managed by the GameLogic class.">
           </p>
-          <p data-es="Las cartas y los paneles de jugador se generan mediante prefabs instanciados dinámicamente en tiempo de ejecución."
-          data-en="Cards and player panels are generated via dynamically instantiated prefabs at runtime.">
+          <p data-es="Las cartas y los paneles de jugador se generan mediante <strong>prefabs instanciados dinámicamente</strong> en tiempo de ejecución."
+          data-en="Cards and player panels are generated via <strong>dynamically instantiated prefabs</strong> at runtime.">
           </p>
-          <p data-es="Se utilizaron corrutinas para sincronizar el retardo entre el volteo de cartas y su ocultación, y para dar tiempo de lectura al narrador en los efectos automáticos."
-          data-en="Coroutines were used to synchronise the delay between card flipping and hiding, and to allow reading time for the narrator during automatic effects.">
+          <p data-es="Se utilizaron <strong>corrutinas</strong> para sincronizar el retardo entre el volteo de cartas y su ocultación, y para dar tiempo de lectura al narrador en los efectos automáticos."
+          data-en="<strong>Coroutines</strong> were used to synchronise the delay between card flipping and hiding, and to allow reading time for the narrator during automatic effects.">
           </p>
-          <p data-es="Las animaciones se implementaron con DOTween."
-          data-en="Animations were implemented with DOTween.">
+          <p data-es="Las animaciones se implementaron con <strong>DOTween</strong>."
+          data-en="Animations were implemented with <strong>DOTween</strong>.">
           </p>
           <div class="tech_grid">
             <span class="etiqueta">Unity</span>
@@ -177,10 +192,10 @@
         <span class="ef_valor ef_valor--num">2 – 10</span>
         <span class="ef_nombre" data-es="Daño directo" data-en="Direct damage">Daño directo</span>
       </div>
-      <img class="efecto_card_imagen" src="../../assets/2-10.png">
+      <img class="efecto_card_imagen" src="../../assets/2-10.png" alt="Number cards 2 to 10" loading="lazy">
       <div class="ef_desc"
-           data-es="Resta tantos PS al rival elegido como valor tenga la carta."
-           data-en="Deals damage equal to the card's value to the chosen rival.">
+           data-es="Resta <strong>tantos PS al rival elegido como valor tenga la carta</strong>."
+           data-en="Deals <strong>damage equal to the card&#39;s value</strong> to the chosen rival.">
            
       </div>
     </div>
@@ -190,15 +205,15 @@
         <span class="ef_valor ef_valor--special">J</span>
         <span class="ef_nombre" data-es="Robo de vida" data-en="Life steal">Robo de vida</span>
       </div>
-      <img class="efecto_card_imagen" src="../../assets/J.png">
+      <img class="efecto_card_imagen" src="../../assets/J.png" alt="Jack card" loading="lazy">
       <div class="ef_desc"
-           data-es="Recuperas 2 PS."
-           data-en="You recover 2 HP.">
+           data-es="Recuperas <strong>2 PS</strong>."
+           data-en="You recover <strong>2 HP</strong>.">
         Recuperas 2 PS.
       </div>
       <div class="ef_desc"
-           data-es="Todos los rivales reciben 2 PS de daño."
-           data-en="All rivals take 2 HP of damage.">
+           data-es="Todos los rivales reciben <strong>2 PS de daño</strong>."
+           data-en="All rivals take <strong>2 HP of damage</strong>.">
         Todos los rivales reciben 2 PS de daño.
       </div>
     </div>
@@ -208,10 +223,10 @@
         <span class="ef_valor ef_valor--special">Q</span>
         <span class="ef_nombre" data-es="Daño en área" data-en="Area damage">Daño en área</span>
       </div>
-      <img class="efecto_card_imagen" src="../../assets/Q.png">
+      <img class="efecto_card_imagen" src="../../assets/Q.png" alt="Queen card" loading="lazy">
       <div class="ef_desc"
-           data-es="Todos los rivales reciben 5 PS de daño."
-           data-en="All rivals take 5 HP of damage.">
+           data-es="Todos los rivales reciben <strong>5 PS de daño</strong>."
+           data-en="All rivals take <strong>5 HP of damage</strong>.">
         Todos los rivales reciben 5 PS de daño.
       </div>
       <div class="ef_desc"
@@ -226,15 +241,15 @@
         <span class="ef_valor ef_valor--special">K</span>
         <span class="ef_nombre" data-es="Escudo" data-en="Shield">Escudo</span>
       </div>
-      <img class="efecto_card_imagen" src="../../assets/K.png">
+      <img class="efecto_card_imagen" src="../../assets/K.png" alt="King card" loading="lazy">
       <div class="ef_desc"
-           data-es="Obtienes un escudo que bloquea el siguiente daño recibido."
-           data-en="You gain a shield that blocks the next incoming damage.">
+           data-es="Obtienes un <strong>escudo que bloquea el siguiente daño</strong> recibido."
+           data-en="You gain a <strong>shield that blocks the next incoming damage</strong>.">
         Obtienes un escudo que bloquea el siguiente daño recibido.
       </div>
       <div class="ef_desc"
-           data-es="Máximo 3 escudos."
-           data-en="Up to 3 shields.">
+           data-es="Máximo <strong>3 escudos</strong>."
+           data-en="Up to <strong>3 shields</strong>.">
         Máximo 3 escudos.
       </div>
     </div>
@@ -244,10 +259,10 @@
         <span class="ef_valor ef_valor--special">A</span>
         <span class="ef_nombre" data-es="Curación" data-en="Heal">Curación</span>
       </div>
-      <img class="efecto_card_imagen" src="../../assets/A.png">
+      <img class="efecto_card_imagen" src="../../assets/A.png" alt="Ace card" loading="lazy">
       <div class="ef_desc"
-           data-es="Recuperas 5 PS."
-           data-en="You recover 5 HP.">
+           data-es="Recuperas <strong>5 PS</strong>."
+           data-en="You recover <strong>5 HP</strong>.">
         Recuperas 5 PS.
       </div>
       <div class="ef_desc"
@@ -347,7 +362,7 @@
 
         <div class="volver_pag_principal">
           <a class="boton_volver_pag_princial" href="../../#projects">
-            <img class="volver_pag_principal_imagen" src="../../assets/Arrow_symbol_white_down.png">
+            <img class="volver_pag_principal_imagen" src="../../assets/Arrow_symbol_white_down.png" alt="">
             <span class="volver_pag_principal_texto" data-es="Volver" data-en="Back"></span>
           </a>
         </div>
@@ -359,7 +374,7 @@
               <span class="siguiente_label" data-es="Siguiente" data-en="Next">Siguiente</span>
               <span class="siguiente_nombre">HUELLA</span>
             </div>
-            <img class="siguiente_arrow" src="../../assets/Arrow_symbol_white.png">
+            <img class="siguiente_arrow" src="../../assets/Arrow_symbol_white.png" alt="">
           </a>
         </div>
 
@@ -394,20 +409,20 @@
         <p class="footer-heading" data-es="Contacto" data-en="Contact">Contacto</p>
         <div class="social">
 
-          	<a class="social-a" href="https://github.com/marpalez" Target="_blank" aria-label="GitHub">
-            	<img class="social-img" src="../../assets/gh.png">
+          	<a class="social-a" href="https://github.com/marpalez" target="_blank" rel="noopener" aria-label="GitHub">
+            	<img class="social-img" src="../../assets/gh.png" alt="">
           	</a>
 
-			<a class="social-a" href="https://www.linkedin.com/in/davidmartinezpalomares/" Target="_blank" aria-label="LinkedIn">
-            	<img class="social-img" src="../../assets/linkedin.png">
+			<a class="social-a" href="https://www.linkedin.com/in/davidmartinezpalomares/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            	<img class="social-img" src="../../assets/linkedin.png" alt="">
           	</a>
 
-		    <a class="social-a" href="mailto:david@davidmarpalez.com" Target="_blank" aria-label="Gmail">
-            	<img class="social-img" src="../../assets/gmail.png">
+		    <a class="social-a" href="mailto:david@davidmarpalez.com" aria-label="Email">
+            	<img class="social-img" src="../../assets/gmail.png" alt="">
           	</a>
 
-			<a class="social-a" href="https://t.me/davidmarpalez" Target="_blank" aria-label="Telegram">
-            	<img class="social-img" src="../../assets/telegram.png">
+			<a class="social-a" href="https://t.me/davidmarpalez" target="_blank" rel="noopener" aria-label="Telegram">
+            	<img class="social-img" src="../../assets/telegram.png" alt="">
           	</a>
 
         </div>
@@ -417,10 +432,10 @@
       <div class="footer-quicklinks">
         <p class="footer-heading" data-es="Enlaces rápidos" data-en="Quick links">Enlaces rápidos</p>
         <ul class="footer-links">
-          <li><a href="../../#home" data-es="Home" data-en="Home">Inicio</a></li>
-          <li><a href="../../#experience" data-es="Experiencia" data-en="Experience">Experiencia laboral</a></li>
-          <li><a href="../../#about" data-es="Sobre" data-en="About">Sobre mi</a></li>
-          <li><a href="../../#projects" data-es="Projectos" data-en="Projects">Projectos</a></li>
+          <li><a href="../../#home" data-es="Inicio" data-en="Home">Inicio</a></li>
+          <li><a href="../../#experience" data-es="Experiencia laboral" data-en="Experience">Experiencia laboral</a></li>
+          <li><a href="../../#about" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+          <li><a href="../../#projects" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
           <li><a href="../../#stack" data-es="Normas y tecnologías" data-en="Standards and technologies">Normas y tecnologías</a></li>
           <li><a href="../../#education" data-es="Formación" data-en="Education">Formación</a></li>
 		    </ul>

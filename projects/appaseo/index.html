@@ -3,7 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="APPASEO — Fullstack pet-care application built with Unity, Node.js, Express and MySQL by David Martínez.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://davidmarpalez.com/projects/appaseo/">
   <title>Appaseo | David Martínez</title>
+
+  <link rel="icon" href="../../assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#f1f4f5">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="APPASEO | David Martínez">
+  <meta property="og:description" content="Fullstack pet-care application built with Unity, Node.js, Express and MySQL.">
+  <meta property="og:image" content="https://davidmarpalez.com/assets/og_image.png">
+  <meta property="og:url" content="https://davidmarpalez.com/projects/appaseo/">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,7 +55,7 @@
     </div>
 
 		<div class="boton_idioma_container">
-			<button id="boton_idioma">
+			<button id="boton_idioma" aria-label="Switch language / Cambiar idioma">
 				<span class="lang-text" id="lang-text">EN</span>
 			</button>
 		</div>
@@ -50,7 +65,7 @@
 
 <!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
 <button id="boton_arriba" aria-label="Volver arriba">
-	<img src="../../assets/Arrow_symbol_white.png">
+	<img src="../../assets/Arrow_symbol_white.png" alt="">
 </button>
 
 
@@ -59,7 +74,7 @@
 
     <!-- HERO -->
     <section class="hero_section slide-in">
-      <img class="project_screenshot" src="../../assets/appaseo_logo2.png">
+      <img class="project_screenshot" src="../../assets/appaseo_logo2.webp" alt="APPASEO logo">
       <div class="hero">
         <h1 class="hero_titulo">Appaseo</h1>
         <span data-es="2026" data-en="2026">2026</span>
@@ -83,17 +98,17 @@
 
         <div class="info_card">
 
-          <p data-es="APPASEO es una aplicación fullstack de cuidado de mascotas desarrollada en Unity con C#, Node.js + Express y MySQL, desplegada en la nube."
-            data-en="APPASEO is a fullstack pet care application developed in Unity with C#, Node.js + Express and MySQL, deployed to the cloud.">
+          <p data-es="APPASEO es una <strong>aplicación fullstack de cuidado de mascotas</strong> desarrollada en <strong>Unity con C#, Node.js + Express y MySQL</strong>, desplegada en la nube."
+            data-en="APPASEO is a <strong>fullstack pet care application</strong> developed in <strong>Unity with C#, Node.js + Express and MySQL</strong>, deployed to the cloud.">
           </p>
-          <p data-es="La app conecta dueños de mascotas con cuidadores disponibles: los cuidadores publican peticiones de acogida y los dueños las buscan por proximidad, fecha y tipo de animal."
-            data-en="The app connects pet owners with available carers: carers publish hosting requests and owners search them by proximity, date and animal type.">
+          <p data-es="La app <strong>conecta dueños de mascotas con cuidadores disponibles</strong>: los cuidadores publican peticiones de acogida y los dueños las buscan por proximidad, fecha y tipo de animal."
+            data-en="The app <strong>connects pet owners with available carers</strong>: carers publish hosting requests and owners search them by proximity, date and animal type.">
           </p>
-          <p data-es="El frontend en Unity realiza peticiones a una API en Node.js + Express con una base de datos MySQL. El backend y la base de datos están desplegados en Railway."
-            data-en="Unity frontend makes requests to an API in Node.js + Express with a MySQL database. The backend and database are deployed on Railway.">
+          <p data-es="El frontend en Unity realiza peticiones a una <strong>API en Node.js + Express</strong> con una base de datos MySQL. El backend y la base de datos están <strong>desplegados en Railway</strong>."
+            data-en="Unity frontend makes requests to an <strong>API in Node.js + Express</strong> with a MySQL database. The backend and database are <strong>deployed on Railway</strong>.">
           </p>
-          <p data-es="Las tarjetas de cuidadores, peticiones de acogida y opiniones son prefabs instanciados dinámicamente a partir de los datos recibidos del servidor."
-            data-en="Carer profiles, care requests listings and reviews are dynamically instantiated prefabs populated from server data at runtime.">
+          <p data-es="Las tarjetas de cuidadores, peticiones de acogida y opiniones son <strong>prefabs instanciados dinámicamente</strong> a partir de los datos recibidos del servidor."
+            data-en="Carer profiles, care requests listings and reviews are <strong>dynamically instantiated prefabs</strong> populated from server data at runtime.">
           </p>
 
           <div class="tech_grid">
@@ -124,10 +139,10 @@
                data-es="Sesión persistente"
                data-en="Persistent session">Sesión persistente</div>
           <div class="feature_desc"
-               data-es="Login automático al reabrir la app mediante toggle de recordar sesión."
-               data-en="Automatic login on relaunch via a remember-session toggle.">
+               data-es="<strong>Login automático al reabrir la app</strong> mediante toggle de recordar sesión."
+               data-en="<strong>Automatic login on relaunch</strong> via a remember-session toggle.">
           </div>
-          <img class="imagen_caracteristicas_alargada" src="../../assets/APPASEO5.webp">
+          <img class="imagen_caracteristicas_alargada" src="../../assets/APPASEO5.webp" alt="APPASEO login screen" loading="lazy">
         </div>
 
 
@@ -136,14 +151,14 @@
                data-es="Registro en 2 pasos"
                data-en="2-step registration">Registro en 2 pasos</div>
           <div class="feature_desc"
-               data-es="El primer paso recoge solo los datos esenciales."
-               data-en="The first step collects only essential data.">
+               data-es="El primer paso recoge <strong>solo los datos esenciales</strong>."
+               data-en="The first step collects <strong>only essential data</strong>.">
           </div>
           <div class="feature_desc"
-               data-es="El segundo, opcional, registra al usuario como cuidador con información adicional como teléfono, política de fotos y animales con cuidados especiales."
-               data-en="The second, optional step registers the user as a carer with additional information such as phone number, photo policy and special-needs animals.">
+               data-es="El segundo, opcional, <strong>registra al usuario como cuidador</strong> con información adicional como teléfono, política de fotos y animales con cuidados especiales."
+               data-en="The second, optional step <strong>registers the user as a carer</strong> with additional information such as phone number, photo policy and special-needs animals.">
           </div>
-          <img class="imagen_caracteristicas" src="../../assets/APPASEO1.webp">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO1.webp" alt="APPASEO registration screen" loading="lazy">
         </div>
 
 
@@ -152,10 +167,10 @@
                data-es="Cuidadores cercanos"
                data-en="Nearby carers">Cuidadores cercanos</div>
           <div class="feature_desc"
-               data-es="La pantalla de inicio muestra hasta 6 cuidadores de la misma población que el usuario y los 4 mejor valorados globalmente, cargados dinámicamente desde MySQL."
-               data-en="The home screen shows up to 6 carers from the user's location and the 4 top-rated globally, dynamically loaded from MySQL.">
+               data-es="La pantalla de inicio muestra hasta <strong>6 cuidadores de la misma población</strong> que el usuario y los <strong>4 mejor valorados globalmente</strong>, cargados dinámicamente desde MySQL."
+               data-en="The home screen shows up to <strong>6 carers from the user's location</strong> and the <strong>4 top-rated globally</strong>, dynamically loaded from MySQL.">
           </div>
-          <img class="imagen_caracteristicas" src="../../assets/APPASEO6.webp">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO6.webp" alt="APPASEO home screen with nearby carers" loading="lazy">
         </div>
 
 
@@ -164,14 +179,14 @@
                data-es="Peticiones de acogida"
                data-en="Hosting requests">Peticiones de acogida</div>
           <div class="feature_desc"
-               data-es="Los cuidadores publican peticiones con fechas, tipos de mascota, precio y descripción."
-               data-en="Carers publish requests with dates, pet types, price and description.">
+               data-es="Los cuidadores <strong>publican peticiones</strong> con fechas, tipos de mascota, precio y descripción."
+               data-en="Carers <strong>publish requests</strong> with dates, pet types, price and description.">
           </div>
           <div class="feature_desc"
-               data-es="Los dueños las buscan con filtros de fecha, tipo de animal y ordenación."
-               data-en="Owners search them with filters by date, animal type and sort order.">
+               data-es="Los dueños las buscan con <strong>filtros de fecha, tipo de animal y ordenación</strong>."
+               data-en="Owners search them with <strong>filters by date, animal type and sort order</strong>.">
           </div>
-          <img class="imagen_caracteristicas" src="../../assets/APPASEO2.webp">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO2.webp" alt="APPASEO hosting requests screen" loading="lazy">
         </div>
 
 
@@ -180,14 +195,14 @@
                data-es="Gestión de perfil"
                data-en="Profile management">Gestión de perfil</div>
           <div class="feature_desc"
-               data-es="El usuario puede modificar nombre, población, descripción, email, contraseña y foto de perfil."
-               data-en="Users can edit their name, location, description, email, password and profile photo.">
+               data-es="El usuario puede <strong>modificar nombre, población, descripción, email, contraseña y foto de perfil</strong>."
+               data-en="Users can <strong>edit their name, location, description, email, password and profile photo</strong>.">
           </div>
           <div class="feature_desc"
-               data-es="También puede gestionar sus peticiones publicadas y darse de alta como cuidador."
-               data-en="They can also manage their published requests and register as a carer.">
+               data-es="También puede <strong>gestionar sus peticiones publicadas</strong> y darse de alta como cuidador."
+               data-en="They can also <strong>manage their published requests</strong> and register as a carer.">
           </div>
-          <img class="imagen_caracteristicas" src="../../assets/APPASEO4.webp">
+          <img class="imagen_caracteristicas" src="../../assets/APPASEO4.webp" alt="APPASEO profile management screen" loading="lazy">
         </div>
 
 
@@ -196,14 +211,14 @@
                data-es="Sistema de valoraciones"
                data-en="Rating system">Sistema de valoraciones</div>
           <div class="feature_desc"
-               data-es="Valoraciones de 1 a 5 estrellas con sistema de honor:"
-               data-en="1 to 5 star ratings with an honour system:">
+               data-es="Valoraciones de 1 a 5 estrellas con <strong>sistema de honor</strong>:"
+               data-en="1 to 5 star ratings with an <strong>honour system</strong>:">
           </div>
           <div class="feature_desc"
                data-es="&nbsp;&nbsp;&nbsp;›&nbsp;&nbsp;&nbsp;el usuario debe aceptar haber contratado los servicios antes de publicar una opinión."
                data-en="&nbsp;&nbsp;&nbsp;›&nbsp;&nbsp;&nbsp;the user must confirm they have hired the carer's services before submitting a review.">
           </div>
-          <img class="imagen_caracteristicas_alargada" src="../../assets/APPASEO3.webp">
+          <img class="imagen_caracteristicas_alargada" src="../../assets/APPASEO3.webp" alt="APPASEO rating system screen" loading="lazy">
         </div>
 
       </div>
@@ -244,7 +259,7 @@
       <aside>
         <div class="volver_pag_principal">
           <a class="boton_volver_pag_princial" href="../../#projects">
-            <img class="volver_pag_principal_imagen" src="../../assets/Arrow_symbol_white_down.png">
+            <img class="volver_pag_principal_imagen" src="../../assets/Arrow_symbol_white_down.png" alt="">
             <span class="volver_pag_principal_texto" data-es="Volver" data-en="Back">Volver</span>
           </a>
         </div>
@@ -255,7 +270,7 @@
               <span class="siguiente_label" data-es="Siguiente" data-en="Next">Siguiente</span>
               <span class="siguiente_nombre">Memory Royale</span>
             </div>
-            <img class="siguiente_arrow" src="../../assets/Arrow_symbol_white.png">
+            <img class="siguiente_arrow" src="../../assets/Arrow_symbol_white.png" alt="">
           </a>
         </div>
       </aside>

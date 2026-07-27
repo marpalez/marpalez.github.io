@@ -1,5 +1,5 @@
-// BOTON IDIOMA — ES / EN
-let currentLang = localStorage.getItem('lang') || 'es';
+// BOTON IDIOMA — EN / ES (el sitio se lanza en inglés por defecto, igual que la página principal)
+let currentLang = localStorage.getItem('lang') || 'en';
 
 const langToggle = document.getElementById('boton_idioma');
 const langText = document.getElementById('lang-text');
@@ -19,8 +19,9 @@ langToggle.addEventListener('click', () => {
 function applyLanguage(lang) {
     const elements = document.querySelectorAll('[data-es][data-en]');
     elements.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+        el.innerHTML = el.getAttribute(`data-${lang}`);
     });
+    document.documentElement.lang = lang;
 }
 
 
