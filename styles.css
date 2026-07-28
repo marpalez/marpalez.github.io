@@ -1,9 +1,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 
-/* ============================================================
-   TOKENS
-   ============================================================ */
+
 :root {
 	/* Marca */
 	--brand:   #2563eb;
@@ -71,7 +69,6 @@ a  { color: inherit; text-decoration: none; }
 
 /* ============================================================
    FOCO POR TECLADO — accesibilidad
-   Solo se muestra al navegar con Tab, no al hacer clic con ratón
    ============================================================ */
 a:focus-visible,
 button:focus-visible {
@@ -307,6 +304,121 @@ nav {
 }
 
 #boton_idioma:hover { border-color: var(--brand); color: var(--brand); }
+
+
+/* ---- Accesos rápidos a las secciones ---- */
+.nav_acciones {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.nav_enlaces {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	margin: 0 auto;
+	list-style: none;
+}
+
+.nav_enlaces li { display: block; }
+
+.nav_enlaces a {
+	position: relative;
+	display: block;
+	padding: 4px 0;
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--haze);
+	white-space: nowrap;
+	transition: color 0.2s var(--ease);
+}
+
+.nav_enlaces a::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 2px;
+	background: var(--brand);
+	border-radius: 2px;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.25s var(--ease);
+}
+
+.nav_enlaces a:hover { color: var(--brand); }
+.nav_enlaces a:hover::after { transform: scaleX(1); }
+
+/* ---- Botón hamburguesa (solo en pantallas estrechas) ---- */
+.nav_hamburguesa {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	width: 34px;
+	height: 34px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.nav_hamburguesa span {
+	display: block;
+	width: 22px;
+	height: 2px;
+	margin: 0 auto;
+	background: var(--brand2);
+	border-radius: 2px;
+	transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
+}
+
+.nav_hamburguesa.abierto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav_hamburguesa.abierto span:nth-child(2) { opacity: 0; }
+.nav_hamburguesa.abierto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+	.nav_hamburguesa { display: flex; }
+
+	.nav_enlaces {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+		margin: 0;
+		padding: 0.25rem 1.5rem 0.75rem;
+		background: var(--paper);
+		border-bottom: 1px solid var(--brand-10);
+		box-shadow: 0 12px 24px rgba(10, 10, 10, 0.10);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-8px);
+		transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+	}
+
+	.nav_enlaces.abierto {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.nav_enlaces a {
+		padding: 0.9rem 0;
+		font-size: 0.8rem;
+		border-bottom: 1px solid var(--brand-10);
+	}
+
+	.nav_enlaces li:last-child a { border-bottom: none; }
+
+	.nav_enlaces a::after { display: none; }
+}
 
 
 
@@ -1139,9 +1251,9 @@ nav {
  
 .tarj_ver_proyecto {
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
-	box-shadow: black 0px 0px 30px;
+	bottom: 20px;
+	right: 20px;
+	box-shadow: black 0px 0px 20px;
 	padding: 10px 15px;
 	border-radius: 9999px;
 	animation: llamarAtencion 2s ease-in-out 1s infinite;
@@ -1197,9 +1309,7 @@ nav {
 	transition: all 0.5s ease;
 }
 
-/* ============================================================
-   HOVER DE TARJETAS
-   ============================================================ */
+
 @media (hover: hover) and (pointer: fine) {
 
 	.tarj_imagen_container {
@@ -1217,7 +1327,7 @@ nav {
 		opacity: 0;
 		transform: translateY(12px);
 		transition: opacity 0.35s ease, transform 0.35s ease;
-		pointer-events: none; /* no interfiere con el clic al enlace del proyecto */
+		pointer-events: none;
 	}
 
 	.tarj_caption_text {
@@ -1708,16 +1818,256 @@ footer {
 
 @media (max-width: 550px) {
 
-	.rol_container {
-		margin-top: 3rem;
-	}
-
-	.boton_descargar_container {
-		margin-top: 3rem;
-	}
-
 	.footer-grid {
 		grid-template-columns: 1fr;
 	}
 
+}
+
+
+
+/* ============================================================
+   PÁGINAS DE PROYECTO
+   Solo se aplica en las subpáginas, que llevan <body class="proyecto">.
+   El nav, el footer, el botón de subir y los tokens los heredan de
+   las secciones de arriba: se tocan una sola vez para todo el sitio.
+   ============================================================ */
+
+/* ---- Ajustes sobre la base de la página principal ---- */
+.proyecto {
+	background: var(--background);
+	min-height: 100vh;
+}
+
+.proyecto li { display: flex; align-items: center; }
+
+.proyecto .nav_back { display: flex; align-items: center; }
+
+.proyecto section {
+	padding: 0;
+	margin-bottom: 5rem;
+}
+
+.proyecto .body80 {
+	max-width: 70rem;
+	width: 88%;
+	margin: 0 auto;
+	padding-top: 3rem;
+	position: relative;
+	z-index: 1;
+}
+
+.proyecto h2 {
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	color: var(--brand2);
+	white-space: nowrap;
+}
+
+.proyecto .titulo_seccion { margin-bottom: 2.5rem; }
+
+.proyecto .linea_horizontal { background: var(--brand); }
+
+.proyecto .etiqueta {
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	text-transform: none;
+	color: var(--haze);
+	border-radius: 10px;
+	padding: 5px 13px;
+	white-space: normal;
+	background: var(--mist);
+}
+
+.proyecto .footer-links li { justify-content: center; }
+
+/* ---- Hero del proyecto ---- */
+.proyecto .hero_section {
+	display: flex;
+	align-items: center;
+	gap: 2.5rem;
+	margin-bottom: 4rem;
+}
+
+.proyecto .project_screenshot {
+	width: 22%;
+	max-width: 240px;
+	min-width: 130px;
+	height: auto;
+}
+
+.proyecto .hero {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+.proyecto .hero span {
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--brand);
+	order: -1;
+}
+
+.proyecto .hero_titulo {
+	margin: 0; /* normalize da margen propio a los h1 */
+	font-family: var(--font-display);
+	font-size: clamp(3rem, 7vw, 6.5rem);
+	font-weight: 400;
+	line-height: 0.9;
+	letter-spacing: -0.02em;
+	text-transform: uppercase;
+	color: var(--brand2);
+}
+
+.proyecto .hero_subtitulo {
+	font-size: clamp(1rem, 1.2vw, 1.3rem);
+	font-weight: 500;
+	color: var(--ink-60);
+	border-left: 3px solid var(--brand);
+	padding-left: 16px;
+}
+
+/* ---- Info del proyecto ---- */
+.proyecto .info_grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+}
+
+.proyecto .info_card {
+	background: var(--paper);
+	border: 1px solid var(--brand-10);
+	border-radius: 20px;
+	padding: 2rem;
+	color: var(--ink-80);
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
+}
+
+.proyecto .info_card p {
+	margin-bottom: 1.1rem;
+	line-height: 1.7;
+	font-size: 0.98rem;
+}
+
+.proyecto .info_card p:last-of-type { margin-bottom: 0; }
+
+.proyecto .info_card p strong {
+	color: var(--brand);
+	font-weight: 700;
+}
+
+.proyecto .tech_grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 1.5rem;
+}
+
+/* ---- Aside: volver / siguiente proyecto ---- */
+.proyecto aside {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+}
+
+.proyecto .volver_pag_principal { display: flex; }
+
+.proyecto .boton_volver_pag_princial {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	opacity: 0.7;
+	transition: all 0.2s var(--ease);
+}
+
+.proyecto .volver_pag_principal_imagen {
+	transform: rotate(90deg);
+	width: 16px;
+	filter: invert(1);
+}
+
+.proyecto .volver_pag_principal_texto {
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	color: var(--haze);
+}
+
+.proyecto .boton_volver_pag_princial:hover { opacity: 1; }
+
+.proyecto .boton_volver_pag_princial:hover .volver_pag_principal_texto {
+	color: var(--brand);
+}
+
+.proyecto .siguiente_proyecto_container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.proyecto .boton_siguiente_proyecto {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem 1rem;
+	border-radius: 16px;
+	background: var(--brand2);
+	color: var(--paper);
+	transition: all 0.2s ease;
+}
+
+.proyecto .boton_siguiente_proyecto:hover {
+	opacity: 0.9;
+	transform: scale(1.01);
+}
+
+.proyecto .siguiente_proyecto_texto {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.proyecto .siguiente_label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	color: var(--paper-60);
+}
+
+.proyecto .siguiente_nombre {
+	font-family: var(--font-display);
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.proyecto .siguiente_arrow {
+	height: 16px;
+	width: auto;
+}
+
+/* ---- Responsive de las subpáginas ---- */
+@media (max-width: 600px) {
+	.proyecto .body80 { width: 90%; }
+
+	.proyecto .hero_section {
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 1.5rem;
+	}
+
+	.proyecto .project_screenshot { display: none; }
+
+	.proyecto .hero { margin: 0.5rem 0; }
+
+	.proyecto h2 { white-space: normal; }
+
+	.proyecto .info_grid { grid-template-columns: 1fr; }
+
+	.proyecto .hero_titulo,
+	.proyecto .hero_subtitulo { opacity: 1; transform: none; }
 }

@@ -98,9 +98,24 @@
       </a>
     </div>
 
-		<div class="boton_idioma_container">
-			<button id="boton_idioma" aria-label="Switch language / Cambiar idioma">
-				<span class="lang-text" id="lang-text">EN</span>
+		<ul class="nav_enlaces" id="nav_enlaces">
+			<li><a href="#home" data-es="Inicio" data-en="Home">Home</a></li>
+			<li><a href="#experience" data-es="Experiencia" data-en="Experience">Experience</a></li>
+			<li><a href="#about" data-es="Sobre mí" data-en="About">About</a></li>
+			<li><a href="#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
+			<li><a href="#stack" data-es="Tecnologías" data-en="Stack">Stack</a></li>
+			<li><a href="#education" data-es="Formación" data-en="Education">Education</a></li>
+		</ul>
+
+		<div class="nav_acciones">
+			<div class="boton_idioma_container">
+				<button id="boton_idioma" aria-label="Switch language / Cambiar idioma">
+					<span class="lang-text" id="lang-text">EN</span>
+				</button>
+			</div>
+
+			<button class="nav_hamburguesa" id="nav_hamburguesa" aria-label="Menú de navegación" aria-expanded="false" aria-controls="nav_enlaces">
+				<span></span><span></span><span></span>
 			</button>
 		</div>
 
@@ -791,6 +806,7 @@
 
   </footer>
 
+	<script src="nav.js"></script>
 	<script src="main.js"></script>
 
 </body>
