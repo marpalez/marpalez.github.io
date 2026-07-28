@@ -1748,7 +1748,12 @@ footer {
 	/* Experiencia: una columna */
 	#experience article { grid-template-columns: 1fr; gap: 1rem; }
 
+	.rol_container {
+		margin-top: 2rem;
+	}
+
 	.boton_descargar_container { 
+		margin-top: 2rem;
 		justify-self: center;
 		gap: 2rem;
 	}
