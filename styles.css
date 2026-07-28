@@ -1814,6 +1814,8 @@ footer {
 		left: 2.5rem;
 		right: 0;
 	}
+
+
 }
 
 
@@ -1822,6 +1824,7 @@ footer {
 
 
 @media (max-width: 550px) {
+
 
 	.footer-grid {
 		grid-template-columns: 1fr;
@@ -1833,9 +1836,6 @@ footer {
 
 /* ============================================================
    PÁGINAS DE PROYECTO
-   Solo se aplica en las subpáginas, que llevan <body class="proyecto">.
-   El nav, el footer, el botón de subir y los tokens los heredan de
-   las secciones de arriba: se tocan una sola vez para todo el sitio.
    ============================================================ */
 
 /* ---- Ajustes sobre la base de la página principal ---- */
@@ -1857,7 +1857,7 @@ footer {
 	max-width: 70rem;
 	width: 88%;
 	margin: 0 auto;
-	padding-top: 3rem;
+	padding-top: 1rem;
 	position: relative;
 	z-index: 1;
 }
@@ -1869,6 +1869,22 @@ footer {
 }
 
 .proyecto .titulo_seccion { margin-bottom: 2.5rem; }
+
+.btn-try-app {
+	font-size: 0.8rem;
+	text-align: center;
+	padding: 1rem 1rem;
+	border-radius: 16px;
+	background: var(--brand2);
+	color: var(--paper);
+	transition: all 0.2s ease;
+}
+
+.btn-try-app:hover {
+	opacity: 0.9;
+	transform: scale(1.01);
+}
+
 
 .proyecto .linea_horizontal { background: var(--brand); }
 
@@ -2055,14 +2071,159 @@ footer {
 	width: auto;
 }
 
+
+
+
+
+
+
+
+
+/* ============================================================
+   UNITY
+   ============================================================ */
+.unity_section {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.unity_wrapper {
+	background: var(--paper);
+	border: 2px solid var(--brand2);
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	box-shadow: 1px 1px 1px 1px var(--brand-10);
+}
+
+#unity-fullscreen-button {
+	margin-left: auto; /* lo alinea a la derecha tanto si la sección es flex como si es block */
+	margin-bottom: 5px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	opacity: 0.6;
+	transition: opacity 0.2s;
+	border-radius: 8px;
+}
+
+#unity-fullscreen-button:hover { 
+	opacity: 1; 
+}
+
+.unity_canvas_container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%;
+	background: var(--brand2);
+}
+
+#unity-container {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#unity-canvas {
+	width: 100% !important;
+	height: 100% !important;
+	background: var(--brand2);
+	display: block;
+}
+
+#unity-loading-bar {
+	position: absolute;
+	left: 50%; top: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	text-align: center;
+}
+
+#unity-logo {
+	width: 154px; height: 130px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	margin: 0 auto;
+	filter: invert(1);
+}
+
+#unity-progress-bar-empty {
+	width: 141px; height: 18px;
+	margin-top: 10px;
+	margin-left: 6.5px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#unity-progress-bar-full {
+	width: 0%; height: 18px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#unity-warning {
+	position: absolute;
+	left: 50%; top: 5%;
+	transform: translate(-50%);
+	background: var(--paper);
+	color: var(--ink);
+	padding: 10px;
+	display: none;
+	z-index: 10;
+	border-radius: 8px;
+}
+
+.unity-note {
+	margin-top: 0.75rem;
+	font-family: var(--font-mono);
+	font-size: clamp(0.72rem, 0.5vw, 0.85rem);
+	color: var(--haze);
+}
+
+
+.siguiente_label { text-transform: uppercase; }
+
+@media (max-width: 1024px) {
+  .hero_section {
+    padding-top: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ---- Responsive de las subpáginas ---- */
 @media (max-width: 600px) {
+
 	.proyecto .body80 { width: 90%; }
 
 	.proyecto .hero_section {
-		flex-direction: column;
-		align-items: flex-start;
-		margin-bottom: 1.5rem;
+		display: block;
+		align-items: center;
 	}
 
 	.proyecto .project_screenshot { display: none; }
@@ -2073,6 +2234,12 @@ footer {
 
 	.proyecto .info_grid { grid-template-columns: 1fr; }
 
-	.proyecto .hero_titulo,
-	.proyecto .hero_subtitulo { opacity: 1; transform: none; }
+
+	/* El hero pasa a bloque: el botón se centra ajustándose a su
+	   texto (fit-content) y repartiendo el margen sobrante */
+	.btn-try-app {
+		display: block;
+		width: fit-content;
+		margin: 2rem auto 0;
+	}
 }
