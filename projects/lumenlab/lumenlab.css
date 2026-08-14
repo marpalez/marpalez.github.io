@@ -55,10 +55,7 @@
 .feature_nombre {
 	font-family: var(--font-display);
 	font-size: 1.5rem;
-	letter-spacing: 0.01em;
-	text-transform: uppercase;
 	color: var(--brand2);
-	line-height: 1;
 }
 
 .feature_desc {
@@ -258,10 +255,7 @@
 .decision_titulo {
 	font-family: var(--font-display);
 	font-size: 1.35rem;
-	letter-spacing: 0.01em;
-	text-transform: uppercase;
 	color: var(--brand2);
-	line-height: 1;
 	margin-bottom: 0.5rem;
 }
 
