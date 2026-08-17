@@ -1,42 +1,5 @@
-// BOTON IDIOMA — EN / ES (el sitio se lanza en inglés por defecto)
-let currentLang = localStorage.getItem('lang') || 'en';
 
-const langToggle = document.getElementById('boton_idioma');
-const langText = document.getElementById('lang-text');
-
-applyLanguage(currentLang);
-langText.textContent = currentLang === 'es' ? 'EN' : 'ES';
-if (currentLang === 'en') langToggle.classList.add('lang-active');
-
-langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'es' ? 'en' : 'es';
-    localStorage.setItem('lang', currentLang);
-    applyLanguage(currentLang);
-    langText.textContent = currentLang === 'es' ? 'EN' : 'ES';
-    langToggle.classList.toggle('lang-active');
-    cargarPista(currentLang);
-    actualizarCV(currentLang);
-});
-
-function applyLanguage(lang) {
-    const elements = document.querySelectorAll('[data-es][data-en]');
-    elements.forEach(el => {
-        el.innerHTML = el.getAttribute(`data-${lang}`);
-    });
-    document.documentElement.lang = lang;
-}
-
-
-
-
-
-
-
-
-
-
-
-
+const currentLang = document.documentElement.lang;
 
 
 
@@ -54,15 +17,6 @@ window.addEventListener('scroll', () => {
 botonArriba.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,91 +178,11 @@ botonArriba.addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-
-
-// REPRODUCTOR
-// El HTML del reproductor puede estar comentado/oculto: todo el código
-// comprueba que los elementos existan para no lanzar errores en ese caso.
-const pistas = {
-  es: './assets/david_laboratorio_es.mp3',
-  en: './assets/david_laboratorio_en.mp3'
-};
-
-const audio = document.getElementById('reproductor_audio');
-const btnPlay = document.getElementById('reproductor_play');
-const progreso = document.getElementById('reproductor_progreso');
-const tiempoActual = document.getElementById('reproductor_actual');
-const tiempoDuracion = document.getElementById('reproductor_duracion');
-const titulo = document.getElementById('reproductor_titulo');
-
-const titulosPista = {
-  es: 'Sobre mí, modo canción',
-  en: 'About me, song mode'
-};
-
-function cargarPista(lang) {
-  if (!audio) return;
-  const estabaSonando = !audio.paused;
-  audio.src = pistas[lang];
-  titulo.textContent = titulosPista[lang];
-  if (estabaSonando) audio.play();
-}
-
-function togglePlay() {
-  if (!audio) return;
-  if (audio.paused) {
-    audio.play();
-    btnPlay.textContent = '⏸';
-  } else {
-    audio.pause();
-    btnPlay.textContent = '▶';
-  }
-}
-
-function formatTime(s) {
-  const m = Math.floor(s / 60);
-  const seg = Math.floor(s % 60).toString().padStart(2, '0');
-  return `${m}:${seg}`;
-}
-
-if (audio) {
-  audio.addEventListener('timeupdate', () => {
-    const pct = (audio.currentTime / audio.duration) * 100 || 0;
-    progreso.style.width = pct + '%';
-    tiempoActual.textContent = formatTime(audio.currentTime);
-  });
-
-  audio.addEventListener('loadedmetadata', () => {
-    tiempoDuracion.textContent = formatTime(audio.duration);
-  });
-
-  audio.addEventListener('ended', () => {
-    btnPlay.textContent = '▶';
-    progreso.style.width = '0%';
-  });
-
-  cargarPista(currentLang);
-}
-
-function seekAudio(e) {
-  if (!audio) return;
-  const rect = e.currentTarget.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  audio.currentTime = pct * audio.duration;
-}
-
-
 // CV SEGÚN IDIOMA
 // Si existe assets/DavidMartinezCVes.pdf, el botón lo ofrece cuando el
 // idioma es español; si no existe, siempre se descarga la versión en inglés.
 const cvLink = document.querySelector('.boton_descargar');
-const CV_FILES = { en: 'assets/DavidMartinezCVen.pdf', es: 'assets/DavidMartinezCVes.pdf' };
+const CV_FILES = { en: '/assets/DavidMartinezCVen.pdf', es: '/assets/DavidMartinezCVes.pdf' };
 let cvEsDisponible = false;
 
 function actualizarCV(lang) {

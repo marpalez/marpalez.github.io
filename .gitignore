@@ -1,0 +1,15 @@
+# Basura del Explorador de Windows
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# macOS, por si alguna vez clonas el repo desde un Mac
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node, si algún día el build necesita dependencias
+node_modules/

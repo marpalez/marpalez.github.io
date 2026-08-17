@@ -1,28 +1,6 @@
-// BOTON IDIOMA — EN / ES (el sitio se lanza en inglés por defecto, igual que la página principal)
-let currentLang = localStorage.getItem('lang') || 'en';
-
-const langToggle = document.getElementById('boton_idioma');
-const langText = document.getElementById('lang-text');
-
-applyLanguage(currentLang);
-langText.textContent = currentLang === 'es' ? 'EN' : 'ES';
-if (currentLang === 'en') langToggle.classList.add('lang-active');
-
-langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'es' ? 'en' : 'es';
-    localStorage.setItem('lang', currentLang);
-    applyLanguage(currentLang);
-    langText.textContent = currentLang === 'es' ? 'EN' : 'ES';
-    langToggle.classList.toggle('lang-active');
-});
-
-function applyLanguage(lang) {
-    const elements = document.querySelectorAll('[data-es][data-en]');
-    elements.forEach(el => {
-        el.innerHTML = el.getAttribute(`data-${lang}`);
-    });
-    document.documentElement.lang = lang;
-}
+// El idioma lo fija la propia URL: /… en inglés, /es/… en español.
+// Cada versión es un HTML estático generado por build.mjs, así que aquí no hay
+// nada que conmutar; el botón de idioma es un enlace a la otra URL.
 
 
 // Boton scroll arriba

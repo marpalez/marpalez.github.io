@@ -1,12 +1,4 @@
-/* Tarjetas de características. Mismo patrón que appaseo.css.
-   Sin las reglas de Unity: esta aplicación es de escritorio y no se puede empotrar
-   en la web, así que la página no lleva build jugable. */
 
-/* Dos columnas fijas, y la que se está reproduciendo pasa a ocupar las dos.
-
-   Así se ven seis tarjetas de un vistazo y, en cuanto se pulsa un vídeo, ese vídeo se
-   pone al doble de ancho sin sacarlo de su sitio: la tarjeta sigue donde estaba y el
-   resto se recoloca a su alrededor. Al pausar vuelve a su columna. */
 .features_grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -18,9 +10,7 @@
 	grid-column: 1 / -1;
 }
 
-/* Ampliado, el ancho entero daría un vídeo más alto que la pantalla: en un monitor de
-   1080 el 16:9 a todo lo ancho pide unos 840 px de alto y no cabe. Se limita por la
-   ALTURA y el ancho sale solo, que es lo que mantiene el vídeo entero a la vista. */
+
 .feature_card.ampliada .media_caracteristica video {
 	width: auto;
 	max-width: 100%;
@@ -32,9 +22,7 @@
 	.features_grid { grid-template-columns: 1fr; }
 }
 
-/* El texto se queda corto aunque la tarjeta se ensanche. Al ampliarse, un renglón llegaría
-   a 140 caracteres, el doble de lo que se lee cómodo; el vídeo, en cambio, aprovecha todo
-   el ancho que gana. */
+
 .feature_nombre,
 .feature_desc {
 	max-width: 70ch;
@@ -69,12 +57,7 @@
 	font-weight: 700;
 }
 
-/* ---- el vídeo o la imagen de cada tarjeta -------------------------------
-   Van SIEMPRE debajo del texto: primero se lee qué hace y luego se ve. Al revés, el
-   movimiento se lleva la atención y el texto no se lee.
-
-   `margin-top: auto` empuja la media al fondo de la tarjeta, así que en una fila con
-   textos de distinto largo los vídeos quedan alineados entre sí. */
+/* ---- el vídeo o la imagen de cada tarjeta -------------------------------*/
 .media_caracteristica {
 	display: block;
 	width: 100%;
@@ -83,8 +66,7 @@
 	border-radius: 10px;
 }
 
-/* La proporción se reserva antes de que cargue nada. Sin esto, la tarjeta crece de golpe
-   al llegar el primer fotograma y la página da un salto bajo el ratón. */
+
 .media_caracteristica video,
 .media_caracteristica img {
 	display: block;
@@ -97,9 +79,6 @@
 	background: var(--mist);
 }
 
-/* Que aquello es un vídeo y que se pulsa <b>hay que decirlo dibujándolo</b>. Con el
-   cursor y un realce al pasar por encima no bastaba: un fotograma quieto de una hoja de
-   cálculo parece una captura, y nadie pulsa una captura. */
 .media_caracteristica.reproducible {
 	position: relative;
 }
@@ -112,7 +91,7 @@
 .media_caracteristica.reproducible::after {
 	content: "▶";
 	position: absolute;
-	top: calc(50% + 0.45rem);   /* el 0.45 compensa el padding de arriba del contenedor */
+	top: calc(50% + 0.45rem);
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 76px;
@@ -120,13 +99,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-left: 6px;          /* el triángulo pesa a la izquierda; se recentra a ojo */
+	padding-left: 6px;
 	font-size: 1.9rem;
 	color: var(--paper);
 	background: rgba(10, 10, 10, 0.55);
 	border: 2px solid var(--paper-60);
 	border-radius: 50%;
-	pointer-events: none;       /* el clic tiene que llegar al vídeo, no quedarse aquí */
+	pointer-events: none;
 	transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
@@ -135,7 +114,6 @@
 	transform: translate(-50%, -50%) scale(1.08);
 }
 
-/* Mientras rueda estorba: la marca la pone y la quita el guion. */
 .media_caracteristica.reproduciendo::after {
 	opacity: 0;
 }
@@ -145,14 +123,7 @@
 	box-shadow: 0 0 0 3px var(--brand-10);
 }
 
-.pista_video {
-	margin: 0.5rem 0 0;
-	font-size: 0.76rem;
-	color: var(--ink-60);
-	text-align: center;
-}
 
-/* En pantallas táctiles no hay «pasar por encima»: se toca. */
 @media (hover: none) {
 	.feature_card:hover .media_caracteristica.reproducible video {
 		border-color: var(--brand-10);
@@ -161,46 +132,9 @@
 }
 
 
-/* ---- Cifras -------------------------------------------------------------
-   Cuatro números y nada más. Son lo único de la página que se lee de un vistazo,
-   así que se quedan los que dicen algo: los tres primeros describen el motor y el
-   cuarto es el que sorprende. */
-
-.cifras_grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-	gap: 1rem;
-	margin-top: 1.5rem;
-}
-
-.cifra {
-	background: var(--mist);
-	border: 1px solid var(--brand-10);
-	border-radius: 16px;
-	padding: 1.2rem 1rem;
-	text-align: center;
-}
-
-.cifra_valor {
-	font-family: var(--font-display);
-	font-size: 2.4rem;
-	line-height: 1;
-	color: var(--brand);
-}
-
-.cifra_texto {
-	display: block;
-	margin-top: 0.4rem;
-	font-size: 0.82rem;
-	line-height: 1.4;
-	color: var(--ink-60);
-}
 
 
-/* ---- Detalles -----------------------------------------------------------
-   Muchos y cortos. Van en tarjetas pequeñas y no en las grandes de arriba: son cosas de
-   una línea, y darles el mismo peso visual que a una característica con vídeo haría que
-   ninguna de las dos destacara. */
+/* ---- Detalles -----------------------------------------------------------*/
 
 .detalles_grid {
 	display: grid;
@@ -218,7 +152,6 @@
 	padding: 0.85rem 1rem;
 }
 
-/* La marca de la izquierda. Es un adorno, así que se esconde del lector de pantalla. */
 .detalle::before {
 	content: "›";
 	flex-shrink: 0;

@@ -1,18 +1,18 @@
 <!-- Generado por build.mjs desde src\projects\memoryroyale\index.html — no editar a mano -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Memory Royale — Local multiplayer memory card game (2–4 players) built in Unity with C# by David Martínez, playable via WebGL.">
+  <meta name="description" content="Memory Royale — Juego de cartas de memoria multijugador local (2–4 jugadores) desarrollado en Unity con C# por David Martínez, jugable desde el navegador con WebGL.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://davidmarpalez.com/projects/memoryroyale/">
+  <link rel="canonical" href="https://davidmarpalez.com/es/projects/memoryroyale/">
 	<link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/memoryroyale/">
 	<link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/memoryroyale/">
 	<link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/memoryroyale/">
-	<meta property="og:url" content="https://davidmarpalez.com/projects/memoryroyale/">
-	<meta property="og:locale" content="en_US">
-	<meta property="og:locale:alternate" content="es_ES">
+	<meta property="og:url" content="https://davidmarpalez.com/es/projects/memoryroyale/">
+	<meta property="og:locale" content="es_ES">
+	<meta property="og:locale:alternate" content="en_US">
   <title>Memory Royale | David Martínez</title>
 
   <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any">
@@ -23,7 +23,7 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Memory Royale | David Martínez">
-  <meta property="og:description" content="Local multiplayer memory card game (2–4 players) built in Unity, playable via WebGL.">
+  <meta property="og:description" content="Juego de cartas de memoria multijugador local (2–4 jugadores) desarrollado en Unity, jugable desde el navegador con WebGL.">
   <meta property="og:image" content="https://davidmarpalez.com/assets/og_image.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,14 +33,13 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/projects/memoryroyale/memoryroyale.css">
 
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "VideoGame",
     "name": "Memory Royale",
-    "url": "https://davidmarpalez.com/projects/memoryroyale/",
-    "description": "Local multiplayer memory card game (2–4 players) built in Unity with C#, playable via WebGL.",
+    "url": "https://davidmarpalez.com/es/projects/memoryroyale/",
+    "description": "Juego de cartas de memoria multijugador local (2–4 jugadores) desarrollado en Unity con C#, jugable desde el navegador con WebGL.",
     "author": { "@id": "https://davidmarpalez.com/#person" }
   }
   </script>
@@ -63,23 +62,23 @@
   <nav>
     
     <div class="nav_inner">
-      <a href="/" class="nav_back">
+      <a href="/es/" class="nav_back">
         <span class="dmp_texto">D M P</span>
       </a>
     </div>
 
 		<ul class="nav_enlaces" id="nav_enlaces">
-			<li><a href="/#home">Home</a></li>
-			<li><a href="/#experience">Experience</a></li>
-			<li><a href="/#about">About</a></li>
-			<li><a href="/#projects">Projects</a></li>
-			<li><a href="/#stack">Stack</a></li>
-			<li><a href="/#education">Education</a></li>
+			<li><a href="/es/#home">Inicio</a></li>
+			<li><a href="/es/#experience">Experiencia</a></li>
+			<li><a href="/es/#about">Sobre mí</a></li>
+			<li><a href="/es/#projects">Proyectos</a></li>
+			<li><a href="/es/#stack">Tecnologías</a></li>
+			<li><a href="/es/#education">Formación</a></li>
 		</ul>
 
 		<div class="nav_acciones">
 			<div class="boton_idioma_container">
-				<a id="boton_idioma" href="/es/projects/memoryroyale/" hreflang="es" lang="es" aria-label="Ver esta página en español">ES</a>
+				<a id="boton_idioma" href="/projects/memoryroyale/" hreflang="en" lang="en" aria-label="View this page in English">EN</a>
 			</div>
 
 			<button class="nav_hamburguesa" id="nav_hamburguesa" aria-label="Menú de navegación" aria-expanded="false" aria-controls="nav_enlaces">
@@ -106,9 +105,9 @@
       <div class="hero">
         <h1 class="hero_titulo">Memory Royale</h1>
         <span>2026</span>
-        <p class="hero_subtitulo">2D card game developed in Unity</p>
+        <p class="hero_subtitulo">Juego de cartas 2D desarrollado en Unity</p>
       </div>
-      <a class="btn-try-app" href="#app">Go to the application</a>
+      <a class="btn-try-app" href="#app">Ir a la aplicación</a>
 
 
     </section>
@@ -135,7 +134,7 @@
     <!-- SOBRE EL PROYECTO -->
     <section class="">
       <div class="titulo_seccion">
-        <h2>About the project</h2>
+        <h2>Sobre el proyecto</h2>
         <div class="linea_horizontal"></div>
       </div>
 
@@ -143,12 +142,12 @@
 
         <div class="info_card">
 
-          <p>Memory Royale is a <strong>local multiplayer memory game (2 – 4 players, hotseat)</strong> developed in <strong>Unity with C#</strong>.</p>
-          <p>Each player has <strong>health points</strong> and the aim is to <strong>beat rivals with the effects of the cards</strong> when matching pairs are found.</p>
-          <p>The core architecture is based on a <strong>state machine with four phases per turn</strong> (start, attempt, selection and end), managed by the GameLogic class.</p>
-          <p>Cards and player panels are generated via <strong>dynamically instantiated prefabs</strong> at runtime.</p>
-          <p><strong>Coroutines</strong> were used to synchronise the delay between card flipping and hiding, and to allow reading time for the narrator during automatic effects.</p>
-          <p>Animations were implemented with <strong>DOTween</strong>.</p>
+          <p>Memory Royale es un <strong>juego de memoria multijugador local (2 – 4 jugadores, hotseat)</strong> desarrollado en <strong>Unity con C#</strong>.</p>
+          <p>Cada jugador tiene <strong>puntos de salud</strong> y se trata de <strong>debilitar a los rivales con los efectos de las cartas</strong> cuando se encuentran pares iguales.</p>
+          <p>La arquitectura central se basa en una <strong>máquina de estados con cuatro fases por turno</strong> (inicio, intento, selección y fin), gestionada por la clase GameLogic.</p>
+          <p>Las cartas y los paneles de jugador se generan mediante <strong>prefabs instanciados dinámicamente</strong> en tiempo de ejecución.</p>
+          <p>Se utilizaron <strong>corrutinas</strong> para sincronizar el retardo entre el volteo de cartas y su ocultación, y para dar tiempo de lectura al narrador en los efectos automáticos.</p>
+          <p>Las animaciones se implementaron con <strong>DOTween</strong>.</p>
           <div class="tech_grid">
             <span class="etiqueta">Unity</span>
             <span class="etiqueta">C#</span>
@@ -190,7 +189,7 @@
 <!--CARD EFFECTS-->
 <section>
   <div class="titulo_seccion">
-    <h2>Card effects</h2>
+    <h2>Efectos de cartas</h2>
     <div class="linea_horizontal"></div>
   </div>
 
@@ -199,50 +198,50 @@
     <div class="efecto_card">
       <div class="efecto_card__header">
         <span class="ef_valor ef_valor--num">2 – 10</span>
-        <span class="ef_nombre">Direct damage</span>
+        <span class="ef_nombre">Daño directo</span>
       </div>
       <img class="efecto_card_imagen" src="/assets/2-10.png" alt="Number cards 2 to 10" loading="lazy">
-      <div class="ef_desc">Deals <strong>damage equal to the card&#39;s value</strong> to the chosen rival.</div>
+      <div class="ef_desc">Resta <strong>tantos PS al rival elegido como valor tenga la carta</strong>.</div>
     </div>
 
     <div class="efecto_card">
       <div class="efecto_card__header">
         <span class="ef_valor ef_valor--special">J</span>
-        <span class="ef_nombre">Life steal</span>
+        <span class="ef_nombre">Robo de vida</span>
       </div>
       <img class="efecto_card_imagen" src="/assets/J.png" alt="Jack card" loading="lazy">
-      <div class="ef_desc">You recover <strong>2 HP</strong>.</div>
-      <div class="ef_desc">All rivals take <strong>2 HP of damage</strong>.</div>
+      <div class="ef_desc">Recuperas <strong>2 PS</strong>.</div>
+      <div class="ef_desc">Todos los rivales reciben <strong>2 PS de daño</strong>.</div>
     </div>
 
     <div class="efecto_card">
       <div class="efecto_card__header">
         <span class="ef_valor ef_valor--special">Q</span>
-        <span class="ef_nombre">Area damage</span>
+        <span class="ef_nombre">Daño en área</span>
       </div>
       <img class="efecto_card_imagen" src="/assets/Q.png" alt="Queen card" loading="lazy">
-      <div class="ef_desc">All rivals take <strong>5 HP of damage</strong>.</div>
-      <div class="ef_desc">You take no damage.</div>
+      <div class="ef_desc">Todos los rivales reciben <strong>5 PS de daño</strong>.</div>
+      <div class="ef_desc">Tú no recibes daño.</div>
     </div>
 
     <div class="efecto_card">
       <div class="efecto_card__header">
         <span class="ef_valor ef_valor--special">K</span>
-        <span class="ef_nombre">Shield</span>
+        <span class="ef_nombre">Escudo</span>
       </div>
       <img class="efecto_card_imagen" src="/assets/K.png" alt="King card" loading="lazy">
-      <div class="ef_desc">You gain a <strong>shield that blocks the next incoming damage</strong>.</div>
-      <div class="ef_desc">Up to <strong>3 shields</strong>.</div>
+      <div class="ef_desc">Obtienes un <strong>escudo que bloquea el siguiente daño</strong> recibido.</div>
+      <div class="ef_desc">Máximo <strong>3 escudos</strong>.</div>
     </div>
 
     <div class="efecto_card">
       <div class="efecto_card__header">
         <span class="ef_valor ef_valor--special">A</span>
-        <span class="ef_nombre">Heal</span>
+        <span class="ef_nombre">Curación</span>
       </div>
       <img class="efecto_card_imagen" src="/assets/A.png" alt="Ace card" loading="lazy">
-      <div class="ef_desc">You recover <strong>5 HP</strong>.</div>
-      <div class="ef_desc">No maximum HP cap.</div>
+      <div class="ef_desc">Recuperas <strong>5 PS</strong>.</div>
+      <div class="ef_desc">Sin límite de PS máximos.</div>
     </div>
 
   </div>
@@ -281,7 +280,7 @@
     <!-- UNITY GAME -->
     <section id="app" class="unity_section">
       <div class="titulo_seccion">
-        <h2>Play</h2>
+        <h2>Jugar</h2>
         <div class="linea_horizontal"></div>
       </div>
 
@@ -302,7 +301,7 @@
         </div>
       </div>
 
-      <span class="unity-note">NOTE: Some features may not work correctly on Android or iOS.</span>
+      <span class="unity-note">NOTA: Algunas funcionalidades pueden presentar errores en Android o IOS.</span>
     </section>
 
 
@@ -334,9 +333,9 @@
       <aside>
 
         <div class="volver_pag_principal">
-          <a class="boton_volver_pag_princial" href="/#projects">
+          <a class="boton_volver_pag_princial" href="/es/#projects">
             <img class="volver_pag_principal_imagen" src="/assets/Arrow_symbol_white_down.png" alt="">
-            <span class="volver_pag_principal_texto">Back</span>
+            <span class="volver_pag_principal_texto">Volver</span>
           </a>
         </div>
 
@@ -344,7 +343,7 @@
           <a class="boton_siguiente_proyecto" href="https://adminclinicahuella.github.io/ClinicaHuella/">
 
             <div class="siguiente_proyecto_texto">
-              <span class="siguiente_label">Next</span>
+              <span class="siguiente_label">Siguiente</span>
               <span class="siguiente_nombre">HUELLA</span>
             </div>
             <img class="siguiente_arrow" src="/assets/Arrow_symbol_white.png" alt="">
@@ -379,7 +378,7 @@
     <div class="footer-grid">
 
       <div class="footer-social">
-        <p class="footer-heading">Contact</p>
+        <p class="footer-heading">Contacto</p>
         <div class="social">
 
           	<a class="social-a" href="https://github.com/marpalez" target="_blank" rel="noopener" aria-label="GitHub">
@@ -403,27 +402,27 @@
 
 
       <div class="footer-quicklinks">
-        <p class="footer-heading">Quick links</p>
+        <p class="footer-heading">Enlaces rápidos</p>
         <ul class="footer-links">
-          <li><a href="/#home">Home</a></li>
-          <li><a href="/#experience">Experience</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#projects">Projects</a></li>
-          <li><a href="/#stack">Standards and technologies</a></li>
-          <li><a href="/#education">Education</a></li>
+          <li><a href="/es/#home">Inicio</a></li>
+          <li><a href="/es/#experience">Experiencia laboral</a></li>
+          <li><a href="/es/#about">Sobre mí</a></li>
+          <li><a href="/es/#projects">Proyectos</a></li>
+          <li><a href="/es/#stack">Normas y tecnologías</a></li>
+          <li><a href="/es/#education">Formación</a></li>
 		    </ul>
       </div>
 
 
       <div class="footer-tagline-container">
-        <a class="footer-tagline" href="/"> D M P</a>
+        <a class="footer-tagline" href="/es/"> D M P</a>
       </div>
 
 
     </div>
 
     <div class="footer-bottom">
-		<a class="footer-copyright" href="/">
+		<a class="footer-copyright" href="/es/">
         	<span>&#169;&nbsp;</span><span id="year"></span><span>&nbsp;D M P</span>
 	  	</a>
     </div>

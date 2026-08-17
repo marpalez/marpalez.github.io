@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    data-en-content="LumenLab — Desktop application for testing laboratories: primary test notes and project planning, with standards defined as data. Built with C#, .NET and WPF by David Martínez."
+    data-es-content="LumenLab — Aplicación de escritorio para laboratorios de ensayo: tomas de notas primarias y planificación de proyectos, con las normas definidas como datos. Desarrollada con C#, .NET y WPF por David Martínez.">
+  <meta name="robots" content="index, follow">
+  <!--@head-alternates-->
+  <title>LumenLab | David Martínez</title>
+
+  <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#f1f4f5">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LumenLab | David Martínez">
+  <meta property="og:description"
+    data-en-content="Desktop application for testing laboratories: primary test notes and project planning, with standards defined as data."
+    data-es-content="Aplicación de escritorio para laboratorios de ensayo: tomas de notas primarias y planificación de proyectos, con las normas definidas como datos.">
+  <meta property="og:image" content="https://davidmarpalez.com/assets/og_image.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/projects/lumenlab/lumenlab.css">
+
+  <script type="application/ld+json" data-lang="en">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "LumenLab",
+    "url": "https://davidmarpalez.com/projects/lumenlab/",
+    "description": "Desktop application for testing laboratories. Primary test notes and project planning, with standards defined as JSON data rather than code. C#, .NET 10 and WPF, with no external dependencies.",
+    "author": { "@id": "https://davidmarpalez.com/#person" }
+  }
+  </script>
+
+  <script type="application/ld+json" data-lang="es">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "LumenLab",
+    "url": "https://davidmarpalez.com/es/projects/lumenlab/",
+    "description": "Aplicación de escritorio para laboratorios de ensayo. Tomas de notas primarias y planificación de proyectos, con las normas definidas como datos JSON en lugar de código. C#, .NET 10 y WPF, sin dependencias externas.",
+    "author": { "@id": "https://davidmarpalez.com/#person" }
+  }
+  </script>
+
+</head>
+
+
+
+
+
+
+
+<body class="proyecto">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav_inner">
+      <a href="/" class="nav_back">
+        <span class="dmp_texto">D M P</span>
+      </a>
+    </div>
+
+		<ul class="nav_enlaces" id="nav_enlaces">
+			<li><a href="/#home" data-es="Inicio" data-en="Home">Home</a></li>
+			<li><a href="/#experience" data-es="Experiencia" data-en="Experience">Experience</a></li>
+			<li><a href="/#about" data-es="Sobre mí" data-en="About">About</a></li>
+			<li><a href="/#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
+			<li><a href="/#stack" data-es="Tecnologías" data-en="Stack">Stack</a></li>
+			<li><a href="/#education" data-es="Formación" data-en="Education">Education</a></li>
+		</ul>
+
+		<div class="nav_acciones">
+			<div class="boton_idioma_container">
+				<!--@lang-switch-->
+			</div>
+
+			<button class="nav_hamburguesa" id="nav_hamburguesa" aria-label="Menú de navegación" aria-expanded="false" aria-controls="nav_enlaces">
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+
+  </nav>
+
+
+<!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
+<button id="boton_arriba" aria-label="Volver arriba">
+	<img src="/assets/Arrow_symbol_white.png" alt="">
+</button>
+
+
+
+  <div class="body80">
+
+    <!-- HERO -->
+    <section class="hero_section">
+      <img class="project_screenshot" src="/assets/lumenlab_logo.png" alt="LumenLab logo">
+      <div class="hero">
+        <h1 class="hero_titulo">LumenLab</h1>
+        <span data-es="2026" data-en="2026">2026</span>
+        <p class="hero_subtitulo"
+          data-es="Software de toma de notas de ensayo y gestión de proyectos para laboratorios"
+          data-en="Test note-taking and project management software for laboratories">
+          Test note-taking and project management software for laboratories
+        </p>
+      </div>
+    </section>
+
+
+    <!-- SOBRE EL PROYECTO -->
+    <section class="">
+      <div class="titulo_seccion">
+        <h2 data-es="Sobre el proyecto" data-en="About the project">About the project</h2>
+        <div class="linea_horizontal"></div>
+      </div>
+
+      <div class="info_grid">
+
+        <div class="info_card">
+
+          <p data-es="LumenLab es una <strong>aplicación de escritorio para tomas de notas</strong> para laboratorios y planificación de servicios."
+            data-en="LumenLab is a <strong>desktop application for testing laboratories</strong> that replaces the spreadsheet used to record tests and plan the work.">
+          </p>
+
+          <p data-es="Programa realizado tanto desde el punto de vista de técnico de laboratorio como de project manager, para que ambos puedan utilizarlo de manera intuitiva."
+            data-en="Program made from both the point of view of a laboratory technician and a project manager, so that both can use it intuitively.">
+          </p>
+
+          <p data-es="Se pueden implementar normas, toma de notas y equipo utilizados. También se pueden personalizar los diferentes estados de los proyectos, los técnicos y más."
+            data-en="Standards, note-taking procedures, and equipment usage can be implemented. Project status, laboratory technicians and more can be customized.">
+          </p>
+
+          <p data-es="Está escrito en <strong>C#</strong> sobre <strong>.NET 10</strong> y <strong>WPF</strong> con <strong>MVVM</strong>."
+            data-en="It is written in <strong>C#</strong> on <strong>.NET 10</strong> and <strong>WPF</strong> with <strong>MVVM</strong>.">
+          </p>
+
+          <div class="tech_grid">
+            <span class="etiqueta">C#</span>
+            <span class="etiqueta">.NET 10</span>
+            <span class="etiqueta">WPF</span>
+            <span class="etiqueta">MVVM</span>
+            <span class="etiqueta">JSON</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CARACTERÍSTICAS -->
+    <section class="">
+      <div class="titulo_seccion">
+        <h2 data-es="CARACTERÍSTICAS PRINCIPALES" 
+        data-en="MAIN FEATURES">
+        MAIN FEATURES</h2>
+
+        <div class="linea_horizontal"></div>
+      </div>
+
+
+      <div class="features_grid">
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="DATOS PRINCIPALES PRIMERO"
+               data-en="MAIN INFORMATION FIRST">
+               MAIN INFORMATION FIRST</div>
+
+          <div class="feature_desc"
+               data-es="El técnico debe rellenar los <strong>datos principales</strong> antes de poder rellenar el resto de campos."
+               data-en="The technician must fill in the <strong>main data</strong> before being able to fill in the rest of the fields.">
+          </div>
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_rellenarTdN.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="El técnico debe rellenar los datos principales antes de rellenar la toma de notas."></video>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="ALTA RÁPIDA DE UN SERVICIO"
+               data-en="QUICK SERVICE SETUP">
+               QUICK SERVICE SETUP</div>
+
+          <div class="feature_desc"
+               data-es="Sólo <strong>cuatro datos obligatorios</strong> para poder empezar a planificar."
+               data-en="Just <strong>four required fields</strong> to start planning.">
+          </div>
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_planificarRapido.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Alta de un servicio nuevo en LumenLab"></video>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="CUATRO VISTAS DE LA PLANIFICACIÓN"
+               data-en="FOUR PLANNING VIEWS">
+               FOUR PLANNING VIEWS</div>
+
+          <div class="feature_desc"
+               data-es="<strong>Tablero</strong> para ver lo que falta por rellenar."
+               data-en="<strong>Board</strong> for what is left to do.">
+          </div>
+
+          <div class="feature_desc"
+               data-es="<strong>Calendario</strong> para planificar."
+               data-en="<strong>Calendar</strong> for planning.">
+          </div>
+
+          <div class="feature_desc"
+               data-es="<strong>Carga</strong> para repartir el trabajo con criterio."
+               data-en="<strong>Workload</strong> to distribute the work sensibly.">
+          </div>
+
+          <div class="feature_desc"
+               data-es="<strong>BBDD</strong> para encontrar cualquier servicio."
+               data-en="<strong>Database</strong> to find any service.">
+          </div>
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_4vistas.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Las cuatro vistas de planificación de LumenLab"></video>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="FILTROS DE BÚSQUEDA"
+               data-en="SEARCH FILTERS">
+               SEARCH FILTERS</div>
+          <div class="feature_desc"
+               data-es="Filtros rápidos por <strong>estado</strong>, <strong>técnico</strong>, <strong>norma</strong> y <strong>periodo</strong>."
+               data-en="Quick filters by <strong>status</strong>, <strong>technician</strong>, <strong>standard</strong> and <strong>period</strong>.">
+          </div>
+
+          <div class="feature_desc"
+               data-es="Los filtros aplicados son comunes a las 4 vistas."
+               data-en="The filters applied are common to all 4 views.">
+          </div>
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_filtros.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Filtros de búsqueda en LumenLab"></video>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="GRUPOS"
+               data-en="GROUPS">
+               GROUPS</div>
+
+
+          <div class="feature_desc"
+               data-es="Un servicio con varias tomas de notas se puede llevar <strong>por separado</strong> o como <strong>un solo trabajo</strong>."
+               data-en="A service with several test records can be handled <strong>separately</strong> or <strong>as a single job</strong>.">
+          </div>
+          <div class="feature_desc"
+               data-es="Basta con unirlas en un <strong>grupo</strong>: pasan a dibujarse como una sola barra y sus fechas se mueven juntas."
+               data-en="Just join them into a <strong>group</strong>: they are then drawn as one bar and their dates move together.">
+          </div>
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_grupos.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Agrupar varias tomas de notas de un mismo servicio"></video>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="ESPACIO DE CALENDARIO OPTIMIZADO"
+               data-en="OPTIMIZED CALENDAR SPACE">
+               OPTIMIZED CALENDAR SPACE</div>
+
+
+          <div class="feature_desc"
+               data-es="Los paneles se <strong>colapsan</strong> y el calendario se reajusta automaticamente para ocupar el sitio que queda libre."
+               data-en="Panels <strong>collapse</strong> and the calendar rescales automatically to take the space that frees up.">
+          </div>
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_optimizarEspacio.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="AVANCE EN PORCENTAJE"
+               data-en="PROGRESS AS A PERCENTAGE">
+               PROGRESS AS A PERCENTAGE</div>
+
+
+
+          <div class="feature_desc"
+               data-es="Cada toma de notas dice <strong>cuánto lleva hecho</strong>, en porcentaje ponderado por el peso de cada apartado."
+               data-en="Each test record shows <strong>how much is done</strong>, as a percentage weighted by each section's weight.">
+          </div>
+
+          <div class="media_caracteristica">
+            <img src="/assets/imagen_progresion.png" loading="lazy"
+                 alt="Avance de las tomas de notas en porcentaje">
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="FECHA DE LOS SERVICIOS"
+               data-en="DATE OF SERVICES">
+               DATE OF SERVICES</div>
+
+          <div class="feature_desc"
+             data-es="Las fechas se cambian <strong>arrastrando la barra</strong>: por el centro se mueve entera, por los extremos se estira solo el inicio o solo el fin."
+             data-en="Dates are changed by <strong>dragging the bar</strong>: the middle moves it whole, the ends stretch only the start or only the end.">
+          </div>
+
+          <div class="feature_desc"
+               data-es="Las fechas se pueden <strong>bloquear</strong> y la barra muestra el símbolo de un candado."
+               data-en="Dates can be <strong>locked</strong> and the bar shows a padlock symbol.">
+          </div>
+
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_bloquearFechas.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+          </div>
+        </div>
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="FECHA DE LLEGADA DE MUESTRAS"
+               data-en="SAMPLE ARRIVAL DATE">
+               SAMPLE ARRIVAL DATE</div>
+
+          <div class="feature_desc"
+             data-es="Se puede marcar la <strong>fecha de llegada de las muestras</strong> y la barra muestra el símbolo de una caja."
+             data-en="The <strong>arrival date of the samples</strong> can be marked and the bar shows the symbol of a box.">
+          </div>
+
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_fechaMuestras.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="feature_card">
+          <div class="feature_nombre"
+               data-es="APARTADOS CONFIGURABLES"
+               data-en="CONFIGURABLE SECTIONS">
+               CONFIGURABLE SECTIONS</div>
+
+          <div class="feature_desc"
+             data-es="<strong>Listado de técnicos</strong>. Se puede añadir, modificar y eliminar sin riesgo a eliminar tomas de notas existentes."
+             data-en="<strong>List of technicians</strong>. It can be added, modified and deleted without risk of deleting existing notes.">
+          </div>
+
+          <div class="feature_desc"
+             data-es="<strong>Estados de los servicios</strong>. Se pueden añadir hasta 4 estados más, con selección de colores y si cuenta en carga de trabajo o no."
+             data-en="<strong>States of the services</strong>. Up to 4 more states can be added, with a selection of colors and whether it counts in workload or not.">
+          </div>
+
+          <div class="feature_desc"
+             data-es="También se puede modificar la <strong>tarifa por hora</strong>, las <strong>horas díarias de trabajo</strong> y los <strong>días laborales de cada mes</strong>."
+             data-en="You can also modify the <strong>hourly rate</strong>, the <strong>daily working hours</strong> and the <strong>working days of each month</strong>.">
+          </div>
+
+          <div class="media_caracteristica reproducible">
+            <video src="/assets/video_tarifas.mp4#t=0.1"
+                   preload="metadata" muted loop playsinline
+                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- DETALLES -->
+    <section class="">
+      <div class="titulo_seccion">
+        <h2 data-es="OTROS DETALLES" 
+        data-en="OTHER DETAILS">
+        OTHER DETAILS</h2>
+
+        <div class="linea_horizontal"></div>
+      </div>
+
+      <div class="detalles_grid">
+
+        <div class="detalle"><span class="detalle_texto"
+             data-es="En las tomas de notas se pueden configurar <strong>campos autorellenables</strong>, <strong>restricciones de relleno</strong> (por ejemplo solo letras o solo números), <strong>restricciones de caracteres</strong> (por ejemplo solo válido 1 carácter), <strong>cálculos internos</strong> (por ejemplo si una muestra cabe o no dependiendo de su tamaño) y <strong>mucho más</strong>."
+             data-en="In note taking you can configure <strong>auto-fill fields</strong>, <strong>fill restrictions</strong> (for example only letters or only numbers), <strong>character restrictions</strong> (for example only 1 character is valid), <strong>internal calculations</strong> (for example whether a sample fits or not depending on its size) and <strong>much more</strong>."></span></div>
+
+        <div class="detalle"><span class="detalle_texto"
+             data-es="Un apartado que no aplique se marca <strong>N/A</strong> y deja de contar."
+             data-en="A section that does not apply is marked <strong>N/A</strong> and stops counting."></span></div>
+
+        <div class="detalle"><span class="detalle_texto"
+             data-es="Un servicio se puede ensayar contra <strong>varias normas a la vez</strong>, cada una con su catálogo de equipos."
+             data-en="A service can be tested against <strong>several standards at once</strong>, each with its own equipment catalogue."></span></div>
+
+        <div class="detalle"><span class="detalle_texto"
+             data-es="Las <strong>pestañas se arrastran</strong> para reordenarlas, como en un navegador."
+             data-en="<strong>Tabs can be dragged</strong> to reorder them, just like in a browser."></span></div>
+
+        <div class="detalle"><span class="detalle_texto"
+             data-es="El programa <strong>avisa cuando el laboratorio publica una versión nueva</strong>, sin bloquear el trabajo de nadie."
+             data-en="The program <strong>warns when the laboratory publishes a new version</strong>, without blocking anyone's work."></span></div>
+
+        <div class="detalle"><span class="detalle_texto"
+             data-es="Las tomas de notas y la base de datos se <strong>exportan con un click</strong>."
+             data-en="Test records and the database <strong>export in one click</strong>."></span></div>
+
+
+      </div>
+    </section>
+
+
+    <!-- DECISIONES -->
+    <section class="">
+      <div class="titulo_seccion">
+        <h2 data-es="Decisiones de diseño" data-en="Design decisions">Design decisions</h2>
+        <div class="linea_horizontal"></div>
+      </div>
+
+      <div class="info_grid">
+        <div class="info_card">
+
+          <div class="decision">
+            <div class="decision_titulo"
+                 data-es="Sin servidor"
+                 data-en="No server">No server</div>
+            <p class="decision_texto"
+               data-es="Todo vive en una <strong>carpeta compartida</strong>: las tomas de notas, la lista de técnicos, la tarifa y los estados. El programa la escanea al abrirse y no hay nada más que instalar ni mantener."
+               data-en="Everything lives in a <strong>shared folder</strong>: the test records, the technician list, the rates and the statuses. The program scans it on startup and there is nothing else to install or maintain.">
+            </p>
+          </div>
+
+          <div class="decision">
+            <div class="decision_titulo"
+                 data-es="Las normas son datos"
+                 data-en="Standards are data">Standards are data</div>
+            <p class="decision_texto"
+               data-es="Las toma de notas son un <strong>fichero JSON</strong> con sus apartados, campos y reglas. Añadir, modificar o retirar un archivo es sencillo y escalable."
+               data-en="The notes are a <strong>JSON file</strong> with its sections, fields, and rules. Adding, modifying, or removing a file is simple and scalable.">
+            </p>
+          </div>
+
+
+          <div class="decision">
+            <div class="decision_titulo"
+                 data-es="Dos versiones conviviendo"
+                 data-en="Two versions coexisting">Two versions coexisting</div>
+            <p class="decision_texto"
+               data-es="Con varios equipos hay días con dos versiones del programa a la vez. Lo que una versión no entiende de un fichero <strong>se conserva en vez de descartarse</strong>, y una versión antigua puede leer un fichero nuevo pero no sobrescribirlo."
+               data-en="With several machines there are days with two versions running at once. Whatever a version does not understand in a file is <strong>preserved instead of discarded</strong>, and an older build can read a newer file but not overwrite it.">
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ASIDE NAVEGACIÓN -->
+    <section>
+      <aside>
+        <div class="volver_pag_principal">
+          <a class="boton_volver_pag_princial" href="/#projects">
+            <img class="volver_pag_principal_imagen" src="/assets/Arrow_symbol_white_down.png" alt="">
+            <span class="volver_pag_principal_texto" data-es="Volver" data-en="Back">Back</span>
+          </a>
+        </div>
+
+        <div class="siguiente_proyecto_container">
+          <a class="boton_siguiente_proyecto" href="/projects/appaseo/">
+            <div class="siguiente_proyecto_texto">
+              <span class="siguiente_label" data-es="Siguiente" data-en="Next">Next</span>
+              <span class="siguiente_nombre">APPASEO</span>
+            </div>
+            <img class="siguiente_arrow" src="/assets/Arrow_symbol_white.png" alt="">
+          </a>
+        </div>
+      </aside>
+    </section>
+
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-social">
+        <p class="footer-heading" data-es="Contacto" data-en="Contact">Contact</p>
+        <div class="social">
+
+          	<a class="social-a" href="https://github.com/marpalez" target="_blank" rel="noopener" aria-label="GitHub">
+            	<img class="social-img" src="/assets/gh.png" alt="">
+          	</a>
+
+			<a class="social-a" href="https://www.linkedin.com/in/davidmartinezpalomares/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            	<img class="social-img" src="/assets/linkedin.png" alt="">
+          	</a>
+
+		    <a class="social-a" href="mailto:davidmarpalez@gmail.com" aria-label="Email">
+            	<img class="social-img" src="/assets/gmail.png" alt="">
+          	</a>
+
+			<a class="social-a" href="https://t.me/davidmarpalez" target="_blank" rel="noopener" aria-label="Telegram">
+            	<img class="social-img" src="/assets/telegram.png" alt="">
+          	</a>
+
+        </div>
+      </div>
+
+
+      <div class="footer-quicklinks">
+        <p class="footer-heading" data-es="Enlaces rápidos" data-en="Quick links">Quick links</p>
+        <ul class="footer-links">
+          <li><a href="/#home" data-es="Inicio" data-en="Home">Home</a></li>
+          <li><a href="/#experience" data-es="Experiencia laboral" data-en="Experience">Experience</a></li>
+          <li><a href="/#about" data-es="Sobre mí" data-en="About">About</a></li>
+          <li><a href="/#projects" data-es="Proyectos" data-en="Projects">Projects</a></li>
+          <li><a href="/#stack" data-es="Normas y tecnologías" data-en="Standards and technologies">Standards and technologies</a></li>
+          <li><a href="/#education" data-es="Formación" data-en="Education">Education</a></li>
+		    </ul>
+      </div>
+
+
+      <div class="footer-tagline-container">
+        <a class="footer-tagline" href="/"> D M P</a>
+      </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+		<a class="footer-copyright" href="/">
+        	<span>&#169;&nbsp;</span><span id="year"></span><span>&nbsp;D M P</span>
+	  	</a>
+    </div>
+
+  </footer>
+
+
+
+
+  <!-- IDIOMA + ANIMACIONES -->
+  <script src="/nav.js"></script>
+  <script src="/projects/lumenlab/lumenlab.js"></script>
+
+</body>
+</html>
