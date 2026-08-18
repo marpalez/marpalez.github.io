@@ -1,10 +1,9 @@
-<!-- Generado por build.mjs desde src\projects\memoryroyale\index.html — no editar a mano -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Memory Royale — Juego de cartas de memoria multijugador local (2–4 jugadores) desarrollado en Unity con C# por David Martínez, jugable desde el navegador con WebGL.">
+  <meta name="description" content="Memory Royale — Juego de cartas 2D multijugador local desarrollado en Unity con C# por David Martínez.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://davidmarpalez.com/es/projects/memoryroyale/">
 	<link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/memoryroyale/">
@@ -23,55 +22,43 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Memory Royale | David Martínez">
-  <meta property="og:description" content="Juego de cartas de memoria multijugador local (2–4 jugadores) desarrollado en Unity, jugable desde el navegador con WebGL.">
+  <meta property="og:description" content="Juego de cartas 2D multijugador local desarrollado en Unity con C#.">
   <meta property="og:image" content="https://davidmarpalez.com/assets/og_image.png">
 
-  <link rel="stylesheet" href="/fonts.css">
-  <link rel="stylesheet" href="/normalize.css">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/projects/memoryroyale/memoryroyale.css">
+  <link rel="stylesheet" href="../../../fonts.css">
+  <link rel="stylesheet" href="../../../normalize.css">
+  <link rel="stylesheet" href="../../../projects/memoryroyale/memoryroyale.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "VideoGame",
+    "@type": "CreativeWork",
     "name": "Memory Royale",
     "url": "https://davidmarpalez.com/es/projects/memoryroyale/",
-    "description": "Juego de cartas de memoria multijugador local (2–4 jugadores) desarrollado en Unity con C#, jugable desde el navegador con WebGL.",
+    "description": "Juego de memoria multijugador local para 2 a 4 jugadores, desarrollado en Unity con C#, una máquina de estados por turno y animaciones con DOTween.",
     "author": { "@id": "https://davidmarpalez.com/#person" }
   }
   </script>
 
 </head>
 
+<body>
 
-
-
-
-
-
-
-
-
-
-<body class="proyecto">
-
-<!--PANEL NAVEGACION------------------>
+  <!-- NAV -->
   <nav>
-    
     <div class="nav_inner">
-      <a href="/es/" class="nav_back">
+      <a href="/" class="nav_back">
         <span class="dmp_texto">D M P</span>
       </a>
     </div>
 
 		<ul class="nav_enlaces" id="nav_enlaces">
-			<li><a href="/es/#home">Inicio</a></li>
-			<li><a href="/es/#experience">Experiencia</a></li>
-			<li><a href="/es/#about">Sobre mí</a></li>
-			<li><a href="/es/#projects">Proyectos</a></li>
-			<li><a href="/es/#stack">Tecnologías</a></li>
-			<li><a href="/es/#education">Formación</a></li>
+			<li><a href="/#home">Inicio</a></li>
+			<li><a href="/#experience">Experiencia</a></li>
+			<li><a href="/#about">Sobre mí</a></li>
+			<li><a href="/#projects">Proyectos</a></li>
+			<li><a href="/#stack">Tecnologías</a></li>
+			<li><a href="/#education">Formación</a></li>
 		</ul>
 
 		<div class="nav_acciones">
@@ -87,205 +74,133 @@
   </nav>
 
 
-<!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
-<button id="boton_arriba" aria-label="Volver arriba">
-	<img src="/assets/Arrow_symbol_white.png" alt="">
-</button>
+  <!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
+  <button id="boton_arriba" aria-label="Volver arriba">
+    <img src="/assets/Arrow_symbol_white.png" alt="">
+  </button>
 
 
+  <!-- WHAT IS -->
+  <section class="escena-principal-section">
 
-  <div class="body80">
+    <div class="escena-principal-fondo">
+      <img class="escena-principal-fondo-imagen" src="/assets/MemoryRoyale.webp" alt="" loading="lazy">
+    </div>
 
+    <div class="escena-principal-contenido">
 
-    <!-- HERO -->
-    <section class="hero_section">
-      <img class="project_screenshot" src="/assets/memoryRoyale_logo2.webp" alt="Memory Royale logo">
-      <div class="hero">
-        <h1 class="hero_titulo">Memory Royale</h1>
-        <span>2026</span>
-        <p class="hero_subtitulo">Juego de cartas 2D desarrollado en Unity</p>
-      </div>
-      <a class="btn-try-app" href="#app">Ir a la aplicación</a>
+      <img class="escena-principal-logo" src="/assets/memoryRoyale_logo2.webp" alt="Logo de Memory Royale">
 
+      <h2 class="escena-principal-titulo">¿Qué es Memory Royale?</h2>
 
-    </section>
+      <div class="escena-principal-texto">
 
+        <p class="escena-principal-parrafo">Memory Royale es un <strong>juego de memoria multijugador local (2 – 4 jugadores, hotseat)</strong> desarrollado en <strong>Unity con C#</strong>.</p>
 
+        <p class="escena-principal-parrafo">Cada jugador tiene <strong>puntos de salud</strong> y se trata de <strong>debilitar a los rivales con los efectos de las cartas</strong> cuando se encuentran parejas.</p>
 
+        <p class="escena-principal-parrafo">La arquitectura central se basa en una <strong>máquina de estados con cuatro fases por turno</strong> (inicio, intento, selección y fin), gestionada por la clase GameLogic.</p>
 
+        <p class="escena-principal-parrafo">Las cartas y los paneles de jugador se generan mediante <strong>prefabs instanciados dinámicamente</strong> en tiempo de ejecución.</p>
 
+        <p class="escena-principal-parrafo">Se utilizaron <strong>corrutinas</strong> para sincronizar el retardo entre el volteo de cartas y su ocultación, y para dar tiempo de lectura al narrador durante los efectos automáticos.</p>
 
+        <p class="escena-principal-parrafo">Las animaciones se implementaron con <strong>DOTween</strong>.</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- SOBRE EL PROYECTO -->
-    <section class="">
-      <div class="titulo_seccion">
-        <h2>Sobre el proyecto</h2>
-        <div class="linea_horizontal"></div>
-      </div>
-
-      <div class="info_grid">
-
-        <div class="info_card">
-
-          <p>Memory Royale es un <strong>juego de memoria multijugador local (2 – 4 jugadores, hotseat)</strong> desarrollado en <strong>Unity con C#</strong>.</p>
-          <p>Cada jugador tiene <strong>puntos de salud</strong> y se trata de <strong>debilitar a los rivales con los efectos de las cartas</strong> cuando se encuentran pares iguales.</p>
-          <p>La arquitectura central se basa en una <strong>máquina de estados con cuatro fases por turno</strong> (inicio, intento, selección y fin), gestionada por la clase GameLogic.</p>
-          <p>Las cartas y los paneles de jugador se generan mediante <strong>prefabs instanciados dinámicamente</strong> en tiempo de ejecución.</p>
-          <p>Se utilizaron <strong>corrutinas</strong> para sincronizar el retardo entre el volteo de cartas y su ocultación, y para dar tiempo de lectura al narrador en los efectos automáticos.</p>
-          <p>Las animaciones se implementaron con <strong>DOTween</strong>.</p>
-          <div class="tech_grid">
-            <span class="etiqueta">Unity</span>
-            <span class="etiqueta">C#</span>
-            <span class="etiqueta">DOTween</span>
-            <span class="etiqueta">ScriptableObjects</span>
-            <span class="etiqueta">WebGL</span>
-            <span class="etiqueta">Prefabs</span>
-          </div>
+        <div class="escena-principal-tecnologias">
+          <span class="escena-principal-etiqueta">Unity</span>
+          <span class="escena-principal-etiqueta">C#</span>
+          <span class="escena-principal-etiqueta">DOTween</span>
+          <span class="escena-principal-etiqueta">ScriptableObjects</span>
+          <span class="escena-principal-etiqueta">WebGL</span>
+          <span class="escena-principal-etiqueta">Prefabs</span>
         </div>
+
       </div>
-    </section>
+
+      <a class="escena-principal-boton" href="#app">Ir a la aplicación</a>
+
+    </div>
+  </section>
 
 
+  <!-- CARD EFFECTS -->
+  <section class="efectos-section">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--CARD EFFECTS-->
-<section>
-  <div class="titulo_seccion">
-    <h2>Efectos de cartas</h2>
-    <div class="linea_horizontal"></div>
-  </div>
-
-  <div class="efectos_grid">
-
-    <div class="efecto_card">
-      <div class="efecto_card__header">
-        <span class="ef_valor ef_valor--num">2 – 10</span>
-        <span class="ef_nombre">Daño directo</span>
-      </div>
-      <img class="efecto_card_imagen" src="/assets/2-10.png" alt="Number cards 2 to 10" loading="lazy">
-      <div class="ef_desc">Resta <strong>tantos PS al rival elegido como valor tenga la carta</strong>.</div>
+    <div class="titulo-seccion">
+      <div class="titulo-seccion-linea"></div>
+      <h2 class="titulo-seccion-texto">EFECTOS DE CARTAS</h2>
     </div>
 
-    <div class="efecto_card">
-      <div class="efecto_card__header">
-        <span class="ef_valor ef_valor--special">J</span>
-        <span class="ef_nombre">Robo de vida</span>
+    <div class="efectos-lista">
+
+      <div class="efecto-carta">
+        <div class="efecto-carta-cabecera">
+          <span class="efecto-carta-valor">2 – 10</span>
+          <span class="efecto-carta-nombre">Daño directo</span>
+        </div>
+        <img class="efecto-carta-imagen" src="/assets/2-10.png" alt="Cartas numéricas del 2 al 10" loading="lazy">
+        <div class="efecto-carta-descripcion">Resta <strong>tantos PS al rival elegido como valor tenga la carta</strong>.</div>
       </div>
-      <img class="efecto_card_imagen" src="/assets/J.png" alt="Jack card" loading="lazy">
-      <div class="ef_desc">Recuperas <strong>2 PS</strong>.</div>
-      <div class="ef_desc">Todos los rivales reciben <strong>2 PS de daño</strong>.</div>
+
+      <div class="efecto-carta">
+        <div class="efecto-carta-cabecera">
+          <span class="efecto-carta-valor">J</span>
+          <span class="efecto-carta-nombre">Robo de vida</span>
+        </div>
+        <img class="efecto-carta-imagen" src="/assets/J.png" alt="Carta de jota" loading="lazy">
+        <div class="efecto-carta-descripcion">Recuperas <strong>2 PS</strong>.</div>
+        <div class="efecto-carta-descripcion">Todos los rivales reciben <strong>2 PS de daño</strong>.</div>
+      </div>
+
+      <div class="efecto-carta">
+        <div class="efecto-carta-cabecera">
+          <span class="efecto-carta-valor">Q</span>
+          <span class="efecto-carta-nombre">Daño en área</span>
+        </div>
+        <img class="efecto-carta-imagen" src="/assets/Q.png" alt="Carta de reina" loading="lazy">
+        <div class="efecto-carta-descripcion">Todos los rivales reciben <strong>5 PS de daño</strong>.</div>
+        <div class="efecto-carta-descripcion">Tú no recibes daño.</div>
+      </div>
+
+      <div class="efecto-carta">
+        <div class="efecto-carta-cabecera">
+          <span class="efecto-carta-valor">K</span>
+          <span class="efecto-carta-nombre">Escudo</span>
+        </div>
+        <img class="efecto-carta-imagen" src="/assets/K.png" alt="Carta de rey" loading="lazy">
+        <div class="efecto-carta-descripcion">Obtienes un <strong>escudo que bloquea el siguiente daño</strong> recibido.</div>
+        <div class="efecto-carta-descripcion">Máximo <strong>3 escudos</strong>.</div>
+      </div>
+
+      <div class="efecto-carta">
+        <div class="efecto-carta-cabecera">
+          <span class="efecto-carta-valor">A</span>
+          <span class="efecto-carta-nombre">Curación</span>
+        </div>
+        <img class="efecto-carta-imagen" src="/assets/A.png" alt="Carta de as" loading="lazy">
+        <div class="efecto-carta-descripcion">Recuperas <strong>5 PS</strong>.</div>
+        <div class="efecto-carta-descripcion">Sin límite de PS máximos.</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- UNITY -->
+  <section class="unity-section" id="app">
+
+    <div class="titulo-seccion">
+      <div class="titulo-seccion-linea"></div>
+      <h2 class="titulo-seccion-texto">JUGAR</h2>
     </div>
 
-    <div class="efecto_card">
-      <div class="efecto_card__header">
-        <span class="ef_valor ef_valor--special">Q</span>
-        <span class="ef_nombre">Daño en área</span>
-      </div>
-      <img class="efecto_card_imagen" src="/assets/Q.png" alt="Queen card" loading="lazy">
-      <div class="ef_desc">Todos los rivales reciben <strong>5 PS de daño</strong>.</div>
-      <div class="ef_desc">Tú no recibes daño.</div>
-    </div>
-
-    <div class="efecto_card">
-      <div class="efecto_card__header">
-        <span class="ef_valor ef_valor--special">K</span>
-        <span class="ef_nombre">Escudo</span>
-      </div>
-      <img class="efecto_card_imagen" src="/assets/K.png" alt="King card" loading="lazy">
-      <div class="ef_desc">Obtienes un <strong>escudo que bloquea el siguiente daño</strong> recibido.</div>
-      <div class="ef_desc">Máximo <strong>3 escudos</strong>.</div>
-    </div>
-
-    <div class="efecto_card">
-      <div class="efecto_card__header">
-        <span class="ef_valor ef_valor--special">A</span>
-        <span class="ef_nombre">Curación</span>
-      </div>
-      <img class="efecto_card_imagen" src="/assets/A.png" alt="Ace card" loading="lazy">
-      <div class="ef_desc">Recuperas <strong>5 PS</strong>.</div>
-      <div class="ef_desc">Sin límite de PS máximos.</div>
-    </div>
-
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- UNITY GAME -->
-    <section id="app" class="unity_section">
-      <div class="titulo_seccion">
-        <h2>Jugar</h2>
-        <div class="linea_horizontal"></div>
-      </div>
+    <div class="unity-contenido">
 
       <div id="unity-fullscreen-button"></div>
-      
-      <div class="unity_wrapper">
-        <div class="unity_canvas_container">
+
+      <div class="unity-marco">
+        <div class="unity-lienzo">
           <div id="unity-container">
             <canvas id="unity-canvas" tabindex="-1"></canvas>
             <div id="unity-loading-bar">
@@ -299,76 +214,33 @@
         </div>
       </div>
 
-      <span class="unity-note">NOTA: Algunas funcionalidades pueden presentar errores en Android o IOS.</span>
-    </section>
+      <span class="unity-nota">NOTA: Algunas funcionalidades pueden presentar errores en Android o IOS.</span>
+
+    </div>
+  </section>
 
 
+  <!-- ASIDE NAVEGACIÓN -->
+  <section class="navegacion-proyectos-section">
+    <aside>
+      <div class="volver-contenedor">
+        <a class="volver-enlace" href="/#projects">
+          <img class="volver-icono" src="/assets/Arrow_symbol_white_down.png" alt="">
+          <span class="volver-texto">Volver</span>
+        </a>
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- SIGUIENTE PROYECTO -->
-    <section>
-      <aside>
-
-        <div class="volver_pag_principal">
-          <a class="boton_volver_pag_princial" href="/es/#projects">
-            <img class="volver_pag_principal_imagen" src="/assets/Arrow_symbol_white_down.png" alt="">
-            <span class="volver_pag_principal_texto">Volver</span>
-          </a>
-        </div>
-
-        <div class="siguiente_proyecto_container">
-          <a class="boton_siguiente_proyecto" href="https://adminclinicahuella.github.io/ClinicaHuella/">
-
-            <div class="siguiente_proyecto_texto">
-              <span class="siguiente_label">Siguiente</span>
-              <span class="siguiente_nombre">HUELLA</span>
-            </div>
-            <img class="siguiente_arrow" src="/assets/Arrow_symbol_white.png" alt="">
-          </a>
-        </div>
-
-      </aside>
-    </section>
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <div class="siguiente-contenedor">
+        <a class="siguiente-enlace" href="/es/projects/lumenlab/">
+          <div class="siguiente-textos">
+            <span class="siguiente-etiqueta">Siguiente</span>
+            <span class="siguiente-nombre">LumenLab</span>
+          </div>
+          <img class="siguiente-icono" src="/assets/Arrow_symbol_white.png" alt="">
+        </a>
+      </div>
+    </aside>
+  </section>
 
 
   <!-- ===================== FOOTER ===================== -->
@@ -402,56 +274,30 @@
       <div class="footer-quicklinks">
         <p class="footer-heading">Enlaces rápidos</p>
         <ul class="footer-links">
-          <li><a href="/es/#home">Inicio</a></li>
-          <li><a href="/es/#experience">Experiencia laboral</a></li>
-          <li><a href="/es/#about">Sobre mí</a></li>
-          <li><a href="/es/#projects">Proyectos</a></li>
-          <li><a href="/es/#stack">Normas y tecnologías</a></li>
-          <li><a href="/es/#education">Formación</a></li>
+          <li><a href="/#home">Inicio</a></li>
+          <li><a href="/#experience">Experiencia laboral</a></li>
+          <li><a href="/#about">Sobre mí</a></li>
+          <li><a href="/#projects">Proyectos</a></li>
+          <li><a href="/#stack">Normas y tecnologías</a></li>
+          <li><a href="/#education">Formación</a></li>
 		    </ul>
       </div>
 
 
       <div class="footer-tagline-container">
-        <a class="footer-tagline" href="/es/"> D M P</a>
+        <a class="footer-tagline" href="/"> D M P</a>
       </div>
 
 
     </div>
 
     <div class="footer-bottom">
-		<a class="footer-copyright" href="/es/">
+		<a class="footer-copyright" href="/">
         	<span>&#169;&nbsp;</span><span id="year"></span><span>&nbsp;D M P</span>
 	  	</a>
     </div>
 
   </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <!-- UNITY LOADER -->
@@ -518,7 +364,6 @@
   </script>
 
   <!-- IDIOMA + ANIMACIONES -->
-  <script src="/nav.js"></script>
   <script src="/projects/memoryroyale/memoryroyale.js"></script>
 
 </body>

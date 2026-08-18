@@ -26,10 +26,9 @@
   <meta property="og:description" content="Aplicación de escritorio para laboratorios de ensayo: tomas de notas primarias y planificación de proyectos, con las normas definidas como datos.">
   <meta property="og:image" content="https://davidmarpalez.com/assets/og_image.png">
 
-  <link rel="stylesheet" href="/fonts.css">
-  <link rel="stylesheet" href="/normalize.css">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/projects/lumenlab/lumenlab.css">
+  <link rel="stylesheet" href="../../../fonts.css">
+  <link rel="stylesheet" href="../../../normalize.css">
+  <link rel="stylesheet" href="../../../projects/lumenlab/lumenlab.css">
 
   <script type="application/ld+json">
   {
@@ -50,23 +49,23 @@
 
 
 
-<body class="proyecto">
+<body>
 
   <!-- NAV -->
   <nav>
     <div class="nav_inner">
-      <a href="/es/" class="nav_back">
+      <a href="/" class="nav_back">
         <span class="dmp_texto">D M P</span>
       </a>
     </div>
 
 		<ul class="nav_enlaces" id="nav_enlaces">
-			<li><a href="/es/#home">Inicio</a></li>
-			<li><a href="/es/#experience">Experiencia</a></li>
-			<li><a href="/es/#about">Sobre mí</a></li>
-			<li><a href="/es/#projects">Proyectos</a></li>
-			<li><a href="/es/#stack">Tecnologías</a></li>
-			<li><a href="/es/#education">Formación</a></li>
+			<li><a href="/#home">Inicio</a></li>
+			<li><a href="/#experience">Experiencia</a></li>
+			<li><a href="/#about">Sobre mí</a></li>
+			<li><a href="/#projects">Proyectos</a></li>
+			<li><a href="/#stack">Tecnologías</a></li>
+			<li><a href="/#education">Formación</a></li>
 		</ul>
 
 		<div class="nav_acciones">
@@ -82,251 +81,150 @@
   </nav>
 
 
-<!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
-<button id="boton_arriba" aria-label="Volver arriba">
-	<img src="/assets/Arrow_symbol_white.png" alt="">
-</button>
+  <!--BOTÓN SUBIR AUTOMATICAMENTE------------------>
+  <button id="boton_arriba" aria-label="Volver arriba">
+    <img src="/assets/Arrow_symbol_white.png" alt="">
+  </button>
 
 
 
-  <div class="body80">
+ 
 
-    <!-- HERO -->
-    <section class="hero_section">
-      <img class="project_screenshot" src="/assets/lumenlab_logo.png" alt="LumenLab logo">
-      <div class="hero">
-        <h1 class="hero_titulo">LumenLab</h1>
-        <span>2026</span>
-        <p class="hero_subtitulo">Software de toma de notas de ensayo y gestión de proyectos para laboratorios</p>
+
+
+
+  <!-- WHAT IS -->
+  <section class="escena-principal-section">
+
+    <div class="escena-principal-fondo">
+      <img class="escena-principal-fondo-imagen" src="/assets/lumenlab.png" alt="" loading="lazy">
+    </div>
+
+    <div class="escena-principal-contenido">
+
+      <img class="escena-principal-logo" src="/assets/lumenlab_logo.png" alt="LumenLab logo">
+
+      <h2 class="escena-principal-titulo">¿Qué es LumenLab?</h2>
+
+      <div class="escena-principal-texto">
+
+        <p class="escena-principal-parrafo">LumenLab es una <strong>aplicación de escritorio para tomas de notas</strong> para laboratorios y planificación de servicios.</p>
+
+        <p class="escena-principal-parrafo">Programa realizado tanto desde el punto de vista de técnico de laboratorio como de project manager, para que ambos puedan utilizarlo de manera intuitiva.</p>
+
+        <p class="escena-principal-parrafo">Se pueden implementar normas, toma de notas y equipo utilizados. También se pueden personalizar los diferentes estados de los proyectos, los técnicos y más.</p>
+
+        <p class="escena-principal-parrafo">Está escrito en <strong>C#</strong> sobre <strong>.NET 10</strong> y <strong>WPF</strong> con <strong>MVVM</strong>.</p>
+
+        <div class="escena-principal-tecnologias">
+          <span class="escena-principal-etiqueta">C#</span>
+          <span class="escena-principal-etiqueta">.NET 10</span>
+          <span class="escena-principal-etiqueta">WPF</span>
+          <span class="escena-principal-etiqueta">MVVM</span>
+          <span class="escena-principal-etiqueta">JSON</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- MAIN FEATURES -->
+  <section class="caracteristicas-section">
+
+
+    <div class="titulo-seccion">
+      <div class="titulo-seccion-linea"></div>
+      <h2 class="titulo-seccion-texto">CARACTERÍSTICAS PRINCIPALES</h2>
+    </div>
+
+
+
+
+    <section class="caracteristica-section">
+
+      
+
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">DATOS PRINCIPALES PRIMERO</h2>
+
+          <div class="caracteristica-descripcion">El técnico debe rellenar los <strong>datos principales</strong> antes de poder rellenar el resto de campos.</div>
+        </div>
+
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_rellenarTdN.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="El técnico debe rellenar los datos principales antes de rellenar la toma de notas."></video>
+        </div>
+
+
       </div>
     </section>
 
 
-    <!-- SOBRE EL PROYECTO -->
-    <section class="">
-      <div class="titulo_seccion">
-        <h2>Sobre el proyecto</h2>
-        <div class="linea_horizontal"></div>
-      </div>
 
-      <div class="info_grid">
+    <section class="caracteristica-section caracteristica-section--invertida">
 
-        <div class="info_card">
+      
 
-          <p>LumenLab es una <strong>aplicación de escritorio para tomas de notas</strong> para laboratorios y planificación de servicios.</p>
+      <div class="caracteristica-contenido">
 
-          <p>Programa realizado tanto desde el punto de vista de técnico de laboratorio como de project manager, para que ambos puedan utilizarlo de manera intuitiva.</p>
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">ALTA RÁPIDA DE UN SERVICIO</h2>
 
-          <p>Se pueden implementar normas, toma de notas y equipo utilizados. También se pueden personalizar los diferentes estados de los proyectos, los técnicos y más.</p>
-
-          <p>Está escrito en <strong>C#</strong> sobre <strong>.NET 10</strong> y <strong>WPF</strong> con <strong>MVVM</strong>.</p>
-
-          <div class="tech_grid">
-            <span class="etiqueta">C#</span>
-            <span class="etiqueta">.NET 10</span>
-            <span class="etiqueta">WPF</span>
-            <span class="etiqueta">MVVM</span>
-            <span class="etiqueta">JSON</span>
-          </div>
-
+          <div class="caracteristica-descripcion">Sólo <strong>cuatro datos obligatorios</strong> para poder empezar a planificar.</div>
         </div>
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_planificarRapido.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Alta de un servicio nuevo en LumenLab"></video>
+        </div>
+
       </div>
     </section>
 
 
-    <!-- CARACTERÍSTICAS -->
-    <section class="">
-      <div class="titulo_seccion">
-        <h2>CARACTERÍSTICAS PRINCIPALES</h2>
 
-        <div class="linea_horizontal"></div>
-      </div>
+    <section class="caracteristica-section">
 
+      
 
-      <div class="features_grid">
+      <div class="caracteristica-contenido">
 
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">CUATRO VISTAS</h2>
+          <p class="caracteristica-descripcion">El mismo trabajo, mirado de cuatro maneras:</p>
 
-        <div class="feature_card">
-          <div class="feature_nombre">DATOS PRINCIPALES PRIMERO</div>
-
-          <div class="feature_desc">El técnico debe rellenar los <strong>datos principales</strong> antes de poder rellenar el resto de campos.</div>
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_rellenarTdN.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="El técnico debe rellenar los datos principales antes de rellenar la toma de notas."></video>
-          </div>
+          <ul class="caracteristica-lista">
+            <li class="caracteristica-lista-item"><strong>Tablero</strong> para ver lo que falta por rellenar.</li>
+            <li class="caracteristica-lista-item"><strong>Calendario</strong> para planificar.</li>
+            <li class="caracteristica-lista-item"><strong>Carga</strong> para repartir el trabajo con criterio.</li>
+            <li class="caracteristica-lista-item"><strong>BBDD</strong> para encontrar cualquier servicio.</li>
+          </ul>
         </div>
 
 
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">ALTA RÁPIDA DE UN SERVICIO</div>
-
-          <div class="feature_desc">Sólo <strong>cuatro datos obligatorios</strong> para poder empezar a planificar.</div>
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_planificarRapido.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Alta de un servicio nuevo en LumenLab"></video>
-          </div>
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_4vistas.mp4#t=0.1"
+                 preload="metadata" muted loop playsinline
+                 aria-label="Las cuatro vistas de planificación de LumenLab"></video>
         </div>
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">CUATRO VISTAS DE LA PLANIFICACIÓN</div>
-
-          <div class="feature_desc"><strong>Tablero</strong> para ver lo que falta por rellenar.</div>
-
-          <div class="feature_desc"><strong>Calendario</strong> para planificar.</div>
-
-          <div class="feature_desc"><strong>Carga</strong> para repartir el trabajo con criterio.</div>
-
-          <div class="feature_desc"><strong>BBDD</strong> para encontrar cualquier servicio.</div>
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_4vistas.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Las cuatro vistas de planificación de LumenLab"></video>
-          </div>
-        </div>
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">FILTROS DE BÚSQUEDA</div>
-          <div class="feature_desc">Filtros rápidos por <strong>estado</strong>, <strong>técnico</strong>, <strong>norma</strong> y <strong>periodo</strong>.</div>
-
-          <div class="feature_desc">Los filtros aplicados son comunes a las 4 vistas.</div>
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_filtros.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Filtros de búsqueda en LumenLab"></video>
-          </div>
-        </div>
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">GRUPOS</div>
-
-
-          <div class="feature_desc">Un servicio con varias tomas de notas se puede llevar <strong>por separado</strong> o como <strong>un solo trabajo</strong>.</div>
-          <div class="feature_desc">Basta con unirlas en un <strong>grupo</strong>: pasan a dibujarse como una sola barra y sus fechas se mueven juntas.</div>
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_grupos.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Agrupar varias tomas de notas de un mismo servicio"></video>
-          </div>
-        </div>
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">ESPACIO DE CALENDARIO OPTIMIZADO</div>
-
-
-          <div class="feature_desc">Los paneles se <strong>colapsan</strong> y el calendario se reajusta automaticamente para ocupar el sitio que queda libre.</div>
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_optimizarEspacio.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
-          </div>
-        </div>
-
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">AVANCE EN PORCENTAJE</div>
-
-
-
-          <div class="feature_desc">Cada toma de notas dice <strong>cuánto lleva hecho</strong>, en porcentaje ponderado por el peso de cada apartado.</div>
-
-          <div class="media_caracteristica">
-            <img src="/assets/imagen_progresion.png" loading="lazy"
-                 alt="Avance de las tomas de notas en porcentaje">
-          </div>
-        </div>
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">FECHA DE LOS SERVICIOS</div>
-
-          <div class="feature_desc">Las fechas se cambian <strong>arrastrando la barra</strong>: por el centro se mueve entera, por los extremos se estira solo el inicio o solo el fin.</div>
-
-          <div class="feature_desc">Las fechas se pueden <strong>bloquear</strong> y la barra muestra el símbolo de un candado.</div>
-
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_bloquearFechas.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
-          </div>
-        </div>
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">FECHA DE LLEGADA DE MUESTRAS</div>
-
-          <div class="feature_desc">Se puede marcar la <strong>fecha de llegada de las muestras</strong> y la barra muestra el símbolo de una caja.</div>
-
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_fechaMuestras.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
-          </div>
-        </div>
-
-
-
-
-
-        <div class="feature_card">
-          <div class="feature_nombre">APARTADOS CONFIGURABLES</div>
-
-          <div class="feature_desc"><strong>Listado de técnicos</strong>. Se puede añadir, modificar y eliminar sin riesgo a eliminar tomas de notas existentes.</div>
-
-          <div class="feature_desc"><strong>Estados de los servicios</strong>. Se pueden añadir hasta 4 estados más, con selección de colores y si cuenta en carga de trabajo o no.</div>
-
-          <div class="feature_desc">También se puede modificar la <strong>tarifa por hora</strong>, las <strong>horas díarias de trabajo</strong> y los <strong>días laborales de cada mes</strong>.</div>
-
-          <div class="media_caracteristica reproducible">
-            <video src="/assets/video_tarifas.mp4#t=0.1"
-                   preload="metadata" muted loop playsinline
-                   aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-
       </div>
     </section>
 
@@ -336,97 +234,292 @@
 
 
 
+    <section class="caracteristica-section caracteristica-section--invertida">
 
+      <div class="caracteristica-contenido">
 
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">FILTROS DE BÚSQUEDA</h2>
+          <div class="caracteristica-descripcion">Filtros rápidos por <strong>estado</strong>, <strong>técnico</strong>, <strong>norma</strong> y <strong>periodo</strong>.</div>
 
+          <div class="caracteristica-descripcion">Los filtros aplicados son comunes a las 4 vistas.</div>
+        </div>
 
-
-
-
-
-
-
-    <!-- DETALLES -->
-    <section class="">
-      <div class="titulo_seccion">
-        <h2>OTROS DETALLES</h2>
-
-        <div class="linea_horizontal"></div>
-      </div>
-
-      <div class="detalles_grid">
-
-        <div class="detalle"><span class="detalle_texto">En las tomas de notas se pueden configurar <strong>campos autorellenables</strong>, <strong>restricciones de relleno</strong> (por ejemplo solo letras o solo números), <strong>restricciones de caracteres</strong> (por ejemplo solo válido 1 carácter), <strong>cálculos internos</strong> (por ejemplo si una muestra cabe o no dependiendo de su tamaño) y <strong>mucho más</strong>.</span></div>
-
-        <div class="detalle"><span class="detalle_texto">Un apartado que no aplique se marca <strong>N/A</strong> y deja de contar.</span></div>
-
-        <div class="detalle"><span class="detalle_texto">Un servicio se puede ensayar contra <strong>varias normas a la vez</strong>, cada una con su catálogo de equipos.</span></div>
-
-        <div class="detalle"><span class="detalle_texto">Las <strong>pestañas se arrastran</strong> para reordenarlas, como en un navegador.</span></div>
-
-        <div class="detalle"><span class="detalle_texto">El programa <strong>avisa cuando el laboratorio publica una versión nueva</strong>, sin bloquear el trabajo de nadie.</span></div>
-
-        <div class="detalle"><span class="detalle_texto">Las tomas de notas y la base de datos se <strong>exportan con un click</strong>.</span></div>
-
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_filtros.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Filtros de búsqueda en LumenLab"></video>
+        </div>
 
       </div>
     </section>
 
 
-    <!-- DECISIONES -->
-    <section class="">
-      <div class="titulo_seccion">
-        <h2>Decisiones de diseño</h2>
-        <div class="linea_horizontal"></div>
+
+
+    <section class="caracteristica-section">
+
+      
+
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">GRUPOS</h2>
+
+          <div class="caracteristica-descripcion">Un servicio con varias tomas de notas se puede llevar <strong>por separado</strong> o como <strong>un solo trabajo</strong>.</div>
+          <div class="caracteristica-descripcion">Basta con unirlas en un <strong>grupo</strong>: pasan a dibujarse como una sola barra y sus fechas se mueven juntas.</div>
+        </div>
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_grupos.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Agrupar varias tomas de notas de un mismo servicio"></video>
+        </div>
+
       </div>
-
-      <div class="info_grid">
-        <div class="info_card">
-
-          <div class="decision">
-            <div class="decision_titulo">Sin servidor</div>
-            <p class="decision_texto">Todo vive en una <strong>carpeta compartida</strong>: las tomas de notas, la lista de técnicos, la tarifa y los estados. El programa la escanea al abrirse y no hay nada más que instalar ni mantener.</p>
-          </div>
-
-          <div class="decision">
-            <div class="decision_titulo">Las normas son datos</div>
-            <p class="decision_texto">Las toma de notas son un <strong>fichero JSON</strong> con sus apartados, campos y reglas. Añadir, modificar o retirar un archivo es sencillo y escalable.</p>
-          </div>
+    </section>
 
 
-          <div class="decision">
-            <div class="decision_titulo">Dos versiones conviviendo</div>
-            <p class="decision_texto">Con varios equipos hay días con dos versiones del programa a la vez. Lo que una versión no entiende de un fichero <strong>se conserva en vez de descartarse</strong>, y una versión antigua puede leer un fichero nuevo pero no sobrescribirlo.</p>
-          </div>
 
+
+    <section class="caracteristica-section caracteristica-section--invertida">
+
+      
+
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">ESPACIO DE CALENDARIO OPTIMIZADO</h2>
+          <div class="caracteristica-descripcion">Los paneles se <strong>colapsan</strong> y el calendario se reajusta automáticamente para ocupar el sitio que queda libre.</div>
+        </div>
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_optimizarEspacio.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
         </div>
       </div>
     </section>
 
 
-    <!-- ASIDE NAVEGACIÓN -->
-    <section>
-      <aside>
-        <div class="volver_pag_principal">
-          <a class="boton_volver_pag_princial" href="/es/#projects">
-            <img class="volver_pag_principal_imagen" src="/assets/Arrow_symbol_white_down.png" alt="">
-            <span class="volver_pag_principal_texto">Volver</span>
-          </a>
+
+
+    <section class="caracteristica-section">
+
+    
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">AVANCE EN PORCENTAJE</h2>
+
+          <div class="caracteristica-descripcion">Cada toma de notas dice <strong>cuánto lleva hecho</strong>, en porcentaje ponderado por el peso de cada apartado.</div>
         </div>
 
-        <div class="siguiente_proyecto_container">
-          <a class="boton_siguiente_proyecto" href="/es/projects/appaseo/">
-            <div class="siguiente_proyecto_texto">
-              <span class="siguiente_label">Siguiente</span>
-              <span class="siguiente_nombre">APPASEO</span>
-            </div>
-            <img class="siguiente_arrow" src="/assets/Arrow_symbol_white.png" alt="">
-          </a>
+        <div class="caracteristica-media">
+          <img class="caracteristica-imagen" src="/assets/imagen_progresion.png" loading="lazy"
+          alt="Avance de las tomas de notas en porcentaje">
         </div>
-      </aside>
+
+      </div>
     </section>
 
-  </div>
+
+
+
+    <section class="caracteristica-section caracteristica-section--invertida">
+
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">FECHA DE LOS SERVICIOS</h2>
+          <div class="caracteristica-descripcion">Las fechas se cambian <strong>arrastrando la barra</strong>: por el centro se mueve entera, por los extremos se estira solo el inicio o solo el fin.</div>
+          <div class="caracteristica-descripcion">Las fechas se pueden <strong>bloquear</strong> y la barra muestra el símbolo de un candado.</div>
+        </div>
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_bloquearFechas.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+    <section class="caracteristica-section">
+
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">FECHA DE LLEGADA DE MUESTRAS</h2>
+
+          <div class="caracteristica-descripcion">Se puede marcar la <strong>fecha de llegada de las muestras</strong> y la barra muestra el símbolo de una caja.</div>
+        </div>
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_fechaMuestras.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="caracteristica-section caracteristica-section--invertida">
+
+      <div class="caracteristica-contenido">
+
+        <div class="caracteristica-texto">
+          <h2 class="caracteristica-titulo">APARTADOS CONFIGURABLES</h2>
+          <div class="caracteristica-descripcion"><strong>Listado de técnicos</strong>. Se puede añadir, modificar y eliminar sin riesgo a eliminar tomas de notas existentes.</div>
+          <div class="caracteristica-descripcion"><strong>Estados de los servicios</strong>. Se pueden añadir hasta 4 estados más, con selección de colores y si cuenta en carga de trabajo o no.</div>
+          <div class="caracteristica-descripcion">También se puede modificar la <strong>tarifa por hora</strong>, las <strong>horas diarias de trabajo</strong> y los <strong>días laborales de cada mes</strong>.</div>
+        </div>
+
+        <div class="caracteristica-media">
+          <video class="caracteristica-video" src="/assets/video_tarifas.mp4#t=0.1"
+          preload="metadata" muted loop playsinline
+          aria-label="Los paneles se pliegan y el calendario se reajusta"></video>
+        </div>
+      </div>
+    </section>
+
+    
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- OTHER DETAILS -->
+  <section class="decisiones-section">
+    <div class="titulo-seccion">
+      <div class="titulo-seccion-linea"></div>
+      <h2 class="titulo-seccion-texto">OTROS DETALLES</h2>
+    </div>
+
+    <div class="decisiones-lista">
+      <div class="decisiones-tarjeta">
+
+        <div class="decision">
+          <p class="decision-texto">En las tomas de notas se pueden configurar <strong>campos autorellenables</strong>, <strong>restricciones de relleno</strong> (por ejemplo solo letras o solo números), <strong>restricciones de caracteres</strong> (por ejemplo solo válido 1 carácter), <strong>cálculos internos</strong> (por ejemplo si una muestra cabe o no dependiendo de su tamaño) y <strong>mucho más</strong>.</p>
+        </div>
+
+        <div class="decision">
+          <p class="decision-texto">Un apartado que no aplique se marca <strong>N/A</strong> y deja de contar.</p>
+        </div>
+
+        <div class="decision">
+          <p class="decision-texto">Un servicio se puede ensayar contra <strong>varias normas a la vez</strong>, cada una con su catálogo de equipos.</p>
+        </div>
+
+        <div class="decision">
+          <p class="decision-texto">Las <strong>pestañas se arrastran</strong> para reordenarlas, como en un navegador.</p>
+        </div>
+
+        <div class="decision">
+          <p class="decision-texto">El programa <strong>avisa cuando el laboratorio publica una versión nueva</strong>, sin bloquear el trabajo de nadie.</p>
+        </div>
+
+        <div class="decision">
+          <p class="decision-texto">Las tomas de notas y la base de datos se <strong>exportan con un click</strong>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DESIGN DECISIONS -->
+  <section class="decisiones-section">
+    <div class="titulo-seccion">
+      <div class="titulo-seccion-linea"></div>
+      <h2 class="titulo-seccion-texto">Decisiones de diseño</h2>
+    </div>
+
+    <div class="decisiones-lista">
+      <div class="decisiones-tarjeta">
+
+        <div class="decision">
+          <div class="decision-titulo">Sin servidor</div>
+          <p class="decision-texto">Todo vive en una <strong>carpeta compartida</strong>: las tomas de notas, la lista de técnicos, la tarifa y los estados. El programa la escanea al abrirse y no hay nada más que instalar ni mantener.</p>
+        </div>
+
+        <div class="decision">
+          <div class="decision-titulo">Las normas son datos</div>
+          <p class="decision-texto">Las tomas de notas son un <strong>fichero JSON</strong> con sus apartados, campos y reglas. Añadir, modificar o retirar un archivo es sencillo y escalable.</p>
+        </div>
+
+
+        <div class="decision">
+          <div class="decision-titulo">Dos versiones conviviendo</div>
+          <p class="decision-texto">Con varios equipos hay días con dos versiones del programa a la vez. Lo que una versión no entiende de un fichero <strong>se conserva en vez de descartarse</strong>, y una versión antigua puede leer un fichero nuevo pero no sobrescribirlo.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ASIDE NAVEGACIÓN -->
+  <section class="navegacion-proyectos-section">
+    <aside>
+      <div class="volver-contenedor">
+        <a class="volver-enlace" href="/#projects">
+          <img class="volver-icono" src="/assets/Arrow_symbol_white_down.png" alt="">
+          <span class="volver-texto">Volver</span>
+        </a>
+      </div>
+
+      <div class="siguiente-contenedor">
+        <a class="siguiente-enlace" href="/projects/appaseo/">
+          <div class="siguiente-textos">
+            <span class="siguiente-etiqueta">Siguiente</span>
+            <span class="siguiente-nombre">APPASEO</span>
+          </div>
+          <img class="siguiente-icono" src="/assets/Arrow_symbol_white.png" alt="">
+        </a>
+      </div>
+    </aside>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- ===================== FOOTER ===================== -->
   <footer>
@@ -459,25 +552,26 @@
       <div class="footer-quicklinks">
         <p class="footer-heading">Enlaces rápidos</p>
         <ul class="footer-links">
-          <li><a href="/es/#home">Inicio</a></li>
-          <li><a href="/es/#experience">Experiencia laboral</a></li>
-          <li><a href="/es/#about">Sobre mí</a></li>
-          <li><a href="/es/#projects">Proyectos</a></li>
-          <li><a href="/es/#stack">Normas y tecnologías</a></li>
-          <li><a href="/es/#education">Formación</a></li>
+          <li><a href="/#home">Inicio</a></li>
+          <li><a href="/#experience">Experiencia laboral</a></li>
+          <li><a href="/#about">Sobre mí</a></li>
+          <li><a href="/#projects">Proyectos</a></li>
+          <li><a href="/#stack">Normas y tecnologías</a></li>
+          <li><a href="/#education">Formación</a></li>
 		    </ul>
       </div>
 
 
       <div class="footer-tagline-container">
-        <a class="footer-tagline" href="/es/"> D M P</a>
+        <a class="footer-tagline" href="#home"> D M P</a>
+		    <span class="footer-hide">Let's develop something interesting</span>
       </div>
 
 
     </div>
 
     <div class="footer-bottom">
-		<a class="footer-copyright" href="/es/">
+		<a class="footer-copyright" href="/">
         	<span>&#169;&nbsp;</span><span id="year"></span><span>&nbsp;D M P</span>
 	  	</a>
     </div>
@@ -488,7 +582,6 @@
 
 
   <!-- IDIOMA + ANIMACIONES -->
-  <script src="/nav.js"></script>
   <script src="/projects/lumenlab/lumenlab.js"></script>
 
 </body>
