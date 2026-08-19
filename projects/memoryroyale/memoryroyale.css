@@ -121,6 +121,7 @@ nav {
 	gap: 1.6rem;
 	margin: 0 auto;
 	list-style: none;
+	text-transform: uppercase;
 }
 
 .nav_enlaces li {
@@ -401,17 +402,21 @@ nav {
 }
 
 .escena-principal-boton {
-	display: inline-block;
-	margin-top: 0.5rem;
-	padding: 0.9rem 1.6rem;
-	border-radius: 999px;
-	background: var(--brand);
-	color: var(--paper);
-	font-family: var(--font-mono);
-	font-size: 0.78rem;
-	letter-spacing: 0.12em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 3rem;
 	text-transform: uppercase;
-	opacity: 0.95;
+	font-family: var(--font-sans);
+	font-size: 0.82rem;
+	letter-spacing: 0.1em;
+	padding: 1rem 1rem;
+	border-radius:  10px;
+	border: 1px solid var(--mist);
+	color: var(--mist);
+	background-color: var(--brand);
+	max-height: 40px;
+	opacity: 0.7; 
 	transition: all 0.2s var(--ease);
 }
 
@@ -814,6 +819,16 @@ footer {
 	color: var(--brand);
 	opacity: 0.1;
 }
+.footer-hide {
+	color: var(--brand2);
+	font-size: 0.9rem;
+	transition: all 1s ease;
+}
+
+.footer-tagline-container:hover .footer-hide {
+	color: var(--mist);
+}
+
 
 .footer-bottom {
 	display: flex;

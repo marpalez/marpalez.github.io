@@ -121,6 +121,7 @@ nav {
 	gap: 1.6rem;
 	margin: 0 auto;
 	list-style: none;
+	text-transform: uppercase;
 }
 
 .nav_enlaces li {
