@@ -1,0 +1,8 @@
+{
+  "name": "dmp-nested-portfolio",
+  "private": true,
+  "scripts": {"start": "node serve.mjs", "check": "node validate.mjs"},
+  "dependencies": {
+    "three": "0.180.0"
+  }
+}
