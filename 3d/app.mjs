@@ -1,35 +1,42 @@
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
-import {locate,sample,nestedTransforms,modulo} from './scene-math.mjs';
+import {locate,sample,nestedTransforms,modulo,verticalFov} from './scene-math.mjs';
+import {wheelDistance,touchDistance,keyDistance} from './forward-input.mjs';
 
 const $=id=>document.getElementById(id);
 const loading=$('loading'),canvas=$('world');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const mobileQuery=matchMedia('(max-width: 700px)');
-let renderer,data,models=[],cursor=0,target=0,logicalOffset=0,cyclePixels=0;
-let width=0,height=0,lastTime=0,previousIndex=-1,previousProject=-1,ready=false;
-let animationRequest=0;
-function requestDraw(){if(ready&&!animationRequest)animationRequest=requestAnimationFrame(draw);}
 const pixelsPerUnit=850;
+let renderer,data,models=[],cursor=0,ready=false,animationRequest=0;
+let state,pointerId=null,previousY=0,press=null,dragged=false;
+const activePointers=new Set();
 const scene=new THREE.Scene();scene.background=new THREE.Color('#dfe7dc');
+scene.fog=new THREE.Fog(scene.background,10,20);
 const camera=new THREE.PerspectiveCamera();camera.up.set(0,0,1);
 const sun=new THREE.DirectionalLight(0xffefda,3.0);
 const fill=new THREE.DirectionalLight(0xd1e8ff,1.7);
 const ambient=new THREE.HemisphereLight(0xe6f1df,0x637463,2.0);ambient.position.set(0,0,1);
 scene.add(sun,fill,ambient);
 const sunPosition=new THREE.Vector3(-3,-6,7),fillPosition=new THREE.Vector3(5,-2,4);
-const directionAxis=new THREE.Vector3(0,0,1);
+const raycaster=new THREE.Raycaster(),lightRotation=new THREE.Matrix3();
 
+function requestDraw(){if(ready&&!animationRequest)animationRequest=requestAnimationFrame(draw);}
+function advance(distance){
+  if(!ready||!Number.isFinite(distance)||distance===0)return;
+  // No time-based easing: the camera stops when the input stops.
+  cursor=modulo(cursor+distance/pixelsPerUnit,data.total);
+  requestDraw();
+}
 function optimizedWorld(gltf){
   // Merge static geometry by material to avoid hundreds of draw calls on phones.
-  // Project covers remain separate so scroll can select them independently.
+  // Interactive text and responsive titles retain their own meshes.
   const flat=new THREE.Group(),buckets=new Map();
   gltf.scene.updateMatrixWorld(true);
   gltf.scene.traverse(obj=>{
     if(!obj.isMesh)return;
     const geo=obj.geometry.clone().applyMatrix4(obj.matrixWorld);
-    if(Number.isInteger(obj.userData.project_index)){
+    if(obj.userData.contact_link||obj.userData.mobile_scale){
       const mesh=new THREE.Mesh(geo,obj.material);mesh.userData={...obj.userData};flat.add(mesh);return;
     }
     const materials=Array.isArray(obj.material)?obj.material:[obj.material];
@@ -60,89 +67,97 @@ function optimizedWorld(gltf){
 }
 
 function resize(){
-  width=innerWidth;height=innerHeight;
   renderer.setPixelRatio(Math.min(devicePixelRatio,mobileQuery.matches?1.5:1.75));
-  renderer.setSize(width,height,false);
-  camera.aspect=width/height;
-  // Preserve horizontal framing, instead of cropping a desktop image on mobile.
-  camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(data.horizontal_fov/2)/camera.aspect));
+  renderer.setSize(innerWidth,innerHeight,false);
+  camera.aspect=innerWidth/innerHeight;
+  camera.fov=verticalFov(data.horizontal_fov,camera.aspect);
   camera.near=.00001;camera.far=1500;camera.updateProjectionMatrix();
-  camera.setViewOffset(width,height,0,mobileQuery.matches?height*.105:0,width,height);
-  $('scroll-space').style.height=`${cyclePixels*3+height}px`;
   requestDraw();
 }
 
-function onScroll(){
-  if(!ready)return;
-  let y=scrollY;
-  // Native scrolling is preserved for touch, keyboard and trackpads. Recentring
-  // changes only the scroll window, not the continuous logical camera position.
-  if(y>cyclePixels*2.5){logicalOffset+=data.total;y-=cyclePixels;scrollTo(0,y);}
-  else if(y<cyclePixels*.5){logicalOffset-=data.total;y+=cyclePixels;scrollTo(0,y);}
-  target=(y-cyclePixels)/pixelsPerUnit+logicalOffset;
-  requestDraw();
-}
-
-function seek(phase){
-  const currentCycle=Math.floor(cursor/data.total);
-  logicalOffset=currentCycle*data.total;
-  target=logicalOffset+phase;
-  scrollTo(0,cyclePixels+phase*pixelsPerUnit);
-  if(reduced.matches)cursor=target;
-  requestDraw();
-}
-
-function updateReadout(state){
-  const {index,project}=state,w=data.worlds[index];
-  if(index===previousIndex&&(index!==6||project===previousProject))return;
-  document.body.dataset.world=String(index);
-  $('chapter-number').textContent=String(index+1).padStart(2,'0');
-  $('chapter-type').textContent=index===0?'INTRODUCTION':index<5?'EXPERIENCE':index===5?'ABOUT ME':index===6?'PROJECTS':'NEXT CHAPTER';
-  $('chapter-name').textContent=index===7?w.role:w.company;
-  $('chapter-role').textContent=index===7?'Let’s build what’s next.':w.role.replaceAll('\n',' ');
-  $('chapter-years').textContent=w.years;
-  $('project-link').hidden=index!==6;$('contact-link').hidden=index!==7;
-  $('scroll-hint').firstChild.textContent=index===6?'SCROLL TO CHANGE PROJECT ':index===7?'SCROLL TO BEGIN AGAIN ':'SCROLL TO EXPLORE ';
-  if(index===6){
-    const p=data.projects[project];
-    $('chapter-name').textContent=p.name;
-    $('chapter-role').textContent=`Selected work · ${project+1} of 4`;
-    $('chapter-years').textContent='';
-    $('project-link').href=p.url;
-    $('project-link').firstChild.textContent=`Explore ${p.name} `;
-  }
-  if(index===5){$('chapter-role').textContent='From Valencia, Spain';$('chapter-years').textContent='Español · Valencià · English';}
-  for(const [j,button] of Array.from($('chapter-list').children).entries())button.setAttribute('aria-current',String(j===index));
-  previousIndex=index;previousProject=project;
-}
-
-function draw(now){
+function draw(){
   animationRequest=0;
   if(!ready)return;
-  const dt=Math.min(.06,(now-lastTime)/1000||1/60);lastTime=now;
-  cursor=reduced.matches?target:cursor+(target-cursor)*(1-Math.exp(-dt*9));
-  if(Math.abs(cursor-target)<.00002)cursor=target;
-  const state=locate(data,cursor),world=data.worlds[state.index];
-  const transforms=nestedTransforms(data.worlds,state.index);
+  state=locate(data,cursor);
+  const world=data.worlds[state.index],transforms=nestedTransforms(data.worlds,state.index);
   for(let j=0;j<models.length;j++){
     const model=models[j];model.visible=transforms.has(j);
     if(model.visible){model.matrix.copy(transforms.get(j));model.matrixWorldNeedsUpdate=true;}
   }
   const position=sample(world,state.transition,mobileQuery.matches);
-  camera.position.copy(position.position);camera.lookAt(position.target);
-  // Lights are expressed in the same reference frame as the nested geometry.
-  const angle=-data.worlds.slice(0,state.index).reduce((sum,w)=>sum+w.portal.rotation,0);
-  sun.position.copy(sunPosition).applyAxisAngle(directionAxis,angle);
-  fill.position.copy(fillPosition).applyAxisAngle(directionAxis,angle);
-  models[6].traverse(obj=>{
-    if(Number.isInteger(obj.userData.project_index))obj.visible=obj.userData.project_index===(state.index===6?state.project:0);
+  camera.position.copy(position.position);camera.up.copy(position.up);camera.lookAt(position.target);
+  lightRotation.set(...world.light_rotation.flat());
+  sun.position.copy(sunPosition).applyMatrix3(lightRotation);
+  fill.position.copy(fillPosition).applyMatrix3(lightRotation);
+  ambient.position.set(0,0,1).applyMatrix3(lightRotation);
+  const blend=THREE.MathUtils.smoothstep(state.transition,.62,1);
+  scene.background.set(world.background).lerp(new THREE.Color(data.worlds[(state.index+1)%data.worlds.length].background),blend);
+  // Depth scales with the camera's subject, so distant enclosing worlds blend
+  // into the sky continuously, including when the coordinate frame rebases.
+  const subjectDistance=position.position.distanceTo(position.target);
+  camera.near=subjectDistance*.001;camera.far=subjectDistance*120;camera.updateProjectionMatrix();
+  scene.fog.color.copy(scene.background);
+  scene.fog.near=subjectDistance*1.15;scene.fog.far=subjectDistance*1.90;
+  for(const model of models)model.traverse(obj=>{
+    if(!obj.userData.mobile_scale)return;
+    const scale=mobileQuery.matches?obj.userData.mobile_scale:1;
+    const [x,y,z]=obj.userData.mobile_pivot;
+    obj.scale.setScalar(scale);
+    obj.position.set(x*(1-scale),z*(1-scale),-y*(1-scale));
   });
-  updateReadout(state);
-  const progress=state.phase/data.total*100;
-  $('progress').style.setProperty('--progress',`${progress}%`);
-  if(document.activeElement!==$('progress'))$('progress').value=String(Math.round(progress*10));
+  $('contact-link').hidden=world.id!=='ready';
+  canvas.style.cursor='default';
   renderer.render(scene,camera);
-  if(Math.abs(cursor-target)>.00002)requestDraw();
+}
+
+function linkAt(event){
+  if(!ready||!state||data.worlds[state.index].id!=='ready')return null;
+  raycaster.setFromCamera(new THREE.Vector2(event.clientX/innerWidth*2-1,1-event.clientY/innerHeight*2),camera);
+  const candidates=[];
+  models[state.index].traverse(obj=>{
+    if(obj.isMesh&&obj.visible&&obj.userData.contact_link)candidates.push(obj);
+  });
+  const hit=raycaster.intersectObjects(candidates,false)[0];
+  if(!hit)return null;
+  return 'mailto:davidmarpalez@gmail.com';
+}
+
+function bindInput(){
+  window.addEventListener('wheel',event=>{
+    if(event.ctrlKey)return;
+    event.preventDefault();advance(wheelDistance(event.deltaY,event.deltaMode,innerHeight));
+  },{passive:false});
+  canvas.addEventListener('pointerdown',event=>{
+    activePointers.add(event.pointerId);
+    if(activePointers.size>1){pointerId=null;dragged=true;return;}
+    press={x:event.clientX,y:event.clientY};dragged=false;
+    if(event.pointerType==='touch'||event.pointerType==='pen'){
+      pointerId=event.pointerId;previousY=event.clientY;canvas.setPointerCapture(event.pointerId);
+    }
+  });
+  canvas.addEventListener('pointermove',event=>{
+    if(press&&Math.hypot(event.clientX-press.x,event.clientY-press.y)>8)dragged=true;
+    if(event.pointerId===pointerId&&activePointers.size===1){
+      advance(touchDistance(previousY,event.clientY));previousY=event.clientY;
+    }else if(event.pointerType==='mouse')canvas.style.cursor=linkAt(event)?'pointer':'default';
+  });
+  for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,event=>{
+    activePointers.delete(event.pointerId);
+    if(event.pointerId===pointerId)pointerId=null;
+    if(type==='pointercancel')dragged=true;
+  });
+  canvas.addEventListener('click',event=>{
+    if(dragged)return;
+    const url=linkAt(event);if(url)location.assign(url);
+  });
+  window.addEventListener('blur',()=>{activePointers.clear();pointerId=null;press=null;});
+  window.addEventListener('keydown',event=>{
+    if(event.target.closest('a,input,textarea,button,select,[contenteditable="true"]'))return;
+    if(event.ctrlKey||event.metaKey||event.altKey)return;
+    if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key)){
+      event.preventDefault();advance(keyDistance(event.key,event.shiftKey,innerHeight));
+    }
+  });
 }
 
 async function start(){
@@ -152,38 +167,20 @@ async function start(){
     renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.1;
     const response=await fetch('../assets/3d/worlds.json');
     if(!response.ok)throw new Error(`World manifest: ${response.status}`);
-    data=await response.json();cyclePixels=data.total*pixelsPerUnit;
-    const loader=new GLTFLoader();let loaded=0;
+    data=await response.json();
+    const loader=new GLTFLoader();
     models=await Promise.all(data.worlds.map(async w=>{
       const gltf=await loader.loadAsync(`../assets/3d/${w.file}`);
-      const model=optimizedWorld(gltf);scene.add(model);
-      loaded++;$('load-bar').style.width=`${loaded/8*100}%`;$('load-count').textContent=`${loaded} / 8 worlds`;
-      return model;
+      const model=optimizedWorld(gltf);scene.add(model);return model;
     }));
-    data.worlds.forEach((w,i)=>{
-      const button=document.createElement('button');
-      const number=document.createElement('span');number.textContent=String(i+1).padStart(2,'0');
-      const label=document.createElement('span');label.textContent=['Introduction','AIDIMME','IMQ TECNOCREA','SGS TECNOS','IMQ IBÉRICA','Valencia & languages','Selected projects','I’m ready, and you?'][i];
-      button.append(number,label);button.addEventListener('click',()=>{$('chapters').close();seek(w.start);});$('chapter-list').append(button);
+    resize();window.addEventListener('resize',resize,{passive:true});mobileQuery.addEventListener('change',resize);
+    bindInput();ready=true;requestDraw();loading.hidden=true;
+    canvas.addEventListener('webglcontextlost',event=>{
+      event.preventDefault();ready=false;loading.hidden=false;
+      $('load-message').textContent='The 3D view was interrupted. Reload to continue.';
     });
-    $('open-chapters').addEventListener('click',()=>$('chapters').showModal());
-    $('close-chapters').addEventListener('click',()=>$('chapters').close());
-    $('chapters').addEventListener('click',event=>{if(event.target===$('chapters')){const r=$('chapters').getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)$('chapters').close();}});
-    $('next').addEventListener('click',()=>{const state=locate(data,cursor);if(state.index===7){logicalOffset=Math.floor(cursor/data.total)*data.total;target=logicalOffset+data.total;scrollTo(0,cyclePixels+data.total*pixelsPerUnit);}else seek(data.worlds[state.index+1].start);});
-    $('previous').addEventListener('click',()=>{const state=locate(data,cursor);if(state.index===0){logicalOffset=(Math.floor(cursor/data.total)-1)*data.total;target=logicalOffset+data.worlds[7].start;scrollTo(0,cyclePixels+data.worlds[7].start*pixelsPerUnit);requestDraw();}else seek(data.worlds[state.index-1].start);});
-    $('progress').addEventListener('input',event=>seek(Number(event.target.value)/1000*(data.total-.00001)));
-    window.addEventListener('keydown',event=>{if(event.target.closest('button,a,input,dialog'))return;if(event.key==='Home'){event.preventDefault();seek(0);}else if(event.key==='End'){event.preventDefault();seek(data.worlds[7].start);}});
-    history.scrollRestoration='manual';resize();
-    window.addEventListener('resize',resize,{passive:true});
-    mobileQuery.addEventListener('change',resize);
-    window.addEventListener('scroll',onScroll,{passive:true});
-    const initial=data.worlds.find(w=>`#${w.id}`===location.hash)?.start||0;
-    scrollTo(0,cyclePixels+initial*pixelsPerUnit);cursor=target=initial;
-    ready=true;onScroll();requestDraw();loading.classList.add('loaded');
-    setTimeout(()=>loading.hidden=true,400);
-    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();ready=false;loading.hidden=false;loading.classList.remove('loaded');$('load-message').textContent='The 3D view was interrupted. Reload to continue.';});
   }catch(error){
-    console.error(error);$('load-message').textContent='The 3D view could not be loaded.';$('load-count').textContent='You can still explore the full portfolio below.';
+    console.error(error);$('load-message').textContent='The 3D view could not be loaded.';
   }
 }
 start();

@@ -12,42 +12,13 @@
 </head>
 <body>
   <a class="skip" href="/">Read the accessible portfolio</a>
-  <canvas id="world" aria-label="Eight nested low-poly worlds illustrating David’s experience. Scroll or use the chapter buttons to explore."></canvas>
-  <div id="scroll-space" aria-hidden="true"></div>
-  <header class="header">
-    <a class="wordmark" href="/" aria-label="David Martínez Palomares, full portfolio">dmp</a>
-    <span class="edition">A WORLD WITHIN</span>
-    <div class="header-actions">
-      <a class="cv" href="/assets/DavidMartinezCVen.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
-      <button id="open-chapters" aria-haspopup="dialog" aria-controls="chapters">Chapters <span aria-hidden="true">☰</span></button>
-    </div>
-  </header>
-  <main class="interface">
-    <section class="readout" aria-label="Current chapter">
-      <p class="eyebrow"><span id="chapter-number">01</span><span class="slash">/</span>08 <span id="chapter-type">INTRODUCTION</span></p>
-      <h1 id="chapter-name">David Martínez Palomares</h1>
-      <p id="chapter-role">Laboratory analyst and project coordinator</p>
-      <p id="chapter-years">Software development student</p>
-      <a id="project-link" class="action" hidden href="/projects/appaseo/">Explore APPASEO <span aria-hidden="true">↗</span></a>
-      <a id="contact-link" class="action" hidden href="mailto:davidmarpalez@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
-    </section>
-    <p id="scroll-hint">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></p>
-    <div class="journey-controls">
-      <button id="previous" class="round" aria-label="Previous chapter">↑</button>
-      <button id="next" class="round" aria-label="Next chapter">↓</button>
-    </div>
-    <label class="progress"><span class="sr-only">Position in the journey</span><input id="progress" type="range" min="0" max="1000" step="1" value="0"></label>
+  <main>
+    <canvas id="world" aria-label="David Martínez Palomares’s portfolio. Scroll down or press Arrow Down to advance; scroll up or press Arrow Up to go back. On touch screens, drag down to advance and drag up to go back. Explore eight nested worlds in a repeating journey."></canvas>
+    <a id="contact-link" class="skip" hidden href="mailto:davidmarpalez@gmail.com">Contact David</a>
   </main>
-  <dialog id="chapters">
-    <div class="dialog-head"><p>CHOOSE A CHAPTER</p><button id="close-chapters" aria-label="Close chapters">✕</button></div>
-    <nav id="chapter-list" aria-label="Chapters"></nav>
-    <a class="simple-link" href="/">Prefer a simple page? Read the full portfolio ↗</a>
-  </dialog>
   <div id="loading" role="status">
-    <span class="load-mark">dmp</span><p id="load-message">A world within a world.</p>
-    <div class="load-track"><span id="load-bar"></span></div>
-    <span id="load-count">Preparing your journey</span>
-    <a href="/">Read the full portfolio ↗</a>
+    <p id="load-message">Loading…</p>
+    <a href="/">Read the full portfolio</a>
   </div>
   <noscript><div class="no-script">This experience needs JavaScript. <a href="/">Read the full portfolio</a>.</div></noscript>
   <script type="module" src="./app.mjs"></script>
