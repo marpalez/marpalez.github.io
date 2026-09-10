@@ -3,50 +3,56 @@
 	xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	<url>
 		<loc>https://davidmarpalez.com/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/"/>
 		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/"/>
+	</url>
+	<url>
+		<loc>https://davidmarpalez.com/en/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/"/>
+		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/"/>
 	</url>
 	<url>
 		<loc>https://davidmarpalez.com/es/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/"/>
 	</url>
 	<url>
-		<loc>https://davidmarpalez.com/projects/appaseo/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/appaseo/"/>
+		<loc>https://davidmarpalez.com/en/projects/appaseo/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/projects/appaseo/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/appaseo/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/appaseo/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/projects/appaseo/"/>
 	</url>
 	<url>
 		<loc>https://davidmarpalez.com/es/projects/appaseo/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/appaseo/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/projects/appaseo/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/appaseo/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/appaseo/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/projects/appaseo/"/>
 	</url>
 	<url>
-		<loc>https://davidmarpalez.com/projects/lumenlab/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/lumenlab/"/>
+		<loc>https://davidmarpalez.com/en/projects/lumenlab/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/projects/lumenlab/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/lumenlab/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/lumenlab/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/projects/lumenlab/"/>
 	</url>
 	<url>
 		<loc>https://davidmarpalez.com/es/projects/lumenlab/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/lumenlab/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/projects/lumenlab/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/lumenlab/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/lumenlab/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/projects/lumenlab/"/>
 	</url>
 	<url>
-		<loc>https://davidmarpalez.com/projects/memoryroyale/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/memoryroyale/"/>
+		<loc>https://davidmarpalez.com/en/projects/memoryroyale/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/projects/memoryroyale/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/memoryroyale/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/memoryroyale/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/projects/memoryroyale/"/>
 	</url>
 	<url>
 		<loc>https://davidmarpalez.com/es/projects/memoryroyale/</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/projects/memoryroyale/"/>
+		<xhtml:link rel="alternate" hreflang="en" href="https://davidmarpalez.com/en/projects/memoryroyale/"/>
 		<xhtml:link rel="alternate" hreflang="es" href="https://davidmarpalez.com/es/projects/memoryroyale/"/>
-		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/projects/memoryroyale/"/>
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://davidmarpalez.com/en/projects/memoryroyale/"/>
 	</url>
 </urlset>

@@ -165,12 +165,12 @@ async function start(){
     renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,logarithmicDepthBuffer:true,powerPreference:'high-performance'});
     renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.1;
-    const response=await fetch('../assets/3d/worlds.json');
+    const response=await fetch('/assets/3d/worlds.json');
     if(!response.ok)throw new Error(`World manifest: ${response.status}`);
     data=await response.json();
     const loader=new GLTFLoader();
     models=await Promise.all(data.worlds.map(async w=>{
-      const gltf=await loader.loadAsync(`../assets/3d/${w.file}`);
+      const gltf=await loader.loadAsync(`/assets/3d/${w.file}`);
       const model=optimizedWorld(gltf);scene.add(model);return model;
     }));
     resize();window.addEventListener('resize',resize,{passive:true});mobileQuery.addEventListener('change',resize);

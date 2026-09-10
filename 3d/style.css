@@ -10,3 +10,14 @@ a:focus-visible{outline:2px solid #b45f42;outline-offset:5px}
 #loading,.no-script{position:fixed;inset:0;z-index:5;background:#dfe7dc;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:28px}
 #loading p{font-size:16px}
 #loading a{font-size:12px;margin-top:18px}
+
+/* La barra deja pasar el puntero: solo los enlaces lo capturan, así el resto
+   del borde inferior sigue arrastrando la escena. */
+#enlaces{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));z-index:4;display:flex;align-items:center;gap:10px;pointer-events:none}
+#enlaces a{pointer-events:auto;touch-action:manipulation;text-decoration:none;transition:transform .2s ease,opacity .2s ease}
+#enlaces a:hover{transform:translateY(-2px)}
+.enlace-icono{display:grid;place-items:center;width:44px;height:44px;background:#fff;border:1px solid rgba(37,61,55,.15);border-radius:12px;opacity:.9;box-shadow:0 4px 14px rgba(37,61,55,.18)}
+.enlace-icono:hover{opacity:1}
+.enlace-icono img{width:24px;height:24px;object-fit:contain}
+.enlace-portfolio{display:grid;place-items:center;height:44px;padding:0 20px;background:#b45f42;color:#fff;border-radius:12px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.95;box-shadow:0 4px 14px rgba(37,61,55,.18)}
+.enlace-portfolio:hover{opacity:1}

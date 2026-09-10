@@ -191,6 +191,27 @@ nav {
 	border-color: var(--brand);
 	color: var(--brand);
 }
+#boton_3d {
+	background: var(--brand);
+	border: 1px solid var(--brand);
+	border-radius: 999px;
+	padding: 7px 16px;
+	color: var(--paper);
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all 0.2s var(--ease);
+}
+
+#boton_3d:hover {
+	opacity: 0.85;
+	transform: scale(1.03);
+}
+
 
 .nav_hamburguesa {
 	display: none;
