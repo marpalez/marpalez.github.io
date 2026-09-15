@@ -132,7 +132,7 @@ a:focus-visible{
 
 .og_image{
    display: flex;
-   max-width: 4.5rem;
+   max-width: 6rem;
    border-radius:99px;
    box-shadow: 1px 1px 1px 1px rgba(37, 100, 235, 0.2);
    margin-right: 0.8rem;
@@ -145,7 +145,7 @@ a:focus-visible{
 
    .og_image{
       display: flex;
-      max-width: 4rem;
+      max-width: 5rem;
       border-radius:99px;
       box-shadow: 1px 1px 1px 1px rgba(37, 100, 235, 0.2);
       margin-right: 0.4rem;
