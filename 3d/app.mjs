@@ -2,13 +2,12 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {locate,sample,nestedTransforms,modulo,verticalFov} from './scene-math.mjs';
-import {wheelDistance,touchDistance,keyDistance} from './forward-input.mjs';
+import {wheelDistance,touchDistance,keyDistance,scrollPixelsPerUnit} from './forward-input.mjs';
 
 const $=id=>document.getElementById(id);
 const loading=$('loading'),canvas=$('world');
 const mobileQuery=matchMedia('(max-width: 700px)');
-const pixelsPerUnit=850;
-let renderer,data,models=[],cursor=0,ready=false,animationRequest=0;
+let renderer,data,models=[],cursor=0,ready=false,animationRequest=0,timingMobile=false;
 let state,pointerId=null,previousY=0,press=null,dragged=false;
 const activePointers=new Set();
 const scene=new THREE.Scene();scene.background=new THREE.Color('#dfe7dc');
@@ -23,9 +22,9 @@ const raycaster=new THREE.Raycaster(),lightRotation=new THREE.Matrix3();
 
 function requestDraw(){if(ready&&!animationRequest)animationRequest=requestAnimationFrame(draw);}
 function advance(distance){
-  if(!ready||!Number.isFinite(distance)||distance===0)return;
+  if(!ready||!Number.isFinite(distance)||distance<=0)return;
   // No time-based easing: the camera stops when the input stops.
-  cursor=modulo(cursor+distance/pixelsPerUnit,data.total);
+  cursor=modulo(cursor+distance/scrollPixelsPerUnit(mobileQuery.matches,innerHeight),data.total);
   requestDraw();
 }
 function optimizedWorld(gltf){
@@ -67,18 +66,32 @@ function optimizedWorld(gltf){
 }
 
 function resize(){
+  if(ready&&timingMobile!==mobileQuery.matches){
+    const previous=locate(data,cursor,timingMobile),world=data.worlds[previous.index];
+    const timing=mobileQuery.matches&&world.mobile_timing?world.mobile_timing:world;
+    cursor=timing.start+previous.transition*timing.duration;
+  }
+  timingMobile=mobileQuery.matches;
   renderer.setPixelRatio(Math.min(devicePixelRatio,mobileQuery.matches?1.5:1.75));
   renderer.setSize(innerWidth,innerHeight,false);
   camera.aspect=innerWidth/innerHeight;
   camera.fov=verticalFov(data.horizontal_fov,camera.aspect);
   camera.near=.00001;camera.far=1500;camera.updateProjectionMatrix();
+  // Responsive titles change only at resize, not on every scroll frame.
+  for(const model of models)model.traverse(obj=>{
+    if(!obj.userData.mobile_scale)return;
+    const scale=mobileQuery.matches?obj.userData.mobile_scale:1;
+    const [x,y,z]=obj.userData.mobile_pivot;
+    obj.scale.setScalar(scale);
+    obj.position.set(x*(1-scale),z*(1-scale),-y*(1-scale));
+  });
   requestDraw();
 }
 
 function draw(){
   animationRequest=0;
   if(!ready)return;
-  state=locate(data,cursor);
+  state=locate(data,cursor,mobileQuery.matches);
   const world=data.worlds[state.index],transforms=nestedTransforms(data.worlds,state.index);
   for(let j=0;j<models.length;j++){
     const model=models[j];model.visible=transforms.has(j);
@@ -98,13 +111,6 @@ function draw(){
   camera.near=subjectDistance*.001;camera.far=subjectDistance*120;camera.updateProjectionMatrix();
   scene.fog.color.copy(scene.background);
   scene.fog.near=subjectDistance*1.15;scene.fog.far=subjectDistance*1.90;
-  for(const model of models)model.traverse(obj=>{
-    if(!obj.userData.mobile_scale)return;
-    const scale=mobileQuery.matches?obj.userData.mobile_scale:1;
-    const [x,y,z]=obj.userData.mobile_pivot;
-    obj.scale.setScalar(scale);
-    obj.position.set(x*(1-scale),z*(1-scale),-y*(1-scale));
-  });
   $('contact-link').hidden=world.id!=='ready';
   canvas.style.cursor='default';
   renderer.render(scene,camera);
@@ -165,15 +171,18 @@ async function start(){
     renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,logarithmicDepthBuffer:true,powerPreference:'high-performance'});
     renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1.1;
-    const response=await fetch('/assets/3d/worlds.json');
+    const response=await fetch('../assets/3d/worlds.json');
     if(!response.ok)throw new Error(`World manifest: ${response.status}`);
     data=await response.json();
     const loader=new GLTFLoader();
     models=await Promise.all(data.worlds.map(async w=>{
-      const gltf=await loader.loadAsync(`/assets/3d/${w.file}`);
+      const gltf=await loader.loadAsync(`../assets/3d/${w.file}`);
       const model=optimizedWorld(gltf);scene.add(model);return model;
     }));
-    resize();window.addEventListener('resize',resize,{passive:true});mobileQuery.addEventListener('change',resize);
+    resize();
+    // Prepare every chapter's shaders before scrolling can reveal it.
+    await renderer.compileAsync(scene,camera);
+    window.addEventListener('resize',resize,{passive:true});mobileQuery.addEventListener('change',resize);
     bindInput();ready=true;requestDraw();loading.hidden=true;
     canvas.addEventListener('webglcontextlost',event=>{
       event.preventDefault();ready=false;loading.hidden=false;
