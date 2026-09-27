@@ -1,13 +1,13 @@
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
-import {locate,sample,nestedTransforms,modulo,verticalFov} from './scene-math.mjs';
-import {wheelDistance,touchDistance,keyDistance,scrollPixelsPerUnit} from './forward-input.mjs';
+import {locate,sample,nestedTransforms,verticalFov} from './scene-math.mjs';
+import {wheelDistance,touchDistance,keyDistance,scrollPixelsPerUnit,springTowards,SCROLL_STIFFNESS,SCROLL_SETTLED} from './forward-input.mjs';
 
 const $=id=>document.getElementById(id);
 const loading=$('loading'),canvas=$('world');
 const mobileQuery=matchMedia('(max-width: 700px)');
-let renderer,data,models=[],cursor=0,ready=false,animationRequest=0,timingMobile=false;
+let renderer,data,models=[],cursor=0,goal=0,speed=0,lastFrame=0,ready=false,animationRequest=0,timingMobile=false;
 let state,pointerId=null,previousY=0,press=null,dragged=false;
 const activePointers=new Set();
 const scene=new THREE.Scene();scene.background=new THREE.Color('#dfe7dc');
@@ -19,12 +19,16 @@ const ambient=new THREE.HemisphereLight(0xe6f1df,0x637463,2.0);ambient.position.
 scene.add(sun,fill,ambient);
 const sunPosition=new THREE.Vector3(-3,-6,7),fillPosition=new THREE.Vector3(5,-2,4);
 const raycaster=new THREE.Raycaster(),lightRotation=new THREE.Matrix3();
+// Reused: the sky now blends on every frame of a glide, not once per input event.
+const nextBackground=new THREE.Color();
 
 function requestDraw(){if(ready&&!animationRequest)animationRequest=requestAnimationFrame(draw);}
-function advance(distance){
+// A wheel notch or a keypress is one discrete jump, so the camera glides to the
+// new destination. A finger is direct manipulation and tracks it frame for frame.
+function advance(distance,immediate=false){
   if(!ready||!Number.isFinite(distance)||distance<=0)return;
-  // No time-based easing: the camera stops when the input stops.
-  cursor=modulo(cursor+distance/scrollPixelsPerUnit(mobileQuery.matches,innerHeight),data.total);
+  goal+=distance/scrollPixelsPerUnit(mobileQuery.matches,innerHeight);
+  if(immediate){cursor=goal;speed=0;}
   requestDraw();
 }
 function optimizedWorld(gltf){
@@ -69,7 +73,7 @@ function resize(){
   if(ready&&timingMobile!==mobileQuery.matches){
     const previous=locate(data,cursor,timingMobile),world=data.worlds[previous.index];
     const timing=mobileQuery.matches&&world.mobile_timing?world.mobile_timing:world;
-    cursor=timing.start+previous.transition*timing.duration;
+    cursor=timing.start+previous.transition*timing.duration;goal=cursor;speed=0;
   }
   timingMobile=mobileQuery.matches;
   renderer.setPixelRatio(Math.min(devicePixelRatio,mobileQuery.matches?1.5:1.75));
@@ -88,9 +92,21 @@ function resize(){
   requestDraw();
 }
 
-function draw(){
+function draw(timestamp){
   animationRequest=0;
   if(!ready)return;
+  // Clamped so a long pause resumes as a glide instead of a teleport.
+  const elapsed=lastFrame?Math.min(timestamp-lastFrame,100):16.7;
+  lastFrame=timestamp;
+  const glide=springTowards(cursor,speed,goal,elapsed,SCROLL_STIFFNESS);
+  cursor=glide.position;speed=glide.velocity;
+  const moving=goal-cursor>=SCROLL_SETTLED;
+  if(!moving){
+    cursor=goal;speed=0;lastFrame=0;
+    // The journey repeats every data.total, so keep both numbers on the first lap.
+    const laps=Math.floor(cursor/data.total);
+    if(laps){cursor-=laps*data.total;goal=cursor;}
+  }
   state=locate(data,cursor,mobileQuery.matches);
   const world=data.worlds[state.index],transforms=nestedTransforms(data.worlds,state.index);
   for(let j=0;j<models.length;j++){
@@ -104,7 +120,7 @@ function draw(){
   fill.position.copy(fillPosition).applyMatrix3(lightRotation);
   ambient.position.set(0,0,1).applyMatrix3(lightRotation);
   const blend=THREE.MathUtils.smoothstep(state.transition,.62,1);
-  scene.background.set(world.background).lerp(new THREE.Color(data.worlds[(state.index+1)%data.worlds.length].background),blend);
+  scene.background.set(world.background).lerp(nextBackground.set(data.worlds[(state.index+1)%data.worlds.length].background),blend);
   // Depth scales with the camera's subject, so distant enclosing worlds blend
   // into the sky continuously, including when the coordinate frame rebases.
   const subjectDistance=position.position.distanceTo(position.target);
@@ -114,6 +130,7 @@ function draw(){
   $('contact-link').hidden=world.id!=='ready';
   canvas.style.cursor='default';
   renderer.render(scene,camera);
+  if(moving)requestDraw();
 }
 
 function linkAt(event){
@@ -144,7 +161,7 @@ function bindInput(){
   canvas.addEventListener('pointermove',event=>{
     if(press&&Math.hypot(event.clientX-press.x,event.clientY-press.y)>8)dragged=true;
     if(event.pointerId===pointerId&&activePointers.size===1){
-      advance(touchDistance(previousY,event.clientY));previousY=event.clientY;
+      advance(touchDistance(previousY,event.clientY),true);previousY=event.clientY;
     }else if(event.pointerType==='mouse')canvas.style.cursor=linkAt(event)?'pointer':'default';
   });
   for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,event=>{
